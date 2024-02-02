@@ -8,176 +8,685 @@
 
 @section('content')
 
+{{-- @dump($errors->all()) --}}
+<form method="POST" action="{{ route('inventarios.store') }}">
 
-<div class="card">
+<div class="card card-outline card-primary">
     <div class="card-header">
-        <h3 class="card-title">Informacion del inventario</h3>
+        <h3 class="card-title">Informacion del Inventario</h3>
         <div class="card-tools">
-            <!-- Buttons, labels, and many other things can be placed here! -->
-            <!-- Here is a label for example -->
-            <span class="badge badge-primary">Label</span>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
         </div>
-        <!-- /.card-tools -->
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
 
+    </div>
+
+    <div class="card-body" style="display: block;">
+
+
+        @include('inventarios.formularios._info-basic')
+
+
+
+
+
+
+       
+
+<!-- SECCION 2 -->
+<div class="row">
+    <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Collapsible Card Example</h3>
-                <div class="card-tools">
-                    <!-- Collapse Button -->
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                        class="fas fa-minus"></i></button>
-                    </div>
-                    <!-- /.card-tools -->
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <input type="date" name="" id="" class="input-group-text">
-                </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Cantidad</th>
+                            <th>Material</th>
+                            <th>Estado</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Puerta</td>
+                            <input type="hidden" name="puerta" value="puerta">
+
+                            <td>
+                                <x-adminlte-input name="cantidad" placeholder="Cantidad"
+                                type="number"
+                                class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+                                @if ($errors->has('cantidad'))
+                                <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+                                @endif
+                            </td>
+
+                            <td>
+                                <x-adminlte-input name="material" placeholder="Material" type="text"
+                                class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+                                @if ($errors->has('material'))
+                                <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+                                @endif
+                            </td>
+
+                            <td>
+                                <x-adminlte-select name="estado"
+                                class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+                                <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+                                empty-option="Seleccione una opción..." />
+                            </x-adminlte-select>
+                        </td>
+
+                        <td>
+                            <x-adminlte-input name="observaciones" placeholder="Observaciones"
+                            type="text"
+                            class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+                            @if ($errors->has('observaciones'))
+                            <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+                            @endif
+                        </td>
+                    </tr>
 
 
+                    <tr>
+                        <td>Chapa</td>
+                        <input type="hidden" name="chapa" value="chapa">
+
+                        <td>
+                            <x-adminlte-input name="cantidad" placeholder="Cantidad"
+                            type="number"
+                            class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+                            @if ($errors->has('cantidad'))
+                            <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+                            @endif
+                        </td>
+
+                        <td>
+                            <x-adminlte-input name="material" placeholder="Material" type="text"
+                            class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+                            @if ($errors->has('material'))
+                            <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+                            @endif
+                        </td>
+
+                        <td>
+                            <x-adminlte-select name="estado"
+                            class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+                            <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+                            empty-option="Seleccione una opción..." />
+                        </x-adminlte-select>
+                    </td>
+
+                    <td>
+                        <x-adminlte-input name="observaciones" placeholder="Observaciones"
+                        type="text"
+                        class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+                        @if ($errors->has('observaciones'))
+                        <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+                        @endif
+                    </td>
+                </tr>
 
 
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-            The footer of the card
-        </div>
-        <!-- /.card-footer -->
-    </div>
-    <!-- /.card -->
+                <tr>
+                    <td>Ventana</td>
+                    <input type="hidden" name="ventata" value="ventata">
+
+                    <td>
+                        <x-adminlte-input name="cantidad" placeholder="Cantidad"
+                        type="number"
+                        class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+                        @if ($errors->has('cantidad'))
+                        <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+                        @endif
+                    </td>
+
+                    <td>
+                        <x-adminlte-input name="material" placeholder="Material" type="text"
+                        class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+                        @if ($errors->has('material'))
+                        <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+                        @endif
+                    </td>
+
+                    <td>
+                        <x-adminlte-select name="estado"
+                        class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+                        <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+                        empty-option="Seleccione una opción..." />
+                    </x-adminlte-select>
+                </td>
+
+                <td>
+                    <x-adminlte-input name="observaciones" placeholder="Observaciones"
+                    type="text"
+                    class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+                    @if ($errors->has('observaciones'))
+                    <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+                    @endif
+                </td>
+            </tr>
 
 
+            <tr>
+                <td>Vidrio</td>
+                <input type="hidden" name="vidrio" value="vidrio">
 
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Informacion Basica</h3>
-            <div class="card-tools">
-                <!-- Collapse Button -->
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-            </div>
-            <!-- /.card-tools -->
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            <!-- PARA VERIFICAR LOS ERRORES -->
-            @dump($errors->all())
+                <td>
+                    <x-adminlte-input name="cantidad" placeholder="Cantidad"
+                    type="number"
+                    class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+                    @if ($errors->has('cantidad'))
+                    <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+                    @endif
+                </td>
 
-            <form method="POST" action="{{ route('inventarios.store') }}">
-                @csrf
+                <td>
+                    <x-adminlte-input name="material" placeholder="Material" type="text"
+                    class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+                    @if ($errors->has('material'))
+                    <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+                    @endif
+                </td>
 
-                {{-- Placeholder, date only and append icon --}}
-                @php
-                $config = [
-                'format' => 'L',
-                'locale' => 'es', // Establecer el idioma a español
-                'timeZone' => 'America/Bogota',
-                ];
-                @endphp
+                <td>
+                    <x-adminlte-select name="estado"
+                    class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+                    <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
 
+                    empty-option="Seleccione una opción..." />
+                </x-adminlte-select>
+            </td>
 
-                <div class="row">
-
-                    <x-adminlte-input-date id="tuInputFecha" label="Fecha" name="fecha" :config="$config"
-                    placeholder="Elige una fecha..." fgroup-class="col-md-3"
-                    class="{{ $errors->has('fecha') ? 'is-invalid' : '' }}" 
-                    value="{{ old('fecha') }}">
-                    <x-slot name="appendSlot">
-                        <div class="input-group-text bg-gradient-danger">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                    </x-slot>
-                </x-adminlte-input-date>
-
-                @if($errors->has('fecha'))
-                <div class="invalid-feedback">{{ $errors->first('fecha') }}</div>
+            <td>
+                <x-adminlte-input name="observaciones" placeholder="Observaciones"
+                type="text"
+                class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+                @if ($errors->has('observaciones'))
+                <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
                 @endif
+            </td>
+        </tr>
 
 
-                <x-adminlte-input name="direccion" label="Direccion" placeholder="Direccion" fgroup-class="col-md-3"
-                class="{{ $errors->has('direccion') ? 'is-invalid' : '' }}" value="{{ old('direccion') }}"/>
-                @if($errors->has('direccion'))
-                <div class="invalid-feedback">{{ $errors->first('direccion') }}</div>
+        <tr>
+            <td>Persiana</td>
+            <input type="hidden" name="persiana" value="persiana">
+
+            <td>
+                <x-adminlte-input name="cantidad" placeholder="Cantidad"
+                type="number"
+                class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+                @if ($errors->has('cantidad'))
+                <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
                 @endif
+            </td>
 
-                
+            <td>
+                <x-adminlte-input name="material" placeholder="Material" type="text"
+                class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+                @if ($errors->has('material'))
+                <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+                @endif
+            </td>
 
+            <td>
+                <x-adminlte-select name="estado"
+                class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+                <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
 
-
-                <x-adminlte-select name="tipo_inmueble" label="Tipo de Inmueble" fgroup-class="col-md-3"
-                class="{{ $errors->has('tipo_inmueble') ? 'is-invalid' : '' }}">
-                <x-adminlte-options :options="['Casa', 'Apartamento']" disabled="0"
                 empty-option="Seleccione una opción..." />
             </x-adminlte-select>
+        </td>
 
-            @if($errors->has('tipo_inmueble'))
-            <div class="invalid-feedback">{{ $errors->first('tipo_inmueble') }}</div>
+        <td>
+            <x-adminlte-input name="observaciones" placeholder="Observaciones"
+            type="text"
+            class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+            @if ($errors->has('observaciones'))
+            <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
             @endif
+        </td>
+    </tr>
 
+    <tr>
+        <td>Cortina Vertical</td>
+        <input type="hidden" name="cortina_vertical" value="cortina_vertical">
 
-            <x-adminlte-input name="arrendador" label="Arrendador" placeholder="Arrendador" fgroup-class="col-md-3"
-            class="{{ $errors->has('arrendador') ? 'is-invalid' : '' }}" value="{{ old('arrendador') }}"  />
-            @if($errors->has('arrendador'))
-            <div class="invalid-feedback">{{ $errors->first('arrendador') }}</div>
+        <td>
+            <x-adminlte-input name="cantidad" placeholder="Cantidad"
+            type="number"
+            class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+            @if ($errors->has('cantidad'))
+            <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
             @endif
-        </div>
+        </td>
 
-
-        <div class="row">
-            <x-adminlte-input name="inquilino" label="Inquilino" placeholder="Inquilino" fgroup-class="col-md-4"
-            class="{{ $errors->has('inquilino') ? 'is-invalid' : '' }}" value="{{ old('inquilino') }}"    />
-            @if($errors->has('inquilino'))
-            <div class="invalid-feedback">{{ $errors->first('inquilino') }}</div>
+        <td>
+            <x-adminlte-input name="material" placeholder="Material" type="text"
+            class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+            @if ($errors->has('material'))
+            <div class="invalid-feedback">{{ $errors->first('material') }}</div>
             @endif
+        </td>
 
-            <x-adminlte-input name="propietario" label="Propietario" placeholder="Propietario"
-            fgroup-class="col-md-4" class="{{ $errors->has('propietario') ? 'is-invalid' : '' }}" value="{{ old('propietario') }}"      />
-            @if($errors->has('propitario'))
-            <div class="invalid-feedback">{{ $errors->first('propietario') }}  </div>
-            @endif
+        <td>
+            <x-adminlte-select name="estado"
+            class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+            <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
 
-            <x-adminlte-input name="nro_llaves" label="Nro Llaves" placeholder="Nro Llaves" fgroup-class="col-md-4" type="number" 
-            class="{{ $errors->has('nro_llaves') ? 'is-invalid' ? '' "   />
-            @if($errors->has('nro_llaves'))
-            <div class="invalid-feedback">{{ $errors->first('nro_llaves') }}</div>
-            @endif
+            empty-option="Seleccione una opción..." />
+        </x-adminlte-select>
+    </td>
 
-        </div>
-
-
-
-
-
-
-
-
-        <x-adminlte-button class="btn-flat" type="submit" label="Guardar" theme="success"
-        icon="fas fa-lg fa-save" />
+    <td>
+        <x-adminlte-input name="observaciones" placeholder="Observaciones"
+        type="text"
+        class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('observaciones'))
+        <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+        @endif
+    </td>
+</tr>
 
 
-    </form>
+<tr>
+    <td>Lampara</td>
+    <input type="hidden" name="lampara" value="lampara">
+
+    <td>
+        <x-adminlte-input name="cantidad" placeholder="Cantidad"
+        type="number"
+        class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('cantidad'))
+        <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-input name="material" placeholder="Material" type="text"
+        class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('material'))
+        <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-select name="estado"
+        class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+        <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+        empty-option="Seleccione una opción..." />
+    </x-adminlte-select>
+</td>
+
+<td>
+    <x-adminlte-input name="observaciones" placeholder="Observaciones"
+    type="text"
+    class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+    @if ($errors->has('observaciones'))
+    <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+    @endif
+</td>
+</tr>
+
+<tr>
+    <td>Plafones</td>
+    <input type="hidden" name="plafones" value="plafones">
+
+    <td>
+        <x-adminlte-input name="cantidad" placeholder="Cantidad"
+        type="number"
+        class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('cantidad'))
+        <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-input name="material" placeholder="Material" type="text"
+        class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('material'))
+        <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-select name="estado"
+        class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+        <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+        empty-option="Seleccione una opción..." />
+    </x-adminlte-select>
+</td>
+
+<td>
+    <x-adminlte-input name="observaciones" placeholder="Observaciones"
+    type="text"
+    class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+    @if ($errors->has('observaciones'))
+    <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+    @endif
+</td>
+</tr>
+
+<tr>
+    <td>Tomas Electricos</td>
+    <input type="hidden" name="tomas_electricos" value="tomas_electricos">
+
+    <td>
+        <x-adminlte-input name="cantidad" placeholder="Cantidad"
+        type="number"
+        class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('cantidad'))
+        <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-input name="material" placeholder="Material" type="text"
+        class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('material'))
+        <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-select name="estado"
+        class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+        <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+        empty-option="Seleccione una opción..." />
+    </x-adminlte-select>
+</td>
+
+<td>
+    <x-adminlte-input name="observaciones" placeholder="Observaciones"
+    type="text"
+    class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+    @if ($errors->has('observaciones'))
+    <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+    @endif
+</td>
+</tr>
+
+<tr>
+    <td>Suiches</td>
+    <input type="hidden" name="suiches" value="suiches">
+
+    <td>
+        <x-adminlte-input name="cantidad" placeholder="Cantidad"
+        type="number"
+        class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('cantidad'))
+        <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-input name="material" placeholder="Material" type="text"
+        class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('material'))
+        <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-select name="estado"
+        class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+        <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+        empty-option="Seleccione una opción..." />
+    </x-adminlte-select>
+</td>
+
+<td>
+    <x-adminlte-input name="observaciones" placeholder="Observaciones"
+    type="text"
+    class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+    @if ($errors->has('observaciones'))
+    <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+    @endif
+</td>
+</tr>
+
+<tr>
+    <td>Toma Telefono</td>
+    <input type="hidden" name="toma_telefono" value="toma_telefono">
+
+    <td>
+        <x-adminlte-input name="cantidad" placeholder="Cantidad"
+        type="number"
+        class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('cantidad'))
+        <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-input name="material" placeholder="Material" type="text"
+        class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('material'))
+        <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-select name="estado"
+        class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+        <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+        empty-option="Seleccione una opción..." />
+    </x-adminlte-select>
+</td>
+
+<td>
+    <x-adminlte-input name="observaciones" placeholder="Observaciones"
+    type="text"
+    class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+    @if ($errors->has('observaciones'))
+    <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+    @endif
+</td>
+</tr>
+
+<tr>
+    <td>Toma Parabolica</td>
+    <input type="hidden" name="toma_parabolica" value="toma_parabolica">
+
+    <td>
+        <x-adminlte-input name="cantidad" placeholder="Cantidad"
+        type="number"
+        class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('cantidad'))
+        <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-input name="material" placeholder="Material" type="text"
+        class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('material'))
+        <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-select name="estado"
+        class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+        <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+        empty-option="Seleccione una opción..." />
+    </x-adminlte-select>
+</td>
+
+<td>
+    <x-adminlte-input name="observaciones" placeholder="Observaciones"
+    type="text"
+    class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+    @if ($errors->has('observaciones'))
+    <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+    @endif
+</td>
+</tr>
+
+<tr>
+    <td>Estanteria</td>
+    <input type="hidden" name="estanteria" value="estanteria">
+
+    <td>
+        <x-adminlte-input name="cantidad" placeholder="Cantidad"
+        type="number"
+        class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('cantidad'))
+        <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-input name="material" placeholder="Material" type="text"
+        class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('material'))
+        <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-select name="estado"
+        class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+        <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+        empty-option="Seleccione una opción..." />
+    </x-adminlte-select>
+</td>
+
+<td>
+    <x-adminlte-input name="observaciones" placeholder="Observaciones"
+    type="text"
+    class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+    @if ($errors->has('observaciones'))
+    <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+    @endif
+</td>
+</tr>
+
+<tr>
+    <td>Piso</td>
+    <input type="hidden" name="piso" value="piso">
+
+    <td>
+        <x-adminlte-input name="cantidad" placeholder="Cantidad"
+        type="number"
+        class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('cantidad'))
+        <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-input name="material" placeholder="Material" type="text"
+        class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('material'))
+        <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-select name="estado"
+        class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+        <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+        empty-option="Seleccione una opción..." />
+    </x-adminlte-select>
+</td>
+
+<td>
+    <x-adminlte-input name="observaciones" placeholder="Observaciones"
+    type="text"
+    class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+    @if ($errors->has('observaciones'))
+    <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+    @endif
+</td>
+</tr>
+
+<tr>
+    <td>Zocalo</td>
+    <input type="hidden" name="zocalo" value="zocalo">
+
+    <td>
+        <x-adminlte-input name="cantidad" placeholder="Cantidad"
+        type="number"
+        class="{{ $errors->has('cantidad') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('cantidad'))
+        <div class="invalid-feedback">{{ $errors->first('cantidad') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-input name="material" placeholder="Material" type="text"
+        class="{{ $errors->has('material') ? 'is-invalid' : '' }}" />
+        @if ($errors->has('material'))
+        <div class="invalid-feedback">{{ $errors->first('material') }}</div>
+        @endif
+    </td>
+
+    <td>
+        <x-adminlte-select name="estado"
+        class="{{ $errors->has('estado') ? 'is-invalid' : '' }}">
+        <x-adminlte-options :options="['Bueno', 'Malo', 'Regular']"
+
+        empty-option="Seleccione una opción..." />
+    </x-adminlte-select>
+</td>
+
+<td>
+    <x-adminlte-input name="observaciones" placeholder="Observaciones"
+    type="text"
+    class="{{ $errors->has('observaciones') ? 'is-invalid' : '' }}" />
+    @if ($errors->has('observaciones'))
+    <div class="invalid-feedback">{{ $errors->first('observaciones') }}</div>
+    @endif
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<!-- SECCION 2 -->
 
 
 </div>
-<!-- /.card-body -->
+
+<x-adminlte-button class="btn-flat" type="submit" label="Guardar" theme="success"
+icon="fas fa-lg fa-save" />
+
 </div>
-<!-- /.card -->
+
+
 
 
 @stop
-
-
 
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
+
+<style type="text/css">
+    tr td .form-group {
+        margin-bottom: 0px;
+    }
+</style>
 @stop
 
 @section('js')
-
 
 @stop
