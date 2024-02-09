@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\FichaTecnica;
+use App\Http\Controllers\FichaTecnicaController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Reorderable;
 /*IMPORTAR EL MODELO PARA PODERLO UTILIZAR. PERO DESPUESDE AGREGAR EL 
@@ -37,15 +39,8 @@ Route::get('/test', function () {
     return view('test.test');
 });
 
-
-
-
 Route::get('/inventarios', [InventarioController::class, 'index'])
     ->name('inventarios.index');
-
-
-
-
 
 Route::get('/inventarios/new', function () {
     return view('inventarios.new');
@@ -54,3 +49,9 @@ Route::get('/inventarios/new', function () {
 
 Route::post('/inventarios/new', [InventarioController::class, 'store'])
     ->name('inventarios.store');
+
+
+
+
+Route::get('/fichastecnicas', [FichaTecnicaController::class, 'index'])
+    ->name('fichastecnicas.index');

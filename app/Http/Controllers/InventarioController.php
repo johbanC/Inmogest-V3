@@ -11,11 +11,10 @@ class InventarioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(){
+    public function index()
+    {
 
         return view('inventarios.index');
-
-
     }
 
     /**
@@ -29,11 +28,12 @@ class InventarioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $request->validate([
             'fecha' => 'required',
-            'direccion' => ['required' , 'min:3'],
+            'direccion' => ['required', 'min:3'],
             'tipo_inmueble' => 'required',
             'arrendador' => ['required', 'min:3'],
             'inquilino' => ['required', 'min:3'],
@@ -41,24 +41,23 @@ class InventarioController extends Controller
             'nro_llaves' => ['required', 'min:1']
         ]);
 
-       Inventario::create([
-        'direccion' => $request->get('direccion'),
-        'tipo_inmueble' => $request->get('tipo_inmueble'),
-        'arrendador' => $request->get('arrendador'),
-        'inquilino' => $request->get('inquilino'),
-        'propietario' => $request->get('propietario'),
-        'nro_llaves' => $request->get('nro_llaves'),
-        'user_id' => auth()->id(),
-    ]);
+        Inventario::create([
+            'direccion' => $request->get('direccion'),
+            'tipo_inmueble' => $request->get('tipo_inmueble'),
+            'arrendador' => $request->get('arrendador'),
+            'inquilino' => $request->get('inquilino'),
+            'propietario' => $request->get('propietario'),
+            'nro_llaves' => $request->get('nro_llaves'),
+            'user_id' => auth()->id(),
+        ]);
 
-    //Con esta nueva opcion se va enviar el status con las diferentes opciones para poder visualizar las diferentes notificaciones.
-       return to_route('inventarios.index')->with('status', [
-        'type' => 'success',
-        'message' => 'Guardado con éxito',
-        'title' => 'Registro'
-    ]);
-
-   }
+        //Con esta nueva opcion se va enviar el status con las diferentes opciones para poder visualizar las diferentes notificaciones.
+        return to_route('inventarios.index')->with('status', [
+            'type' => 'success',
+            'message' => 'Guardado con éxito',
+            'title' => 'Registro'
+        ]);
+    }
 
     /**
      * Display the specified resource.

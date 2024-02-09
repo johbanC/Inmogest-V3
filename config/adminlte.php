@@ -318,6 +318,11 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
+        [
+            'text'        => 'Ficha Tecnica',
+            'url'         => 'fichastecnicas',
+            'icon'        => 'fas fa-house-user'
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
