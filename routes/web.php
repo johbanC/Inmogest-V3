@@ -59,3 +59,6 @@ Route::get('/fichastecnicas', [FichaTecnicaController::class, 'index'])
 Route::get('/fichastecnicas/new', function(){
     return view('fichastecnicas.new');
 })->name('fichastecnicas.new');
+
+Route::post('/fichastecnicas/new', [FichaTecnicaController::class, 'store'])
+    ->name('fichastecnicas.store');

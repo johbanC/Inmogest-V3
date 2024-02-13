@@ -4,15 +4,6 @@
 
 	@csrf
 
-	{{-- Placeholder, date only and append icon --}}
-	@php
-	$config = [
-	'format' => 'L',
-	'locale' => 'es', // Establecer el idioma a español
-	'timeZone' => 'America/Bogota',
-	];
-	@endphp
-
 	<div class="row">
 
 		<x-adminlte-input name="nom_propietario" label="Nombre del Propietario" placeholder="Nombre del Propietario" fgroup-class="col-md-4"
@@ -108,7 +99,7 @@
 	<div class="invalid-feedback">{{ $errors->first('estrato') }}</div>
 	@endif
 
-	<x-adminlte-input name="area" label="Area" placeholder="Area" fgroup-class="col-md-3"
+	<x-adminlte-input name="area" label="Area m2" placeholder="Area" fgroup-class="col-md-3"
 	type="number" class="{{ $errors->has('area') ? 'is-invalid' : '' }}" value="{{ old('area') }}" />
 	@if ($errors->has('area'))
 	<div class="invalid-feedback">{{ $errors->first('area') }}</div>
@@ -142,7 +133,7 @@
 <div class="row">
 
 	<x-adminlte-input-switch name="vestier" label="Vestier" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-	class="{{ $errors->has('vestier') ? 'is-invalid' : '' }}"/>
+	value="false" class="{{ $errors->has('vestier') ? 'is-invalid' : '' }}"/>
 	@if ($errors->has('vestier'))
 	<div class="invalid-feedback">{{ $errors->first('vestier') }}</div>
 	@endif

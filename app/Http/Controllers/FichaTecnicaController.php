@@ -29,7 +29,15 @@ class FichaTecnicaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // Utilizando dd() para imprimir y detener la ejecución del código
+    dd($request->all());
+
+    // O puedes utilizar var_dump() si prefieres un formato diferente
+    var_dump($request->all());
+
+    //
+        
     }
 
     /**
