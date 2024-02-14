@@ -15,47 +15,47 @@
         <div class="card-tools">
             <!-- Buttons, labels, and many other things can be placed here! -->
             <!-- Here is a label for example 
-            <span class="badge badge-primary">Label</span>-->
-            
+                <span class="badge badge-primary">Label</span>-->
+                
 
-            <a href="{{ route('inventarios.new') }}">
-                <x-adminlte-button label="Crear Nuevo" theme="primary" icon="fas fa-key" />
-            </a>
+                <a href="{{ route('inventarios.new') }}">
+                    <x-adminlte-button label="Crear Nuevo" theme="primary" icon="fas fa-key" />
+                </a>
 
 
 
+            </div>
+            <!-- /.card-tools -->
         </div>
-        <!-- /.card-tools -->
+        <!-- /.card-header -->
+        <div class="card-body">
+            The body of the card
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            The footer of the card
+        </div>
+        <!-- /.card-footer -->
     </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-        The body of the card
-    </div>
-    <!-- /.card-body -->
-    <div class="card-footer">
-        The footer of the card
-    </div>
-    <!-- /.card-footer -->
-</div>
-<!-- /.card -->
+    <!-- /.card -->
 
-@stop
+    @stop
 
 
 
-@section('css')
-<link rel="stylesheet" href="/css/admin_custom.css">
-@stop
+    @section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    @stop
 
 
 
-@section('js')
+    @section('js')
 
-@if(session('status'))
-<script>
-    toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
-</script>
-@endif
+    @if(session('status'))
+    <script>
+        toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
+    </script>
+    @endif
 
 
 
@@ -64,4 +64,4 @@
 
 
 
-@stop
+    @stop

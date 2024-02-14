@@ -13,7 +13,11 @@ class FichaTecnicaController extends Controller
      */
     public function index()
     {
-        return view('fichastecnicas.index');
+        return view('fichastecnicas.index',[
+
+            'fichastecnicas' => FichaTecnica::with('user')->latest()->get()
+
+        ]);
     }
 
     /**
@@ -30,15 +34,35 @@ class FichaTecnicaController extends Controller
     public function store(Request $request)
     {
 
-        // Utilizando dd() para imprimir y detener la ejecución del código
-    dd($request->all());
+     $request->validate([
+        'cedula' => ['required', 'min:6'],
+        'nom_propietario' => ['required', 'min:3'],
+        'telefono' => ['required', 'min:10'],
+        'nom_propiedad' => ['required', 'min:5'],
+        'barrio' => ['required', 'min:5'],
+        'direccion' => ['required', 'min:5'],
+    ]);
 
-    // O puedes utilizar var_dump() si prefieres un formato diferente
-    var_dump($request->all());
+     FichaTecnica::create([
+        'cedula'=>$request->get('cedula'),
+        'nom_propietario'=>$request->get('nom_propietario'),
+        'telefono'=>$request->get('telefono'),
+        'nom_propiedad'=>$request->get('nom_propiedad'),
+        'barrio'=>$request->get('barrio'),
+        'direccion'=>$request->get('direccion'),
+        'user_id' => auth()->id(),
+    ]);
 
-    //
-        
-    }
+             //Con esta nueva opcion se va enviar el status con las diferentes opciones para poder visualizar las diferentes notificaciones.
+
+     return to_route('fichastecnicas.index')->with('status', [
+        'type' => 'success',
+        'message' => 'Guardado con exito',
+        'title' => 'Registro'
+    ]);
+
+
+ }
 
     /**
      * Display the specified resource.

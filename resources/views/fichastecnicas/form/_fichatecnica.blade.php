@@ -6,16 +6,16 @@
 
 	<div class="row">
 
-		<x-adminlte-input name="nom_propietario" label="Nombre del Propietario" placeholder="Nombre del Propietario" fgroup-class="col-md-4"
-		class="{{ $errors->has('nom_propietario') ? 'is-invalid' : '' }}" value="{{ old('nom_propietario') }}" />
-		@if ($errors->has('nom_propietario'))
-		<div class="invalid-feedback">{{ $errors->first('nom_propietario') }}</div>
-		@endif
-
 		<x-adminlte-input name="cedula" label="Cedula" placeholder="Cedula" fgroup-class="col-md-4"
 		type="number" class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" value="{{ old('cedula') }}" />
 		@if ($errors->has('cedula'))
 		<div class="invalid-feedback">{{ $errors->first('cedula') }}</div>
+		@endif
+
+		<x-adminlte-input name="nom_propietario" label="Nombre del Propietario" placeholder="Nombre del Propietario" fgroup-class="col-md-4"
+		class="{{ $errors->has('nom_propietario') ? 'is-invalid' : '' }}" value="{{ old('nom_propietario') }}" />
+		@if ($errors->has('nom_propietario'))
+		<div class="invalid-feedback">{{ $errors->first('nom_propietario') }}</div>
 		@endif
 
 		<x-adminlte-input name="telefono" label="Telefono" placeholder="Telefono" fgroup-class="col-md-4"
@@ -24,19 +24,29 @@
 		<div class="invalid-feedback">{{ $errors->first('telefono') }}</div>
 		@endif
 
-		<x-adminlte-input name="barrio" label="Barrio" placeholder="Barrio" fgroup-class="col-md-6"
+
+
+		<x-adminlte-input name="nom_propiedad" label="Nombre Propiedad" placeholder="Ej: Remanso914" fgroup-class="col-md-4"
+		class="{{ $errors->has('nom_propiedad') ? 'is-invalid' : '' }}" value="{{ old('nom_propiedad') }}" />
+		@if ($errors->has('nom_propiedad'))
+		<div class="invalid-feedback">{{ $errors->first('nom_propiedad') }}</div>
+		@endif
+
+		<x-adminlte-input name="barrio" label="Barrio" placeholder="Barrio" fgroup-class="col-md-4"
 		class="{{ $errors->has('barrio') ? 'is-invalid' : '' }}" value="{{ old('barrio') }}" />
 		@if ($errors->has('barrio'))
 		<div class="invalid-feedback">{{ $errors->first('barrio') }}</div>
 		@endif
 
-		<x-adminlte-input name="direccion" label="Direccion" placeholder="Direccion" fgroup-class="col-md-6"
+		<x-adminlte-input name="direccion" label="Direccion" placeholder="Direccion" fgroup-class="col-md-4"
 		class="{{ $errors->has('direccion') ? 'is-invalid' : '' }}" value="{{ old('direccion') }}" />
 		@if ($errors->has('direccion'))
 		<div class="invalid-feedback">{{ $errors->first('direccion') }}</div>
 		@endif
 
 		
+
+
 
 		<x-adminlte-input name="valor" label="Valor" placeholder="Valor" fgroup-class="col-md-6"
 		class="{{ $errors->has('valor') ? 'is-invalid' : '' }}" value="{{ old('valor') }}" />
@@ -298,5 +308,8 @@
 
 <x-adminlte-button class="btn-flat" type="submit" label="Guardar" theme="success"
 icon="fas fa-lg fa-save" />
+
+<x-adminlte-button class="btn-flat" label="Cancelar" theme="danger" icon="fas fa-lg fa-arrow-left" onclick="window.history.back()" />
+
 
 
