@@ -64,7 +64,7 @@
 
 
 		<x-adminlte-select name="tipo_inmueble" label="Tipo de Inmueble" fgroup-class="col-md-6"
-		class="{{ $errors->has('tipo_inmueble') ? 'is-invalid' : '' }}">
+		class="{{ $errors->has('tipo_inmueble') ? 'is-invalid' : '' }} " value="false">
 		<x-adminlte-options :options="['Casa', 'Apartamento', 'Local', 'Bodega', 'Finca', 'Otro']" 
 		empty-option="Seleccione una opción..." />
 	</x-adminlte-select>
@@ -236,7 +236,7 @@
         <div class="invalid-feedback">{{ $errors->first('salon_social') }}</div>
     @endif
 
-    <x-adminlte-input-switch name="propiedad_horizoltal" label="Propiedad Horizoltal" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+    <x-adminlte-input-switch name="propiedad_horizontal" label="Propiedad Horizoltal" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
         class="{{ $errors->has('propiedad_horizoltal') ? 'is-invalid' : '' }}"/>
     @if ($errors->has('propiedad_horizoltal'))
         <div class="invalid-feedback">{{ $errors->first('propiedad_horizoltal') }}</div>
