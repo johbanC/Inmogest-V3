@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nom_propiedad');
             $table->string('barrio');
             $table->string('direccion');
-            $table->string('valor');
+            $table->float('valor');
             $table->float('administracion')->nullable();
             $table->string('tipo_inmueble');
             $table->string('tipo_transaccion');
@@ -29,39 +29,39 @@ return new class extends Migration
             $table->integer('baño');
             $table->integer('estrato');
             $table->float('area');
-            $table->integer('piso');
-            $table->boolean('calentador');
-            $table->boolean('vestier');
-            $table->boolean('cocina');
-            $table->boolean('balcon');
-            $table->boolean('sala_comedor');
-            $table->boolean('patio');
-            $table->boolean('zona_ropa');
-            $table->boolean('estudio_estar');
-            $table->boolean('red_gas');
-            $table->boolean('cuarto_util');
-            $table->boolean('ascensor');
-            $table->boolean('parqueadero');
-            $table->boolean('parqueadero_visitantes');
-            $table->boolean('juegos_infantiles');
-            $table->boolean('salon_social');
-            $table->boolean('propiedad_horizontal');
-            $table->boolean('citofono');
-            $table->string('unidad')->nullable();
-            $table->string('tipo_porteria')->nullable();
-            $table->boolean('shut_basura');
-            $table->boolean('jacuzzi');
-            $table->boolean('gimnasio');
-            $table->boolean('turco');
-            $table->boolean('biblioteca');
-            $table->boolean('circuito_cerrado');
+            $table->string('piso');
+            $table->boolean('calentador')->default(false);
+            $table->boolean('vestier')->default(false);
+            $table->boolean('cocina')->default(false);
+            $table->boolean('balcon')->default(false);
+            $table->boolean('sala_comedor')->default(false);
+            $table->boolean('patio')->default(false);
+            $table->boolean('zona_ropa')->default(false);
+            $table->boolean('estudio_estar')->default(false);
+            $table->boolean('red_gas')->default(false);
+            $table->boolean('cuarto_util')->default(false);
+            $table->boolean('ascensor')->default(false);
+            $table->boolean('parqueadero')->default(false);
+            $table->boolean('parqueadero_visitantes')->default(false);
+            $table->boolean('juegos_infantiles')->default(false);
+            $table->boolean('salon_social')->default(false);
+            $table->boolean('propiedad_horizontal')->default(false);
+            $table->boolean('citofono')->default(false);
+            $table->boolean('unidad')->default(false);
+            $table->boolean('tipo_porteria')->nullable();
+            $table->boolean('shut_basura')->default(false);
+            $table->boolean('jacuzzi')->default(false);
+            $table->boolean('gimnasio')->default(false);
+            $table->boolean('turco')->default(false);
+            $table->boolean('biblioteca')->default(false);
+            $table->boolean('circuito_cerrado')->default(false);
 
 
 
 
 
 
-            
+
             $table->foreignId('user_id')->constrained();
 
         });

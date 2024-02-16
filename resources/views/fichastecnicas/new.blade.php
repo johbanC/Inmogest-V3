@@ -3,6 +3,7 @@
 @section('title', 'Nueva Ficha Tecnica')
 
 @section('content_header')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.1.0/imask.min.js"></script>
 
 @stop
 
@@ -24,7 +25,7 @@
 
 	<div class="card-body" style="display: block;">
 		<form method="POST" action="{{ route('fichastecnicas.store') }}" >
-			
+
 
 			@include('fichastecnicas.form._fichatecnica')
 
@@ -53,6 +54,43 @@
 
 @section('js')
 
+<!-- 	<script type="text/javascript">
+    function maskDinero(input) {
+        // Eliminar cualquier caracter que no sea dígito o punto
+        input.value = input.value.replace(/[^\d.]/g, '');
+
+        // Separar parte entera de la parte decimal
+        var partes = input.value.split('.');
+        var parteEntera = partes[0];
+        var parteDecimal = partes.length > 1 ? '.' + partes[1] : '';
+
+        // Agregar separadores de miles a la parte entera
+        parteEntera = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        // Reasignar el valor al campo de entrada
+        input.value = parteEntera + parteDecimal;
+    }
+
+    function enviarFormulario() {
+        var inputValor = document.getElementById('inputValor');
+        // Convertir el valor a un número de punto flotante
+        var valorFloat = parseFloat(inputValor.value.replace(/,/g, ''));
+
+        // Aquí puedes realizar cualquier otra operación necesaria antes de enviar el formulario
+
+        // Envía el formulario
+        document.getElementById('miFormulario').submit();
+    }
+</script> -->
+
+
+<script>
+    // Crea una instancia de InputMask y aplica la máscara al campo de teléfono
+	var telefonoInput = document.getElementById('input-telefono');
+	var telefonoMask = IMask(telefonoInput, {
+		mask: '(000) 000-0000'
+	});
+</script>
 @stop
 
 

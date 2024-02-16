@@ -19,7 +19,10 @@
 		@endif
 
 		<x-adminlte-input name="telefono" label="Telefono" placeholder="Telefono" fgroup-class="col-md-4"
-		type="number" class="{{ $errors->has('telefono') ? 'is-invalid' : '' }}" value="{{ old('telefono') }}" />
+		class="{{ $errors->has('telefono') ? 'is-invalid' : '' }}" 
+		value="{{ old('telefono') }}" 
+		id="input-telefono"
+		/>
 		@if ($errors->has('telefono'))
 		<div class="invalid-feedback">{{ $errors->first('telefono') }}</div>
 		@endif
@@ -49,13 +52,13 @@
 
 
 		<x-adminlte-input name="valor" label="Valor" placeholder="Valor" fgroup-class="col-md-6"
-		class="{{ $errors->has('valor') ? 'is-invalid' : '' }}" value="{{ old('valor') }}" />
+		class="{{ $errors->has('valor') ? 'is-invalid' : '' }}" value="{{ old('valor') }}" id="input-dinero" oninput="maskDinero(this)"  />
 		@if ($errors->has('valor'))
 		<div class="invalid-feedback">{{ $errors->first('valor') }}</div>
 		@endif
 
 		<x-adminlte-input name="administracion" label="Administracion" placeholder="Administracion" fgroup-class="col-md-6"
-		class="{{ $errors->has('administracion') ? 'is-invalid' : '' }}" value="{{ old('administracion') }}" />
+		class="{{ $errors->has('administracion') ? 'is-invalid' : '' }}" value="{{ old('administracion') }}" id="input-dinero" oninput="maskDinero(this)" />
 		@if ($errors->has('administracion'))
 		<div class="invalid-feedback">{{ $errors->first('valor') }}</div>
 		@endif
@@ -181,7 +184,7 @@
 
 <hr style="border: 0.5px solid; opacity: 10%;">
 
- <div class="row">
+<div class="row">
 	
 	<x-adminlte-input-switch name="estudio_estar" label="Estudio / Estar" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
 	class="{{ $errors->has('estudio_estar') ? 'is-invalid' : '' }}"/>
@@ -225,40 +228,40 @@
 <div class="row">
 	
 	<x-adminlte-input-switch name="juegos_infantiles" label="Juegos Infantiles" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('juegos_infantiles') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('juegos_infantiles'))
-        <div class="invalid-feedback">{{ $errors->first('juegos_infantiles') }}</div>
-    @endif
+	class="{{ $errors->has('juegos_infantiles') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('juegos_infantiles'))
+	<div class="invalid-feedback">{{ $errors->first('juegos_infantiles') }}</div>
+	@endif
 
-    <x-adminlte-input-switch name="salon_social" label="Salon Social" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('salon_social') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('salon_social'))
-        <div class="invalid-feedback">{{ $errors->first('salon_social') }}</div>
-    @endif
+	<x-adminlte-input-switch name="salon_social" label="Salon Social" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+	class="{{ $errors->has('salon_social') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('salon_social'))
+	<div class="invalid-feedback">{{ $errors->first('salon_social') }}</div>
+	@endif
 
-    <x-adminlte-input-switch name="propiedad_horizontal" label="Propiedad Horizoltal" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('propiedad_horizoltal') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('propiedad_horizoltal'))
-        <div class="invalid-feedback">{{ $errors->first('propiedad_horizoltal') }}</div>
-    @endif
+	<x-adminlte-input-switch name="propiedad_horizontal" label="Propiedad Horizoltal" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+	class="{{ $errors->has('propiedad_horizoltal') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('propiedad_horizoltal'))
+	<div class="invalid-feedback">{{ $errors->first('propiedad_horizoltal') }}</div>
+	@endif
 
-    <x-adminlte-input-switch name="citofono" label="Citofono" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('citofono') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('citofono'))
-        <div class="invalid-feedback">{{ $errors->first('citofono') }}</div>
-    @endif
+	<x-adminlte-input-switch name="citofono" label="Citofono" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+	class="{{ $errors->has('citofono') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('citofono'))
+	<div class="invalid-feedback">{{ $errors->first('citofono') }}</div>
+	@endif
 
-    <x-adminlte-input-switch name="unidad" label="Unidad" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('unidad') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('unidad'))
-        <div class="invalid-feedback">{{ $errors->first('unidad') }}</div>
-    @endif
+	<x-adminlte-input-switch name="unidad" label="Unidad" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+	class="{{ $errors->has('unidad') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('unidad'))
+	<div class="invalid-feedback">{{ $errors->first('unidad') }}</div>
+	@endif
 
-    <x-adminlte-input-switch name="tipo_porteria" label="Tipo Porteria" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('tipo_porteria') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('tipo_porteria'))
-        <div class="invalid-feedback">{{ $errors->first('tipo_porteria') }}</div>
-    @endif
+	<x-adminlte-input-switch name="tipo_porteria" label="Tipo Porteria" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+	class="{{ $errors->has('tipo_porteria') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('tipo_porteria'))
+	<div class="invalid-feedback">{{ $errors->first('tipo_porteria') }}</div>
+	@endif
 </div>
 
 <hr style="border: 0.5px solid; opacity: 10%;">
@@ -266,40 +269,40 @@
 <div class="row">
 	
 	<x-adminlte-input-switch name="shut_basura" label="Shut Basura" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('shut_basura') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('shut_basura'))
-        <div class="invalid-feedback">{{ $errors->first('shut_basura') }}</div>
-    @endif
+	class="{{ $errors->has('shut_basura') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('shut_basura'))
+	<div class="invalid-feedback">{{ $errors->first('shut_basura') }}</div>
+	@endif
 
-    <x-adminlte-input-switch name="jacuzzi" label="Jacuzzi" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('jacuzzi') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('jacuzzi'))
-        <div class="invalid-feedback">{{ $errors->first('jacuzzi') }}</div>
-    @endif
+	<x-adminlte-input-switch name="jacuzzi" label="Jacuzzi" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+	class="{{ $errors->has('jacuzzi') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('jacuzzi'))
+	<div class="invalid-feedback">{{ $errors->first('jacuzzi') }}</div>
+	@endif
 
-    <x-adminlte-input-switch name="gimnasio" label="Gimnasio" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('gimnasio') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('gimnasio'))
-        <div class="invalid-feedback">{{ $errors->first('gimnasio') }}</div>
-    @endif
+	<x-adminlte-input-switch name="gimnasio" label="Gimnasio" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+	class="{{ $errors->has('gimnasio') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('gimnasio'))
+	<div class="invalid-feedback">{{ $errors->first('gimnasio') }}</div>
+	@endif
 
-    <x-adminlte-input-switch name="turco" label="Turco" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('turco') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('turco'))
-        <div class="invalid-feedback">{{ $errors->first('turco') }}</div>
-    @endif
+	<x-adminlte-input-switch name="turco" label="Turco" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+	class="{{ $errors->has('turco') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('turco'))
+	<div class="invalid-feedback">{{ $errors->first('turco') }}</div>
+	@endif
 
-    <x-adminlte-input-switch name="biblioteca" label="Biblioteca" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('biblioteca') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('biblioteca'))
-        <div class="invalid-feedback">{{ $errors->first('biblioteca') }}</div>
-    @endif
+	<x-adminlte-input-switch name="biblioteca" label="Biblioteca" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+	class="{{ $errors->has('biblioteca') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('biblioteca'))
+	<div class="invalid-feedback">{{ $errors->first('biblioteca') }}</div>
+	@endif
 
-    <x-adminlte-input-switch name="circuito_cerrado" label="Circuito Cerrado" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-        class="{{ $errors->has('circuito_cerrado') ? 'is-invalid' : '' }}"/>
-    @if ($errors->has('circuito_cerrado'))
-        <div class="invalid-feedback">{{ $errors->first('circuito_cerrado') }}</div>
-    @endif
+	<x-adminlte-input-switch name="circuito_cerrado" label="Circuito Cerrado" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
+	class="{{ $errors->has('circuito_cerrado') ? 'is-invalid' : '' }}"/>
+	@if ($errors->has('circuito_cerrado'))
+	<div class="invalid-feedback">{{ $errors->first('circuito_cerrado') }}</div>
+	@endif
 </div> 
 
 </section>
