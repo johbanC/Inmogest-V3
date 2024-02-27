@@ -42,6 +42,31 @@ class FichaTecnicaController extends Controller
         'direccion' => ['required', 'min:5'],
     ]);
 
+       $vestier = $request->filled('vestier');
+       $cocina = $request->filled('cocina');
+       $balcon = $request->filled('balcon');
+       $sala_comedor = $request->filled('sala_comedor');
+       $patio = $request->filled('patio');
+       $zona_ropa = $request->filled('zona_ropa');
+       $estudio_estar = $request->filled('estudio_estar');
+       $red_gas = $request->filled('red_gas');
+       $cuarto_util = $request->filled('cuarto_util');
+       $ascensor = $request->filled('ascensor');
+       $parqueadero = $request->filled('parqueadero');
+       $juegos_infantiles = $request->filled('juegos_infantiles');
+       $salon_social = $request->filled('salon_social');
+       $propiedad_horizontal = $request->filled('propiedad_horizontal');
+       $citofono = $request->filled('citofono');
+       $unidad = $request->filled('unidad');
+       $tipo_porteria = $request->filled('tipo_porteria');
+       $shut_basura = $request->filled('shut_basura');
+       $jacuzzi = $request->filled('jacuzzi');
+       $gimnasio = $request->filled('gimnasio');
+       $turco = $request->filled('turco');
+       $biblioteca = $request->filled('biblioteca');
+       $circuito_cerrado = $request->filled('circuito_cerrado');
+
+
        FichaTecnica::create([
         'cedula' => $request->get('cedula'),
         'nom_propietario' => $request->get('nom_propietario'),
@@ -60,30 +85,29 @@ class FichaTecnicaController extends Controller
         'area' => $request->get('area'),
         'piso' => $request->get('piso'),
         'calentador' => $request->get('calentador'),
-        'vestier' => $request->get('vestier'),
-        'cocina' => $request->get('cocina'),
-        'balcon' => $request->get('balcon'),
-        'sala_comedor' => $request->get('sala_comedor'),
-        'patio' => $request->get('patio'),
-        'zona_ropa' => $request->get('zona_ropa'),
-        'estudio_estar' => $request->get('estudio_estar'),
-        'red_gas' => $request->get('red_gas'),
-        'cuarto_util' => $request->get('cuarto_util'),
-        'ascensor' => $request->get('ascensor'),
-        'parqueadero' => $request->get('parqueadero'),
-        'parqueadero_visitantes' => $request->get('parqueadero_visitantes'),
-        'juegos_infantiles' => $request->get('juegos_infantiles'),
-        'salon_social' => $request->get('salon_social'),
-        'propiedad_horizontal' => $request->get('propiedad_horizontal'),
-        'citofono' => $request->get('citofono'),
-        'unidad' => $request->get('unidad'),
-        'tipo_porteria' => $request->get('tipo_porteria'),
-        'shut_basura' => $request->get('shut_basura'),
-        'jacuzzi' => $request->get('jacuzzi'),
-        'gimnasio' => $request->get('gimnasio'),
-        'turco' => $request->get('turco'),
-        'biblioteca' => $request->get('biblioteca'),
-        'circuito_cerrado' => $request->get('circuito_cerrado'),
+        'vestier' => $vestier,
+        'cocina' => $cocina,
+        'balcon' => $balcon,
+        'sala_comedor' => $sala_comedor,
+        'patio' => $patio,
+        'zona_ropa' => $zona_ropa,
+        'estudio_estar' => $estudio_estar,
+        'red_gas' => $red_gas,
+        'cuarto_util' => $cuarto_util,
+        'ascensor' => $ascensor,
+        'parqueadero' => $parqueadero,
+        'juegos_infantiles' => $juegos_infantiles,
+        'salon_social' => $salon_social,
+        'propiedad_horizontal' => $propiedad_horizontal,
+        'citofono' => $citofono,
+        'unidad' => $unidad,
+        'tipo_porteria' => $tipo_porteria,
+        'shut_basura' => $shut_basura,
+        'jacuzzi' => $jacuzzi,
+        'gimnasio' => $gimnasio,
+        'turco' => $turco,
+        'biblioteca' => $biblioteca,
+        'circuito_cerrado' => $circuito_cerrado,
 
 
 

@@ -145,11 +145,22 @@
 
 <div class="row">
 
-	<x-adminlte-input-switch name="vestier" label="Vestier" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-	value="false" class="{{ $errors->has('vestier') ? 'is-invalid' : '' }}"/>
-	@if ($errors->has('vestier'))
-	<div class="invalid-feedback">{{ $errors->first('vestier') }}</div>
-	@endif
+	<x-adminlte-input-switch 
+    name="vestier" 
+    label="Vestier" 
+    data-on-text="Si" 
+    data-off-text="No" 
+    data-on-color="teal" 
+    fgroup-class="col-md-2"
+    :checked="old('vestier', false)" 
+    class="{{ $errors->has('vestier') ? 'is-invalid' : '' }}"
+/>
+@if ($errors->has('vestier'))
+    <div class="invalid-feedback">{{ $errors->first('vestier') }}</div>
+@endif
+
+
+
 
 	<x-adminlte-input-switch name="cocina" label="Cocina" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
 	class="{{ $errors->has('cocina') ? 'is-invalid' : '' }}"/>
