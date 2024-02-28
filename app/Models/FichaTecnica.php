@@ -62,4 +62,9 @@ class FichaTecnica extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function tipo_inmuebleText() {
+    $options = ['Casa', 'Apartamento', 'Local', 'Bodega', 'Finca', 'Otro'];
+    return $options[$this->tipo_inmueble - 1];
+}
 }

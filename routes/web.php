@@ -64,3 +64,6 @@ Route::get('/fichastecnicas/new', function(){
 
 Route::post('/fichastecnicas/new', [FichaTecnicaController::class, 'store'])
     ->name('fichastecnicas.store');
+
+Route::get('/fichastecnicas/{fichastecnicas}/edit', [FichaTecnicaController::class, 'edit'])
+    ->name('fichastecnicas.edit');

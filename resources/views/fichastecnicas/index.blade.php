@@ -1,43 +1,48 @@
 @php
 
 $heads = [
-'Nro',
-'Nombre propietario',
-'Nombre Propiedad',
-'Asesor',
-['label' => 'Acciones', 'no-export' => true, 'width' => 5],
+    'Nro',
+    'Nombre propietario',
+    'Nombre Propiedad',
+    'Asesor',
+    ['label' => 'Acciones', 'no-export' => true, 'width' => 5],
 ];
 
-$btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-    <i class="fa fa-lg fa-fw fa-pen"></i>
-</button>';
 $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-  <i class="fa fa-lg fa-fw fa-trash"></i>
+    <i class="fa fa-lg fa-fw fa-trash"></i>
 </button>';
 $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
- <i class="fa fa-lg fa-fw fa-eye"></i>
+    <i class="fa fa-lg fa-fw fa-eye"></i>
 </button>';
 
 $rows = [];
+$fichatecnica = null; // Inicializar la variable fuera del bucle
 
 foreach($fichastecnicas as $index => $fichatecnica) {
+    $btnEdit = '<a href="' . route('fichastecnicas.edit', $fichatecnica) . '">
+        <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+            <i class="fa fa-lg fa-fw fa-pen"></i>
+        </button>
+    </a>';
+
     $rowData = [
-    $index + 1,
-    $fichatecnica->nom_propietario,
-    $fichatecnica->nom_propiedad,
-    $fichatecnica->user->name,
-    '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>',
+        $index + 1,
+        $fichatecnica->nom_propietario,
+        $fichatecnica->nom_propiedad,
+        $fichatecnica->user->name,
+        '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>',
     ];
     $rows[] = $rowData;
 }
 
 $config = [
-'data' => $rows,
-'order' => [[1, 'asc']],
-'columns' => [null, null, null, null, ['orderable' => false]],
+    'data' => $rows,
+    'order' => [[1, 'asc']],
+    'columns' => [null, null, null, null, ['orderable' => false]],
 ];
 
 @endphp
+
 
 
 
@@ -102,9 +107,9 @@ $config = [
 
     @if(session('status'))
     <script>
-     toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
- </script>
- @endif
+       toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
+   </script>
+   @endif
 
 
 
@@ -113,4 +118,4 @@ $config = [
 
 
 
- @stop
+   @stop
