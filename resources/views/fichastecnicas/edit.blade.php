@@ -9,7 +9,7 @@
 
 @section('content')
 
-@dump($errors->all())
+<!-- @dump($errors->all()) -->
 <br>
 
 <div class="card card-outline card-primary">
