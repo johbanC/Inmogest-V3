@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nom_propiedad');
             $table->string('barrio');
             $table->string('direccion');
-            $table->float('valor');
+            $table->decimal('valor', 10 , 2);
             $table->float('administracion')->nullable();
             $table->string('tipo_inmueble');
             $table->string('tipo_transaccion');

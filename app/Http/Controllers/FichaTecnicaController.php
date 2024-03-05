@@ -66,6 +66,9 @@ class FichaTecnicaController extends Controller
      $biblioteca = $request->filled('biblioteca');
      $circuito_cerrado = $request->filled('circuito_cerrado');
 
+     // Formatear el valor para la base de datos
+    $valor = str_replace(array('.', ','), array('', '.'), $request->get('valor'));
+
 
      FichaTecnica::create([
         'cedula' => $request->get('cedula'),
@@ -74,7 +77,7 @@ class FichaTecnicaController extends Controller
         'nom_propiedad' => $request->get('nom_propiedad'),
         'barrio' => $request->get('barrio'),
         'direccion' => $request->get('direccion'),
-        'valor' => $request->get('valor'),
+        'valor' => $valor, // Valor formateado
         'administracion' => $request->get('administracion'),
         'tipo_inmueble' => $request->get('tipo_inmueble'),
         'tipo_transaccion' => $request->get('tipo_transaccion'),

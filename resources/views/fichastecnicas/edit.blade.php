@@ -83,6 +83,13 @@
     }
 </script> -->
 
+<script>
+$(document).ready(function() {
+  $("#input-dinero").mask("#,##0.00", {
+    reverse: true // Ensures the cursor stays at the end after input
+  });
+});
+</script>
 
 <script>
     // Crea una instancia de InputMask y aplica la máscara al campo de teléfono

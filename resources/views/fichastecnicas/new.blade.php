@@ -83,6 +83,56 @@
     }
 </script> -->
 
+<script>
+    // Crea una instancia de InputMask y aplica la máscara al campo de valor y administración
+    var valorInput = document.getElementById('input-valor');
+    var administracionInput = document.getElementById('input-administracion');
+    
+    var valorMask = IMask(valorInput, {
+        mask: 'num',
+        blocks: {
+            num: {
+                // Permite hasta 15 dígitos antes del separador decimal
+                mask: Number,
+                thousandsSeparator: '.',
+                radix: ',',
+                scale: 2, // Dos dígitos decimales
+                signed: false // No se permite un signo de negativo
+            }
+        },
+        lazy: false // Muestra el símbolo de la moneda siempre
+    });
+
+    var administracionMask = IMask(administracionInput, {
+        mask: 'num',
+        blocks: {
+            num: {
+                // Permite hasta 15 dígitos antes del separador decimal
+                mask: Number,
+                thousandsSeparator: '.',
+                radix: ',',
+                scale: 2, // Dos dígitos decimales
+                signed: false // No se permite un signo de negativo
+            }
+        },
+        lazy: false // Muestra el símbolo de la moneda siempre
+    });
+</script>
+
+
+
+<script>
+	//AGREGAR LOS PUNTON EN EL NUMERO DE DOCUMENTO
+document.getElementById('input-cedula').addEventListener('input', function(evt) {
+    var value = evt.target.value;
+    // Eliminar todos los puntos del valor actual
+    value = value.replace(/\./g, '');
+    // Aplicar el formato con puntos
+    evt.target.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+});
+</script>
+
+
 
 <script>
     // Crea una instancia de InputMask y aplica la máscara al campo de teléfono
