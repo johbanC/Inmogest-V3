@@ -20,7 +20,7 @@ class FichaTecnica extends Model
         'valor',
         'administracion',
         'tipo_inmueble',
-        'tipo_transaccion',
+        'tipo_transaccions_id',
         'alcobas',
         'closet',
         'baño',
@@ -63,8 +63,23 @@ class FichaTecnica extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function tipo_inmuebleText() {
-    $options = ['Casa', 'Apartamento', 'Local', 'Bodega', 'Finca', 'Otro'];
-    return $options[$this->tipo_inmueble - 1];
+    public function tipo_transaccion(): BelongsTo{
+    return $this->belongsTo(TipoTransaccion::class, 'tipo_transaccions_id');
 }
+
+public function tipo_inmuebleText()
+    {
+        $tipos = [
+            'Casa' => 'Casa',
+            'Apartamento' => 'Apartamento',
+            'Local' => 'Local',
+            'Bodega' => 'Bodega',
+            'Finca' => 'Finca',
+            'Otro' => 'Otro',
+        ];
+
+        return $tipos[$this->tipo_inmueble] ?? '';
+    }
+
+
 }

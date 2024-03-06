@@ -3,6 +3,7 @@
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\FichaTecnica;
 use App\Http\Controllers\FichaTecnicaController;
+use App\Http\Controllers\TipoTransaccionController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Reorderable;
 /*IMPORTAR EL MODELO PARA PODERLO UTILIZAR. PERO DESPUESDE AGREGAR EL 
@@ -51,6 +52,8 @@ Route::post('/inventarios/new', [InventarioController::class, 'store'])
     ->name('inventarios.store');
 
 
+//para ingresar al controlador 
+Route::get('/transacciones', 'TipoTransaccionController@index');
 
 
 
@@ -58,9 +61,13 @@ Route::post('/inventarios/new', [InventarioController::class, 'store'])
 Route::get('/fichastecnicas', [FichaTecnicaController::class, 'index'])
     ->name('fichastecnicas.index');
 
-Route::get('/fichastecnicas/new', function(){
-    return view('fichastecnicas.new');
-})->name('fichastecnicas.new');
+
+Route::get('/fichastecnicas/new', [FichaTecnicaController::class, 'create'])
+    ->name('fichastecnicas.new');
+
+// Route::get('/fichastecnicas/new', function(){
+//     return view('fichastecnicas.new');
+// })->name('fichastecnicas.new');
 
 Route::post('/fichastecnicas/new', [FichaTecnicaController::class, 'store'])
     ->name('fichastecnicas.store');

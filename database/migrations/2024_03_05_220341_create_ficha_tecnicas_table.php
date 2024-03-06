@@ -21,14 +21,14 @@ return new class extends Migration
             $table->string('barrio');
             $table->string('direccion');
             $table->decimal('valor', 10 , 2);
-            $table->float('administracion')->nullable();
+            $table->decimal('administracion', 10, 2)->nullable();
             $table->string('tipo_inmueble');
-            $table->string('tipo_transaccion');
+            $table->foreignId('tipo_transaccions_id')->constrained();
             $table->integer('alcobas');
             $table->integer('closet');
             $table->integer('baño');
             $table->integer('estrato');
-            $table->float('area');
+            $table->decimal('area', 10, 2);
             $table->string('piso');
             $table->boolean('calentador')->default(false);
             $table->boolean('vestier')->default(false);
