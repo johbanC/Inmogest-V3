@@ -7,7 +7,7 @@
 	<div class="row">
 
 		<x-adminlte-input name="cedula" label="Cedula" placeholder="Cedula" fgroup-class="col-md-4"
-		type="text" class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" value="{{ old('cedula', isset($FichaTecnica) ? $FichaTecnica->cedula : '') }}" />
+		type="text" class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" value="{{ old('cedula', isset($FichaTecnica) ? $FichaTecnica->cedula : '') }}" id="input-cedula" />
 		@if ($errors->has('cedula'))
 		<div class="invalid-feedback">{{ $errors->first('cedula') }}</div>
 		@endif
@@ -51,16 +51,23 @@
 
 
 		<x-adminlte-input name="valor" label="Valor" placeholder="Valor" fgroup-class="col-md-6"
-		class="{{ $errors->has('valor') ? 'is-invalid' : '' }}" value="{{ old('valor', isset($FichaTecnica) ? $FichaTecnica->valor : '') }}" id="input-dinero" oninput="maskDinero(this)"  />
+		class="{{ $errors->has('valor') ? 'is-invalid' : '' }}" 
+		value="{{ old('valor', isset($FichaTecnica) ? number_format($FichaTecnica->valor, 2, ',', '.') : '') }}"
+		id="input-valor" />
 		@if ($errors->has('valor'))
 		<div class="invalid-feedback">{{ $errors->first('valor') }}</div>
 		@endif
 
+
+
 		<x-adminlte-input name="administracion" label="Administracion" placeholder="Administracion" fgroup-class="col-md-6"
-		class="{{ $errors->has('administracion') ? 'is-invalid' : '' }}" value="{{ old('administracion', isset($FichaTecnica) ? $FichaTecnica->administracion : '') }}" id="input-dinero" oninput="maskDinero(this)" />
+		class="{{ $errors->has('administracion') ? 'is-invalid' : '' }}" 
+		value="{{ old('administracion', isset($FichaTecnica) ? number_format($FichaTecnica->administracion, 2, ',', '.') : '') }}" 
+		id="input-administracion" />
 		@if ($errors->has('administracion'))
 		<div class="invalid-feedback">{{ $errors->first('administracion') }}</div>
 		@endif
+
 
 		<x-adminlte-select name="tipo_inmueble" label="Tipo de Inmueble" fgroup-class="col-md-6"
 		class="{{ $errors->has('tipo_inmueble') ? 'is-invalid' : '' }} " 
@@ -78,17 +85,17 @@
 
 
 	<x-adminlte-select name="tipo_transaccions_id" label="Tipo de Transacción" fgroup-class="col-md-6"
-    class="{{ $errors->has('tipo_transaccions_id') ? 'is-invalid' : '' }}">
-    <option value="">Seleccione una opción...</option>
-    @foreach ($transacciones as $id => $nombre)
-        <option value="{{ $id }}" {{ $FichaTecnica->tipo_transaccions_id == $id ? 'selected' : '' }}>
-            {{ $nombre }}
-        </option>
-    @endforeach
+	class="{{ $errors->has('tipo_transaccions_id') ? 'is-invalid' : '' }}">
+	<option value="">Seleccione una opción...</option>
+	@foreach ($transacciones as $id => $nombre)
+	<option value="{{ $id }}" {{ $FichaTecnica->tipo_transaccions_id == $id ? 'selected' : '' }}>
+		{{ $nombre }}
+	</option>
+	@endforeach
 </x-adminlte-select>
 
 @if ($errors->has('tipo_transaccions_id'))
-    <div class="invalid-feedback">{{ $errors->first('tipo_transaccions_id') }}</div>
+<div class="invalid-feedback">{{ $errors->first('tipo_transaccions_id') }}</div>
 @endif
 
 

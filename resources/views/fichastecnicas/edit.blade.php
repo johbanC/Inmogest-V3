@@ -54,41 +54,52 @@
 
 @section('js')
 
-<!-- 	<script type="text/javascript">
-    function maskDinero(input) {
-        // Eliminar cualquier caracter que no sea dígito o punto
-        input.value = input.value.replace(/[^\d.]/g, '');
+<script>
+    // Crea una instancia de InputMask y aplica la máscara al campo de valor y administración
+    var valorInput = document.getElementById('input-valor');
+    var administracionInput = document.getElementById('input-administracion');
+    
+    var valorMask = IMask(valorInput, {
+        mask: 'num',
+        blocks: {
+            num: {
+                // Permite hasta 15 dígitos antes del separador decimal
+                mask: Number,
+                thousandsSeparator: '.',
+                radix: ',',
+                scale: 2, // Dos dígitos decimales
+                signed: false // No se permite un signo de negativo
+            }
+        },
+        lazy: false // Muestra el símbolo de la moneda siempre
+    });
 
-        // Separar parte entera de la parte decimal
-        var partes = input.value.split('.');
-        var parteEntera = partes[0];
-        var parteDecimal = partes.length > 1 ? '.' + partes[1] : '';
+    var administracionMask = IMask(administracionInput, {
+        mask: 'num',
+        blocks: {
+            num: {
+                // Permite hasta 15 dígitos antes del separador decimal
+                mask: Number,
+                thousandsSeparator: '.',
+                radix: ',',
+                scale: 2, // Dos dígitos decimales
+                signed: false // No se permite un signo de negativo
+            }
+        },
+        lazy: false // Muestra el símbolo de la moneda siempre
+    });
+</script>
 
-        // Agregar separadores de miles a la parte entera
-        parteEntera = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-        // Reasignar el valor al campo de entrada
-        input.value = parteEntera + parteDecimal;
-    }
-
-    function enviarFormulario() {
-        var inputValor = document.getElementById('inputValor');
-        // Convertir el valor a un número de punto flotante
-        var valorFloat = parseFloat(inputValor.value.replace(/,/g, ''));
-
-        // Aquí puedes realizar cualquier otra operación necesaria antes de enviar el formulario
-
-        // Envía el formulario
-        document.getElementById('miFormulario').submit();
-    }
-</script> -->
 
 <script>
-$(document).ready(function() {
-  $("#input-dinero").mask("#,##0.00", {
-    reverse: true // Ensures the cursor stays at the end after input
-  });
-});
+	// AGREGAR LOS PUNTOS EN EL NÚMERO DE DOCUMENTO Y PERMITIR SOLO NÚMEROS
+	document.getElementById('input-cedula').addEventListener('input', function(evt) {
+	    var value = evt.target.value;
+	    // Eliminar todos los caracteres que no sean números
+	    value = value.replace(/\D/g, '');
+	    // Aplicar el formato con puntos
+	    evt.target.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+	});
 </script>
 
 <script>
