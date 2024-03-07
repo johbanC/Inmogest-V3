@@ -64,10 +64,10 @@ class FichaTecnica extends Model
     }
 
     public function tipo_transaccion(): BelongsTo{
-    return $this->belongsTo(TipoTransaccion::class, 'tipo_transaccions_id');
-}
+        return $this->belongsTo(TipoTransaccion::class, 'tipo_transaccions_id');
+    }
 
-public function tipo_inmuebleText()
+    public function tipo_inmuebleText()
     {
         $tipos = [
             'Casa' => 'Casa',

@@ -27,7 +27,7 @@
 		<form method="POST" action="{{ route('fichastecnicas.store') }}" >
 
 
-			@include('fichastecnicas.form._fichatecnica')
+			@include('fichastecnicas.form._fichatecnica-edit')
 
 		</form>
 	</div>

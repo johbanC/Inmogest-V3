@@ -7,21 +7,23 @@
 	<div class="row">
 
 		<x-adminlte-input name="cedula" label="Cedula" placeholder="Cedula" fgroup-class="col-md-4"
-		type="text" class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" value="{{ old('cedula') }}" id="input-cedula"/>
+		type="text" class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" value="{{ old('cedula', isset($FichaTecnica) ? $FichaTecnica->cedula : '') }}" />
 		@if ($errors->has('cedula'))
 		<div class="invalid-feedback">{{ $errors->first('cedula') }}</div>
 		@endif
 
 
-
 		<x-adminlte-input name="nom_propietario" label="Nombre del Propietario" placeholder="Nombre del Propietario" fgroup-class="col-md-4"
-		class="{{ $errors->has('nom_propietario') ? 'is-invalid' : '' }}" value="{{ old('nom_propietario') }}" />
+		class="{{ $errors->has('nom_propietario') ? 'is-invalid' : '' }}" value="{{ old('nom_propietario', isset($FichaTecnica) ? $FichaTecnica->nom_propietario : '') }}" />
 		@if ($errors->has('nom_propietario'))
 		<div class="invalid-feedback">{{ $errors->first('nom_propietario') }}</div>
 		@endif
 
 		<x-adminlte-input name="telefono" label="Telefono" placeholder="Telefono" fgroup-class="col-md-4"
-		class="{{ $errors->has('telefono') ? 'is-invalid' : '' }}" value="{{ old('telefono') }}" id="input-telefono"/>
+		class="{{ $errors->has('telefono') ? 'is-invalid' : '' }}" 
+		value="{{ old('telefono', isset($FichaTecnica) ? $FichaTecnica->telefono: '') }}" 
+		id="input-telefono"
+		/>
 		@if ($errors->has('telefono'))
 		<div class="invalid-feedback">{{ $errors->first('telefono') }}</div>
 		@endif
@@ -29,46 +31,40 @@
 
 
 		<x-adminlte-input name="nom_propiedad" label="Nombre Propiedad" placeholder="Ej: Remanso914" fgroup-class="col-md-4"
-		class="{{ $errors->has('nom_propiedad') ? 'is-invalid' : '' }}" value="{{ old('nom_propiedad') }}" />
+		class="{{ $errors->has('nom_propiedad') ? 'is-invalid' : '' }}" value="{{ old('nom_propiedad',isset($FichaTecnica) ? $FichaTecnica->nom_propiedad: '') }}" />
 		@if ($errors->has('nom_propiedad'))
 		<div class="invalid-feedback">{{ $errors->first('nom_propiedad') }}</div>
 		@endif
 
 		<x-adminlte-input name="barrio" label="Barrio" placeholder="Barrio" fgroup-class="col-md-4"
-		class="{{ $errors->has('barrio') ? 'is-invalid' : '' }}" value="{{ old('barrio') }}" />
+		class="{{ $errors->has('barrio') ? 'is-invalid' : '' }}" value="{{ old('barrio', isset($FichaTecnica) ? $FichaTecnica->barrio: '') }}" />
 		@if ($errors->has('barrio'))
 		<div class="invalid-feedback">{{ $errors->first('barrio') }}</div>
 		@endif
 
 		<x-adminlte-input name="direccion" label="Direccion" placeholder="Direccion" fgroup-class="col-md-4"
-		class="{{ $errors->has('direccion') ? 'is-invalid' : '' }}" value="{{ old('direccion') }}" />
+		class="{{ $errors->has('direccion') ? 'is-invalid' : '' }}" value="{{ old('direccion', isset($FichaTecnica) ? $FichaTecnica->direccion:'') }}" />
 		@if ($errors->has('direccion'))
 		<div class="invalid-feedback">{{ $errors->first('direccion') }}</div>
 		@endif
 
 
 
-		<x-adminlte-input name="administracion" label="Administracion" placeholder="Administracion" fgroup-class="col-md-6"
-		class="{{ $errors->has('administracion') ? 'is-invalid' : '' }}" value="{{ old('administracion') }}" id="input-administracion" />
-
-		@if ($errors->has('administracion'))
-		<div class="invalid-feedback">{{ $errors->first('administracion') }}</div>
-		@endif
-
 		<x-adminlte-input name="valor" label="Valor" placeholder="Valor" fgroup-class="col-md-6"
-		class="{{ $errors->has('valor') ? 'is-invalid' : '' }}" value="{{ old('valor') }}" id="input-valor" />
-
+		class="{{ $errors->has('valor') ? 'is-invalid' : '' }}" value="{{ old('valor', isset($FichaTecnica) ? $FichaTecnica->valor : '') }}" id="input-dinero" oninput="maskDinero(this)"  />
 		@if ($errors->has('valor'))
 		<div class="invalid-feedback">{{ $errors->first('valor') }}</div>
 		@endif
 
-
-
-
+		<x-adminlte-input name="administracion" label="Administracion" placeholder="Administracion" fgroup-class="col-md-6"
+		class="{{ $errors->has('administracion') ? 'is-invalid' : '' }}" value="{{ old('administracion', isset($FichaTecnica) ? $FichaTecnica->administracion : '') }}" id="input-dinero" oninput="maskDinero(this)" />
+		@if ($errors->has('administracion'))
+		<div class="invalid-feedback">{{ $errors->first('administracion') }}</div>
+		@endif
 
 		<x-adminlte-select name="tipo_inmueble" label="Tipo de Inmueble" fgroup-class="col-md-6"
 		class="{{ $errors->has('tipo_inmueble') ? 'is-invalid' : '' }} " 
-		value="{{ old('tipo_inmueble') }}">
+		value="{{ old('tipo_inmueble', isset($FichaTecnica) ? $FichaTecnica->tipo_inmuebleText() : '') }}">
 		<x-adminlte-options :options="['Casa', 'Apartamento', 'Local', 'Bodega', 'Finca', 'Otro']" 
 		empty-option="Seleccione una opción..." />
 	</x-adminlte-select>
@@ -82,11 +78,10 @@
 
 
 	<x-adminlte-select name="tipo_transaccions_id" label="Tipo de Transacción" fgroup-class="col-md-6"
-    class="{{ $errors->has('tipo_transaccions_id') ? 'is-invalid' : '' }}"
-    value="{{ old('tipo_transaccions_id') }}">
+    class="{{ $errors->has('tipo_transaccions_id') ? 'is-invalid' : '' }}">
     <option value="">Seleccione una opción...</option>
     @foreach ($transacciones as $id => $nombre)
-        <option value="{{ $id }}" {{ old('tipo_transaccions_id') == $id ? 'selected' : '' }}>
+        <option value="{{ $id }}" {{ $FichaTecnica->tipo_transaccions_id == $id ? 'selected' : '' }}>
             {{ $nombre }}
         </option>
     @endforeach
@@ -100,36 +95,37 @@
 
 
 
+
 </div>
 
 
 <div class="row">
 	<x-adminlte-input name="alcobas" label="Alcobas" placeholder="Alcobas" fgroup-class="col-md-3"
-	type="number" class="{{ $errors->has('alcobas') ? 'is-invalid' : '' }}" value="{{ old('alcobas') }}" />
+	type="number" class="{{ $errors->has('alcobas') ? 'is-invalid' : '' }}" value="{{ old('alcobas', isset($FichaTecnica) ? $FichaTecnica->alcobas : '') }}" />
 	@if ($errors->has('alcobas'))
 	<div class="invalid-feedback">{{ $errors->first('alcobas') }}</div>
 	@endif
 
 	<x-adminlte-input name="closet" label="Closet" placeholder="Closet" fgroup-class="col-md-2"
-	type="number" class="{{ $errors->has('closet') ? 'is-invalid' : '' }}" value="{{ old('closet') }}" />
+	type="number" class="{{ $errors->has('closet') ? 'is-invalid' : '' }}" value="{{ old('closet', isset($FichaTecnica) ? $FichaTecnica->closet : '') }}" />
 	@if ($errors->has('closet'))
 	<div class="invalid-feedback">{{ $errors->first('closet') }}</div>
 	@endif
 
 	<x-adminlte-input name="baño" label="Baño" placeholder="Baño" fgroup-class="col-md-2"
-	type="number" class="{{ $errors->has('baño') ? 'is-invalid' : '' }}" value="{{ old('baño') }}" />
+	type="number" class="{{ $errors->has('baño') ? 'is-invalid' : '' }}" value="{{ old('baño', isset($FichaTecnica) ? $FichaTecnica->baño : '') }}" />
 	@if ($errors->has('baño'))
 	<div class="invalid-feedback">{{ $errors->first('baño') }}</div>
 	@endif
 
 	<x-adminlte-input name="estrato" label="Estrato" placeholder="Estrato" fgroup-class="col-md-2"
-	type="number" class="{{ $errors->has('estrato') ? 'is-invalid' : '' }}" value="{{ old('estrato') }}" />
+	type="number" class="{{ $errors->has('estrato') ? 'is-invalid' : '' }}" value="{{ old('estrato', isset($FichaTecnica) ? $FichaTecnica->estrato : '') }}" />
 	@if ($errors->has('estrato'))
 	<div class="invalid-feedback">{{ $errors->first('estrato') }}</div>
 	@endif
 
 	<x-adminlte-input name="area" label="Area m2" placeholder="Area" fgroup-class="col-md-3"
-	type="number" class="{{ $errors->has('area') ? 'is-invalid' : '' }}" value="{{ old('area') }}" />
+	type="number" class="{{ $errors->has('area') ? 'is-invalid' : '' }}" value="{{ old('area', isset($FichaTecnica) ? $FichaTecnica->area : '') }}" />
 	@if ($errors->has('area'))
 	<div class="invalid-feedback">{{ $errors->first('area') }}</div>
 	@endif
@@ -140,13 +136,13 @@
 <div class="row">
 
 	<x-adminlte-input name="piso" label="Piso" placeholder="Piso" fgroup-class="col-md-6"
-	class="{{ $errors->has('piso') ? 'is-invalid' : '' }}" value="{{ old('piso') }}" />
+	class="{{ $errors->has('piso') ? 'is-invalid' : '' }}" value="{{ old('piso', isset($FichaTecnica) ? $FichaTecnica->piso : '') }}" />
 	@if ($errors->has('piso'))
 	<div class="invalid-feedback">{{ $errors->first('piso') }}</div>
 	@endif
 
 	<x-adminlte-select name="calentador" label="Calentador" fgroup-class="col-md-6"
-	class="{{ $errors->has('calentador') ? 'is-invalid' : '' }}" value="{{ old('calentador') }}">
+	class="{{ $errors->has('calentador') ? 'is-invalid' : '' }}" value="{{ old('calentador', isset($FichaTecnica) ? $FichaTecnica->calentador : '') }}">
 	<x-adminlte-options :options="['Gas', 'Electrico']" 
 	empty-option="Seleccione una opción..." />
 </x-adminlte-select>
