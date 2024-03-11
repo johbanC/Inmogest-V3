@@ -165,6 +165,8 @@ class FichaTecnicaController extends Controller
      */
     public function update(Request $request, FichaTecnica $fichaTecnica){
 
+      //dd($request->all());
+
         $request->validate([
             'cedula' => ['required', 'min:6'],
             'nom_propietario' => ['required', 'min:3'],
@@ -173,6 +175,8 @@ class FichaTecnicaController extends Controller
             'barrio' => ['required', 'min:5'],
             'direccion' => ['required', 'min:5'],
         ]);
+
+        //dd($fichaTecnica);
 
         $vestier = $request->filled('vestier');
         $cocina = $request->filled('cocina');
@@ -201,59 +205,75 @@ class FichaTecnicaController extends Controller
         $valor = str_replace(array('.', ','), array('', '.'), $request->get('valor'));
         $administracion = str_replace(array('.', ','), array('', '.'), $request->get('administracion'));
 
-// Validar si las variables son números
-        if (!is_numeric($valor) || !is_numeric($administracion)) {
-          return back()->withErrors(['valor' => 'El valor debe ser un número.']);
-      }
 
-
-      $fichaTecnica->update([
-        'cedula' => $request->get('cedula'),
-        'nom_propietario' => $request->get('nom_propietario'),
-        'telefono' => $request->get('telefono'),
-        'nom_propiedad' => $request->get('nom_propiedad'),
-        'barrio' => $request->get('barrio'),
-        'direccion' => $request->get('direccion'),
-        'valor' => $valor, // Valor formateado
-        'administracion' => $administracion, // Valor formateado
-        'tipo_inmueble' => $request->get('tipo_inmueble'),
-        'tipo_transaccions_id' => $request->get('tipo_transaccions_id'),
-        'alcobas' => $request->get('alcobas'),
-        'closet' => $request->get('closet'),
-        'baño' => $request->get('baño'),
-        'estrato' => $request->get('estrato'),
-        'area' => $request->get('area'),
-        'piso' => $request->get('piso'),
-        'calentador' => $request->get('calentador'),
-        'vestier' => $vestier,
-        'cocina' => $cocina,
-        'balcon' => $balcon,
-        'sala_comedor' => $sala_comedor,
-        'patio' => $patio,
-        'zona_ropa' => $zona_ropa,
-        'estudio_estar' => $estudio_estar,
-        'red_gas' => $red_gas,
-        'cuarto_util' => $cuarto_util,
-        'ascensor' => $ascensor,
-        'parqueadero' => $parqueadero,
-        'juegos_infantiles' => $juegos_infantiles,
-        'salon_social' => $salon_social,
-        'propiedad_horizontal' => $propiedad_horizontal,
-        'citofono' => $citofono,
-        'unidad' => $unidad,
-        'tipo_porteria' => $tipo_porteria,
-        'shut_basura' => $shut_basura,
-        'jacuzzi' => $jacuzzi,
-        'gimnasio' => $gimnasio,
-        'turco' => $turco,
-        'biblioteca' => $biblioteca,
-        'circuito_cerrado' => $circuito_cerrado,
+$fichaTecnica->cedula = $request->cedula;
+$fichaTecnica->nom_propietario = $request->nom_propietario;
+$fichaTecnica->telefono = $request->telefono;
+$fichaTecnica->nom_propiedad = $request->nom_propiedad;
+$fichaTecnica->barrio = $request->barrio;
+$fichaTecnica->direccion = $request->direccion;
+$fichaTecnica->valor = $valor;
 
 
 
+$fichaTecnica->save();
+dd($fichaTecnica);
 
-        'user_id' => auth()->id(),
-    ]);
+
+    //   $fichaTecnica->update([
+    //     'cedula' => $request->get('cedula'),
+        
+    //     'nom_propietario' => $request->get('nom_propietario'),
+    //     'telefono' => $request->get('telefono'),
+    //     'nom_propiedad' => $request->get('nom_propiedad'),
+    //     'barrio' => $request->get('barrio'),
+    //     'direccion' => $request->get('direccion'),
+    //     'valor' => $valor, // Valor formateado
+    //     'administracion' => $administracion, // Valor formateado
+    //     'tipo_inmueble' => $request->get('tipo_inmueble'),
+    //     'tipo_transaccions_id' => $request->get('tipo_transaccions_id'),
+    //     'alcobas' => $request->get('alcobas'),
+    //     'closet' => $request->get('closet'),
+    //     'baño' => $request->get('baño'),
+    //     'estrato' => $request->get('estrato'),
+    //     'area' => $request->get('area'),
+    //     'piso' => $request->get('piso'),
+    //     'calentador' => $request->get('calentador'),
+    //     'vestier' => $vestier,
+    //     'cocina' => $cocina,
+    //     'balcon' => $balcon,
+    //     'sala_comedor' => $sala_comedor,
+    //     'patio' => $patio,
+    //     'zona_ropa' => $zona_ropa,
+    //     'estudio_estar' => $estudio_estar,
+    //     'red_gas' => $red_gas,
+    //     'cuarto_util' => $cuarto_util,
+    //     'ascensor' => $ascensor,
+    //     'parqueadero' => $parqueadero,
+    //     'juegos_infantiles' => $juegos_infantiles,
+    //     'salon_social' => $salon_social,
+    //     'propiedad_horizontal' => $propiedad_horizontal,
+    //     'citofono' => $citofono,
+    //     'unidad' => $unidad,
+    //     'tipo_porteria' => $tipo_porteria,
+    //     'shut_basura' => $shut_basura,
+    //     'jacuzzi' => $jacuzzi,
+    //     'gimnasio' => $gimnasio,
+    //     'turco' => $turco,
+    //     'biblioteca' => $biblioteca,
+    //     'circuito_cerrado' => $circuito_cerrado,
+
+
+
+
+    //     'user_id' => auth()->id(),
+    // ]);
+
+     // return $fichaTecnica;
+
+
+              //dd($fichaTecnica);
+
 
              //Con esta nueva opcion se va enviar el status con las diferentes opciones para poder visualizar las diferentes notificaciones.
       return to_route('fichastecnicas.index')->with('status', [

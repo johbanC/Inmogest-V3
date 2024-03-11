@@ -2,7 +2,7 @@
 
 <section>
 
-	@csrf
+	
 
 	<div class="row">
 

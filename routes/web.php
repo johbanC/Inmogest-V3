@@ -76,5 +76,4 @@ Route::get('/fichastecnicas/{fichastecnicas}/edit', [FichaTecnicaController::cla
     ->name('fichastecnicas.edit');
 
 //Guardar editado
-Route::put('fichastecnicas/{fichatecnica}', [FichaTecnicaController::class,'update'])
-    ->name('fichastecnicas.update');
+Route::put('/fichastecnicas/{fichastecnica}', [FichaTecnicaController::class, 'update'])->name('fichastecnicas.update');

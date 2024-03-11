@@ -23,8 +23,9 @@
 
 	</div>
 
+
 	<div class="card-body" style="display: block;">
-		<form method="POST" action="{{ route('fichastecnicas.update', $FichaTecnica->id) }}" >
+<form action="{{ route('fichastecnicas.update', ['fichastecnica' => $FichaTecnica->id]) }}" method="POST">
 			@csrf
 			@method('PUT')
 
