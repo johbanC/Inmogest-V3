@@ -24,8 +24,9 @@
 	</div>
 
 	<div class="card-body" style="display: block;">
-		<form method="POST" action="{{ route('fichastecnicas.store') }}" >
-
+		<form method="POST" action="{{ route('fichastecnicas.update', $FichaTecnica->id) }}" >
+			@csrf
+			@method('PUT')
 
 			@include('fichastecnicas.form._fichatecnica-edit')
 
@@ -56,17 +57,17 @@
 
 <script>
     // Crea una instancia de InputMask y aplica la máscara al campo de valor y administración
-    var valorInput = document.getElementById('input-valor');
-    var administracionInput = document.getElementById('input-administracion');
-    
-    var valorMask = IMask(valorInput, {
-        mask: 'num',
-        blocks: {
-            num: {
+	var valorInput = document.getElementById('input-valor');
+	var administracionInput = document.getElementById('input-administracion');
+	
+	var valorMask = IMask(valorInput, {
+		mask: 'num',
+		blocks: {
+			num: {
                 // Permite hasta 15 dígitos antes del separador decimal
-                mask: Number,
-                thousandsSeparator: '.',
-                radix: ',',
+				mask: Number,
+				thousandsSeparator: '.',
+				radix: ',',
                 scale: 2, // Dos dígitos decimales
                 signed: false // No se permite un signo de negativo
             }
@@ -74,14 +75,14 @@
         lazy: false // Muestra el símbolo de la moneda siempre
     });
 
-    var administracionMask = IMask(administracionInput, {
-        mask: 'num',
-        blocks: {
-            num: {
+	var administracionMask = IMask(administracionInput, {
+		mask: 'num',
+		blocks: {
+			num: {
                 // Permite hasta 15 dígitos antes del separador decimal
-                mask: Number,
-                thousandsSeparator: '.',
-                radix: ',',
+				mask: Number,
+				thousandsSeparator: '.',
+				radix: ',',
                 scale: 2, // Dos dígitos decimales
                 signed: false // No se permite un signo de negativo
             }
@@ -94,11 +95,11 @@
 <script>
 	// AGREGAR LOS PUNTOS EN EL NÚMERO DE DOCUMENTO Y PERMITIR SOLO NÚMEROS
 	document.getElementById('input-cedula').addEventListener('input', function(evt) {
-	    var value = evt.target.value;
+		var value = evt.target.value;
 	    // Eliminar todos los caracteres que no sean números
-	    value = value.replace(/\D/g, '');
+		value = value.replace(/\D/g, '');
 	    // Aplicar el formato con puntos
-	    evt.target.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+		evt.target.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 	});
 </script>
 

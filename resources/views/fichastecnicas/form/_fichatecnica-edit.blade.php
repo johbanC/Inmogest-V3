@@ -52,7 +52,7 @@
 
 		<x-adminlte-input name="valor" label="Valor" placeholder="Valor" fgroup-class="col-md-6"
 		class="{{ $errors->has('valor') ? 'is-invalid' : '' }}" 
-		value="{{ old('valor', isset($FichaTecnica) ? number_format($FichaTecnica->valor, 2, ',', '.') : '') }}"
+		value="{{ old('valor', isset($FichaTecnica) ? ($FichaTecnica->valor) : '') }}"
 		id="input-valor" />
 		@if ($errors->has('valor'))
 		<div class="invalid-feedback">{{ $errors->first('valor') }}</div>
@@ -62,7 +62,7 @@
 
 		<x-adminlte-input name="administracion" label="Administracion" placeholder="Administracion" fgroup-class="col-md-6"
 		class="{{ $errors->has('administracion') ? 'is-invalid' : '' }}" 
-		value="{{ old('administracion', isset($FichaTecnica) ? number_format($FichaTecnica->administracion, 2, ',', '.') : '') }}" 
+		value="{{ old('administracion', isset($FichaTecnica) ? ($FichaTecnica->administracion) : '') }}"
 		id="input-administracion" />
 		@if ($errors->has('administracion'))
 		<div class="invalid-feedback">{{ $errors->first('administracion') }}</div>
