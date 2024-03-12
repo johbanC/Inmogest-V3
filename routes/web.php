@@ -72,8 +72,9 @@ Route::get('/fichastecnicas/new', [FichaTecnicaController::class, 'create'])
 Route::post('/fichastecnicas/new', [FichaTecnicaController::class, 'store'])
     ->name('fichastecnicas.store');
 
-Route::get('/fichastecnicas/{fichastecnicas}/edit', [FichaTecnicaController::class, 'edit'])
+Route::get('/fichastecnicas/{fichatecnica}/edit', [FichaTecnicaController::class, 'edit'])
     ->name('fichastecnicas.edit');
 
 //Guardar editado
-Route::put('/fichastecnicas/{fichastecnica}', [FichaTecnicaController::class, 'update'])->name('fichastecnicas.update');
+Route::put('/fichastecnicas/{fichatecnica}', [FichaTecnicaController::class, 'update'])
+    ->name('fichastecnicas.update');

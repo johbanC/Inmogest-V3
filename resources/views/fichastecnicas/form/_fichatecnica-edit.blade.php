@@ -403,7 +403,7 @@
 
 <div style="text-align: center;">
 
-	<x-adminlte-button class="btn-flat" type="submit" label="Guardar" theme="success" icon="fas fa-lg fa-save" style="width: 20%; border-radius: 10px;" />
+	<x-adminlte-button class="btn-flat" type="submit" label="Actualizar" theme="success" icon="fas fa-lg fa-update" style="width: 20%; border-radius: 10px;" />
 
 	<x-adminlte-button class="btn-flat" label="Cancelar" theme="danger" icon="fas fa-lg fa-arrow-left" onclick="window.history.back()"  style="width: 20%; border-radius: 10px;" />
 </div>

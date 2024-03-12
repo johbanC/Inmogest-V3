@@ -25,9 +25,13 @@
 
 
 	<div class="card-body" style="display: block;">
-<form action="{{ route('fichastecnicas.update', ['fichastecnica' => $FichaTecnica->id]) }}" method="POST">
+<form action="{{ route('fichastecnicas.update', $fichatecnica) }}" method="POST">
 			@csrf
 			@method('PUT')
+
+
+			    
+
 
 			@include('fichastecnicas.form._fichatecnica-edit')
 
