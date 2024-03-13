@@ -67,6 +67,14 @@ class FichaTecnica extends Model
         return $this->belongsTo(TipoTransaccion::class, 'tipo_transaccions_id');
     }
 
+    public function tipo_inmueble(): BelongsTo{
+        return $this->belongsTo(TipoInmueble::class, 'tipo_inmuebles_id');
+    }
+
+    public function calentador(): BelongsTo{
+        return $this->belongsTo(Calentador::class, 'calentador_id');
+    }
+
     public function tipo_inmuebleText()
     {
         $tipos = [

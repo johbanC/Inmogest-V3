@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->decimal('valor', 10 , 2);
             $table->decimal('administracion', 10, 2)->nullable();
-            $table->string('tipo_inmueble');
+            $table->foreignId('tipo_inmuebles_id')->constrained();
             $table->foreignId('tipo_transaccions_id')->constrained();
             $table->integer('alcobas');
             $table->integer('closet');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->integer('estrato');
             $table->decimal('area', 10, 2);
             $table->string('piso');
-            $table->boolean('calentador')->default(false);
+            $table->foreignId('calentadors_id')->constrained();
             $table->boolean('vestier')->default(false);
             $table->boolean('cocina')->default(false);
             $table->boolean('balcon')->default(false);
