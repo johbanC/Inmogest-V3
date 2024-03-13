@@ -1,19 +1,13 @@
 @php
 
 $heads = [
-    'Nro',
-    'Nombre propietario',
-    'Nombre Propiedad',
-    'Asesor',
-    ['label' => 'Acciones', 'no-export' => true, 'width' => 5],
+'Nro',
+'Nombre propietario',
+'Nombre Propiedad',
+'Asesor',
+['label' => 'Acciones', 'no-export' => true, 'width' => 10],
 ];
 
-$btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-    <i class="fa fa-lg fa-fw fa-trash"></i>
-</button>';
-$btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-    <i class="fa fa-lg fa-fw fa-eye"></i>
-</button>';
 
 $rows = [];
 $fichatecnica = null; // Inicializar la variable fuera del bucle
@@ -25,20 +19,37 @@ foreach($fichastecnicas as $index => $fichatecnica) {
         </button>
     </a>';
 
+    $btnDelete = '
+    <form action="' . route('fichastecnicas.destroy', $fichatecnica) .'" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="' . csrf_token() . '">
+        <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+            <i class="fa fa-lg fa-fw fa-trash"></i>
+        </button>
+    </form>';
+
+    $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+        <i class="fa fa-lg fa-fw fa-eye"></i>
+    </button>';
+
+
+
+
+
     $rowData = [
-        $index + 1,
-        $fichatecnica->nom_propietario,
-        $fichatecnica->nom_propiedad,
-        $fichatecnica->user->name,
-        '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>',
+    $index + 1,
+    $fichatecnica->nom_propietario,
+    $fichatecnica->nom_propiedad,
+    $fichatecnica->user->name,
+    '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>',
     ];
     $rows[] = $rowData;
 }
 
 $config = [
-    'data' => $rows,
-    'order' => [[1, 'asc']],
-    'columns' => [null, null, null, null, ['orderable' => false]],
+'data' => $rows,
+'order' => [[1, 'asc']],
+'columns' => [null, null, null, null, ['orderable' => false]],
 ];
 
 @endphp

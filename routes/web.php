@@ -23,18 +23,37 @@ use App\Models\Inventario;
 |
 */
 
+Route::middleware(['auth'])->group(function () {
+    // Rutas que requieren autenticación
+
+    Route::get('/fichastecnicas', [FichaTecnicaController::class, 'index'])
+        ->name('fichastecnicas.index');
+
+    Route::get('/fichastecnicas/new', [FichaTecnicaController::class, 'create'])
+        ->name('fichastecnicas.new');
+
+    Route::post('/fichastecnicas/new', [FichaTecnicaController::class, 'store'])
+        ->name('fichastecnicas.store');
+
+    Route::get('/fichastecnicas/{fichatecnica}/edit', [FichaTecnicaController::class, 'edit'])
+        ->name('fichastecnicas.edit');
+
+    Route::put('/fichastecnicas/{fichatecnica}', [FichaTecnicaController::class, 'update'])
+        ->name('fichastecnicas.update');
+
+    Route::delete('/fichastecnicas/{fichatecnica}', [FichaTecnicaController::class, 'destroy'])
+        ->name('fichastecnicas.destroy');
+});
+
+// Otras rutas que no requieren autenticación
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
 
 Route::get('/test', function () {
     return view('test.test');
@@ -47,34 +66,8 @@ Route::get('/inventarios/new', function () {
     return view('inventarios.new');
 })->name('inventarios.new');
 
-
 Route::post('/inventarios/new', [InventarioController::class, 'store'])
     ->name('inventarios.store');
 
-
-//para ingresar al controlador 
+// Para ingresar al controlador 
 Route::get('/transacciones', 'TipoTransaccionController@index');
-
-
-
-
-Route::get('/fichastecnicas', [FichaTecnicaController::class, 'index'])
-    ->name('fichastecnicas.index');
-
-
-Route::get('/fichastecnicas/new', [FichaTecnicaController::class, 'create'])
-    ->name('fichastecnicas.new');
-
-// Route::get('/fichastecnicas/new', function(){
-//     return view('fichastecnicas.new');
-// })->name('fichastecnicas.new');
-
-Route::post('/fichastecnicas/new', [FichaTecnicaController::class, 'store'])
-    ->name('fichastecnicas.store');
-
-Route::get('/fichastecnicas/{fichatecnica}/edit', [FichaTecnicaController::class, 'edit'])
-    ->name('fichastecnicas.edit');
-
-//Guardar editado
-Route::put('/fichastecnicas/{fichatecnica}', [FichaTecnicaController::class, 'update'])
-    ->name('fichastecnicas.update');

@@ -160,121 +160,61 @@ class FichaTecnicaController extends Controller
     }
 
 
- //    public function update(Request $request, FichaTecnica $fichatecnica){
-
-
-
- //     $valor = str_replace(array('.', ','), array('', '.'), $request->get('valor'));
- //     $administracion = str_replace(array('.', ','), array('', '.'), $request->get('administracion'));
-
-
- //     $fichatecnica->cedula = $request->cedula;
- //     $fichatecnica->nom_propietario = $request->nom_propietario;
- //     $fichatecnica->telefono = $request->telefono;
- //     $fichatecnica->nom_propiedad = $request->nom_propiedad;
- //     $fichatecnica->barrio = $request->barrio;
- //     $fichatecnica->direccion = $request->direccion;
- //     $fichatecnica->valor = $valor;
- //     $fichatecnica->tipo_inmueble = $request->tipo_inmueble;
- //     $fichatecnica->tipo_transaccions_id = $request->tipo_transaccions_id;
- //     $fichatecnica->alcobas = $request->alcobas;
- //     $fichatecnica->closet = $request->closet;
- //     $fichatecnica->baño = $request->baño;
- //     $fichatecnica->estrato = $request->estrato;
- //     $fichatecnica->area = $request->area;
- //     $fichatecnica->piso = $request->piso;
- //     $fichatecnica->calentador = $request->calentador;
-
- //     $fichatecnica->vestier = $request->filled('vestier');
-
-
-
- //     $fichatecnica->user_id = auth()->id();
-
- //     $fichatecnica->save();
-
- //     return to_route('fichastecnicas.index')->with('status', [
- //         'type' => 'success',
- //         'message' => 'Editado con exito',
- //         'title' => 'Registro'
- //     ]);
- // }
 
 
 //     /**
 //      * Update the specified resource in storage.
 //      */
- public function update(Request $request, FichaTecnica $fichatecnica){
+    public function update(Request $request, FichaTecnica $fichatecnica){
 
 
 
-    $request->validate([
-        'cedula' => ['required', 'min:6'],
-        'nom_propietario' => ['required', 'min:3'],
-        'telefono' => ['required', 'min:10'],
-        'nom_propiedad' => ['required', 'min:5'],
-        'barrio' => ['required', 'min:5'],
-        'direccion' => ['required', 'min:5'],
-    ]);
+        $request->validate([
+            'cedula' => ['required', 'min:6'],
+            'nom_propietario' => ['required', 'min:3'],
+            'telefono' => ['required', 'min:10'],
+            'nom_propiedad' => ['required', 'min:5'],
+            'barrio' => ['required', 'min:5'],
+            'direccion' => ['required', 'min:5'],
+        ]);
 
-    $vestier = $request->filled('vestier');
-    $cocina = $request->filled('cocina');
-    $balcon = $request->filled('balcon');
-    $sala_comedor = $request->filled('sala_comedor');
-    $patio = $request->filled('patio');
-    $zona_ropa = $request->filled('zona_ropa');
-    $estudio_estar = $request->filled('estudio_estar');
-    $red_gas = $request->filled('red_gas');
-    $cuarto_util = $request->filled('cuarto_util');
-    $ascensor = $request->filled('ascensor');
-    $parqueadero = $request->filled('parqueadero');
-    $parqueadero_visitantes = $request->filled('parqueadero_visitantes');
-    $juegos_infantiles = $request->filled('juegos_infantiles');
-    $salon_social = $request->filled('salon_social');
-    $propiedad_horizontal = $request->filled('propiedad_horizontal');
-    $citofono = $request->filled('citofono');
-    $unidad = $request->filled('unidad');
-    $tipo_porteria = $request->filled('tipo_porteria');
-    $shut_basura = $request->filled('shut_basura');
-    $jacuzzi = $request->filled('jacuzzi');
-    $gimnasio = $request->filled('gimnasio');
-    $turco = $request->filled('turco');
-    $biblioteca = $request->filled('biblioteca');
-    $circuito_cerrado = $request->filled('circuito_cerrado');
+        $vestier = $request->filled('vestier');
+        $cocina = $request->filled('cocina');
+        $balcon = $request->filled('balcon');
+        $sala_comedor = $request->filled('sala_comedor');
+        $patio = $request->filled('patio');
+        $zona_ropa = $request->filled('zona_ropa');
+        $estudio_estar = $request->filled('estudio_estar');
+        $red_gas = $request->filled('red_gas');
+        $cuarto_util = $request->filled('cuarto_util');
+        $ascensor = $request->filled('ascensor');
+        $parqueadero = $request->filled('parqueadero');
+        $parqueadero_visitantes = $request->filled('parqueadero_visitantes');
+        $juegos_infantiles = $request->filled('juegos_infantiles');
+        $salon_social = $request->filled('salon_social');
+        $propiedad_horizontal = $request->filled('propiedad_horizontal');
+        $citofono = $request->filled('citofono');
+        $unidad = $request->filled('unidad');
+        $tipo_porteria = $request->filled('tipo_porteria');
+        $shut_basura = $request->filled('shut_basura');
+        $jacuzzi = $request->filled('jacuzzi');
+        $gimnasio = $request->filled('gimnasio');
+        $turco = $request->filled('turco');
+        $biblioteca = $request->filled('biblioteca');
+        $circuito_cerrado = $request->filled('circuito_cerrado');
 
-    $valor = str_replace(array('.', ','), array('', '.'), $request->get('valor'));
-    $administracion = str_replace(array('.', ','), array('', '.'), $request->get('administracion'));
-
-
-// $fichatecnica->cedula = $request->cedula;
-// $fichatecnica->nom_propietario = $request->nom_propietario;
-// $fichatecnica->telefono = $request->telefono;
-// $fichatecnica->nom_propiedad = $request->nom_propiedad;
-// $fichatecnica->barrio = $request->barrio;
-// $fichatecnica->direccion = $request->direccion;
-// $fichatecnica->valor = $valor;
-// $fichatecnica->tipo_inmueble = $request->tipo_inmueble;
-// $fichatecnica->tipo_transaccions_id = $request->tipo_transaccions_id;
-// $fichatecnica->alcobas = $request->alcobas;
-// $fichatecnica->closet = $request->closet;
-// $fichatecnica->baño = $request->baño;
-// $fichatecnica->estrato = $request->estrato;
-// $fichatecnica->area = $request->area;
-// $fichatecnica->piso = $request->piso;
-// $fichatecnica->calentador = $request->calentador;
-// $fichatecnica->user_id = auth()->id();
+        $valor = str_replace(array('.', ','), array('', '.'), $request->get('valor'));
+        $administracion = str_replace(array('.', ','), array('', '.'), $request->get('administracion'));
 
 
+        $fichatecnica->update([
+            'cedula' => $request->get('cedula'),
 
-
-    $fichatecnica->update([
-        'cedula' => $request->get('cedula'),
-
-        'nom_propietario' => $request->get('nom_propietario'),
-        'telefono' => $request->get('telefono'),
-        'nom_propiedad' => $request->get('nom_propiedad'),
-        'barrio' => $request->get('barrio'),
-        'direccion' => $request->get('direccion'),
+            'nom_propietario' => $request->get('nom_propietario'),
+            'telefono' => $request->get('telefono'),
+            'nom_propiedad' => $request->get('nom_propiedad'),
+            'barrio' => $request->get('barrio'),
+            'direccion' => $request->get('direccion'),
         'valor' => $valor, // Valor formateado
         'administracion' => $administracion, // Valor formateado
         'tipo_inmueble' => $request->get('tipo_inmueble'),
@@ -313,21 +253,28 @@ class FichaTecnicaController extends Controller
 
         'user_id' => auth()->id(),
     ]);
-    
-    //Con esta nueva opcion se va enviar el status con las diferentes opciones para poder visualizar las diferentes notificaciones.
-    return to_route('fichastecnicas.index')->with('status', [
-        'type' => 'success',
-        'message' => 'Editado con exito',
-        'title' => 'Registro'
-    ]);
 
-}
+    //Con esta nueva opcion se va enviar el status con las diferentes opciones para poder visualizar las diferentes notificaciones.
+        return to_route('fichastecnicas.index')->with('status', [
+            'type' => 'success',
+            'message' => 'Editado con exito',
+            'title' => 'Registro'
+        ]);
+
+    }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FichaTecnica $fichaTecnica)
-    {
-        //
+    public function destroy(FichaTecnica $fichatecnica){
+        $fichatecnica->delete();
+
+        return to_route('fichastecnicas.index')->with('status', [
+            'type' => 'success',
+            'message' => 'Eliminado con exito',
+            'title' => 'Registro'
+        ]);
+
     }
+
 }
