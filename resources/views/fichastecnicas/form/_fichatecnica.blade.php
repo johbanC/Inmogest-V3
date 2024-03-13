@@ -67,17 +67,17 @@
 
 
 		<x-adminlte-select name="tipo_inmuebles_id" label="Tipo de Inmueble" fgroup-class="col-md-6"
-    class="{{ $errors->has('tipo_inmueble') ? 'is-invalid' : '' }}" 
-    value="{{ old('tipo_inmueble_id') }}">
+    class="{{ $errors->has('tipo_inmuebles_id') ? 'is-invalid' : '' }}" 
+    value="{{ old('tipo_inmuebles_id') }}">
     <option value="">Seleccione una opción...</option>
     @foreach ($tipoinmuebles as $id => $nombre)
-        <option value="{{ $id }}" {{ old('tipo_inmueble_id') == $id ? 'selected' : '' }}>
+        <option value="{{ $id }}" {{ old('tipo_inmuebles_id') == $id ? 'selected' : '' }}>
             {{ $nombre }}
         </option>
     @endforeach
 </x-adminlte-select>
-@if ($errors->has('tipo_inmueble'))
-    <div class="invalid-feedback">{{ $errors->first('tipo_inmueble') }}</div>
+@if ($errors->has('tipo_inmuebles_id'))
+    <div class="invalid-feedback">{{ $errors->first('tipo_inmuebles_id') }}</div>
 @endif
 
 
@@ -151,7 +151,7 @@
 	@endif
 
 	<x-adminlte-select name="calentadors_id" label="Calentador" fgroup-class="col-md-6"
-	class="{{ $errors->has('calentador') ? 'is-invalid' : '' }}" value="{{ old('calentador_id') }}">
+	class="{{ $errors->has('calentador') ? 'is-invalid' : '' }}" value="{{ old('calentadors_id') }}">
 	<option value="">Seleccione una opción...</option>
     @foreach ($calentador as $id => $nombre)
         <option value="{{ $id }}" {{ old('calentadors_id') == $id ? 'selected' : '' }}>

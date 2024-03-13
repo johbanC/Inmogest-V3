@@ -75,19 +75,7 @@ class FichaTecnica extends Model
         return $this->belongsTo(Calentador::class, 'calentador_id');
     }
 
-    public function tipo_inmuebleText()
-    {
-        $tipos = [
-            'Casa' => 'Casa',
-            'Apartamento' => 'Apartamento',
-            'Local' => 'Local',
-            'Bodega' => 'Bodega',
-            'Finca' => 'Finca',
-            'Otro' => 'Otro',
-        ];
-
-        return $tipos[$this->tipo_inmueble] ?? '';
-    }
+    
 
 
 }

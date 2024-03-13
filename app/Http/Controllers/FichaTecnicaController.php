@@ -39,8 +39,7 @@ class FichaTecnicaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
 
        $request->validate([
         'cedula' => ['required', 'min:6'],
@@ -129,6 +128,9 @@ class FichaTecnicaController extends Controller
 
         'user_id' => auth()->id(),
     ]);
+
+       return $FichaTecnica;
+        dd();
 
              //Con esta nueva opcion se va enviar el status con las diferentes opciones para poder visualizar las diferentes notificaciones.
 
