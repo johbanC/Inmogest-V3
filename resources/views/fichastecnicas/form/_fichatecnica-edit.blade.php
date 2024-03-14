@@ -69,15 +69,19 @@
 		@endif
 
 
-		<x-adminlte-select name="tipo_inmueble" label="Tipo de Inmueble" fgroup-class="col-md-6"
-		class="{{ $errors->has('tipo_inmueble') ? 'is-invalid' : '' }} " 
-		value="{{ old('tipo_inmueble', isset($FichaTecnica) ? $FichaTecnica->tipo_inmuebleText() : '') }}">
-		<x-adminlte-options :options="['Casa', 'Apartamento', 'Local', 'Bodega', 'Finca', 'Otro']" 
-		empty-option="Seleccione una opción..." />
-	</x-adminlte-select>
-	@if ($errors->has('tipo_inmueble'))
-	<div class="invalid-feedback">{{ $errors->first('tipo_inmueble') }}</div>
-	@endif
+		<x-adminlte-select name="tipo_inmuebles_id" label="Tipo de Inmueble" fgroup-class="col-md-6"
+    class="{{ $errors->has('tipo_inmuebles_id') ? 'is-invalid' : '' }}" 
+    value="{{ old('tipo_inmuebles_id') }}">
+    <option value="">Seleccione una opción...</option>
+    @foreach ($tipoinmuebles as $id => $nombre)
+        <option value="{{ $id }}" {{ $FichaTecnica->tipo_inmuebles_id == $id ? 'selected' : '' }}>
+            {{ $nombre }}
+        </option>
+    @endforeach
+</x-adminlte-select>
+@if ($errors->has('tipo_inmuebles_id'))
+    <div class="invalid-feedback">{{ $errors->first('tipo_inmuebles_id') }}</div>
+@endif
 
 
 
@@ -148,10 +152,15 @@
 	<div class="invalid-feedback">{{ $errors->first('piso') }}</div>
 	@endif
 
-	<x-adminlte-select name="calentador" label="Calentador" fgroup-class="col-md-6"
-	class="{{ $errors->has('calentador') ? 'is-invalid' : '' }}" value="{{ old('calentador', isset($FichaTecnica) ? $FichaTecnica->calentador : '') }}">
-	<x-adminlte-options :options="['Gas', 'Electrico']" 
-	empty-option="Seleccione una opción..." />
+	<x-adminlte-select name="calentadors_id" label="Calentador" fgroup-class="col-md-6"
+	class="{{ $errors->has('calentador') ? 'is-invalid' : '' }}" value="{{ old('calentadors_id') }}">
+	<option value="">Seleccione una opción...</option>
+    @foreach ($calentador as $id => $nombre)
+        <option value="{{ $id }}" {{ $FichaTecnica->calentadors_id == $id ? 'selected' : '' }}>
+            {{ $nombre }}
+        </option>
+    @endforeach
+
 </x-adminlte-select>
 @if ($errors->has('calentador'))
 <div class="invalid-feedback">{{ $errors->first('calentador') }}</div>

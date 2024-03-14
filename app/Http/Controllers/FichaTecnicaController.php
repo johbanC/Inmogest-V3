@@ -41,6 +41,8 @@ class FichaTecnicaController extends Controller
      */
     public function store(Request $request){
 
+
+
        $request->validate([
         'cedula' => ['required', 'min:6'],
         'nom_propietario' => ['required', 'min:3'],
@@ -48,6 +50,7 @@ class FichaTecnicaController extends Controller
         'nom_propiedad' => ['required', 'min:5'],
         'barrio' => ['required', 'min:5'],
         'direccion' => ['required', 'min:5'],
+        'tipo_inmuebles_id' => 'required',
     ]);
 
        $vestier = $request->filled('vestier');
@@ -129,9 +132,7 @@ class FichaTecnicaController extends Controller
         'user_id' => auth()->id(),
     ]);
 
-       return $FichaTecnica;
-        dd();
-
+       
              //Con esta nueva opcion se va enviar el status con las diferentes opciones para poder visualizar las diferentes notificaciones.
 
        return to_route('fichastecnicas.index')->with('status', [
@@ -156,11 +157,17 @@ class FichaTecnicaController extends Controller
      */
     public function edit(FichaTecnica $fichatecnica){
 
+       
+
         $transacciones = TipoTransaccion::all()->pluck('nombre', 'id');
+        $tipoinmuebles = TipoInmueble::all()->pluck('nombre', 'id');
+        $calentador = Calentador::all()->pluck('nombre', 'id');
 
         return view('fichastecnicas.edit', [
             'FichaTecnica' => $fichatecnica,
             'transacciones' => $transacciones,
+            'tipoinmuebles' => $tipoinmuebles,
+            'calentador' => $calentador,
         ], compact('fichatecnica'));
     }
 

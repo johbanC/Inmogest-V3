@@ -67,18 +67,18 @@
 
 
 		<x-adminlte-select name="tipo_inmuebles_id" label="Tipo de Inmueble" fgroup-class="col-md-6"
-    class="{{ $errors->has('tipo_inmuebles_id') ? 'is-invalid' : '' }}" 
-    value="{{ old('tipo_inmuebles_id') }}">
-    <option value="">Seleccione una opción...</option>
-    @foreach ($tipoinmuebles as $id => $nombre)
-        <option value="{{ $id }}" {{ old('tipo_inmuebles_id') == $id ? 'selected' : '' }}>
-            {{ $nombre }}
-        </option>
-    @endforeach
-</x-adminlte-select>
-@if ($errors->has('tipo_inmuebles_id'))
-    <div class="invalid-feedback">{{ $errors->first('tipo_inmuebles_id') }}</div>
-@endif
+		class="{{ $errors->has('tipo_inmuebles_id') ? 'is-invalid' : '' }}" 
+		value="{{ old('tipo_inmuebles_id') }}">
+		<option value="">Seleccione una opción...</option>
+		@foreach ($tipoinmuebles as $id => $nombre)
+		<option value="{{ $id }}" {{ old('tipo_inmuebles_id') == $id ? 'selected' : '' }}>
+			{{ $nombre }}
+		</option>
+		@endforeach
+	</x-adminlte-select>
+	@if ($errors->has('tipo_inmuebles_id'))
+	<div class="invalid-feedback">{{ $errors->first('tipo_inmuebles_id') }}</div>
+	@endif
 
 
 
@@ -87,18 +87,18 @@
 
 
 	<x-adminlte-select name="tipo_transaccions_id" label="Tipo de Transacción" fgroup-class="col-md-6"
-    class="{{ $errors->has('tipo_transaccions_id') ? 'is-invalid' : '' }}"
-    value="{{ old('tipo_transaccions_id') }}">
-    <option value="">Seleccione una opción...</option>
-    @foreach ($transacciones as $id => $nombre)
-        <option value="{{ $id }}" {{ old('tipo_transaccions_id') == $id ? 'selected' : '' }}>
-            {{ $nombre }}
-        </option>
-    @endforeach
+	class="{{ $errors->has('tipo_transaccions_id') ? 'is-invalid' : '' }}"
+	value="{{ old('tipo_transaccions_id') }}">
+	<option value="">Seleccione una opción...</option>
+	@foreach ($transacciones as $id => $nombre)
+	<option value="{{ $id }}" {{ old('tipo_transaccions_id') == $id ? 'selected' : '' }}>
+		{{ $nombre }}
+	</option>
+	@endforeach
 </x-adminlte-select>
 
 @if ($errors->has('tipo_transaccions_id'))
-    <div class="invalid-feedback">{{ $errors->first('tipo_transaccions_id') }}</div>
+<div class="invalid-feedback">{{ $errors->first('tipo_transaccions_id') }}</div>
 @endif
 
 
@@ -153,11 +153,11 @@
 	<x-adminlte-select name="calentadors_id" label="Calentador" fgroup-class="col-md-6"
 	class="{{ $errors->has('calentador') ? 'is-invalid' : '' }}" value="{{ old('calentadors_id') }}">
 	<option value="">Seleccione una opción...</option>
-    @foreach ($calentador as $id => $nombre)
-        <option value="{{ $id }}" {{ old('calentadors_id') == $id ? 'selected' : '' }}>
-            {{ $nombre }}
-        </option>
-    @endforeach
+	@foreach ($calentador as $id => $nombre)
+	<option value="{{ $id }}" {{ old('calentadors_id') == $id ? 'selected' : '' }}>
+		{{ $nombre }}
+	</option>
+	@endforeach
 
 </x-adminlte-select>
 @if ($errors->has('calentador'))
@@ -408,11 +408,7 @@
 </section>
 
 
-<div style="text-align: center;">
 
-	<x-adminlte-button class="btn-flat" type="submit" label="Guardar" theme="success" icon="fas fa-lg fa-save" style="width: 20%; border-radius: 10px;" />
 
-	<x-adminlte-button class="btn-flat" label="Cancelar" theme="danger" icon="fas fa-lg fa-arrow-left" onclick="window.history.back()"  style="width: 20%; border-radius: 10px;" />
-</div>
 
 

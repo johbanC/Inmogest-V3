@@ -24,12 +24,21 @@
 	</div>
 
 	<div class="card-body" style="display: block;">
-		<form method="POST" action="{{ route('fichastecnicas.store') }}" >
+<form id="formularioFichaTecnica" method="POST" action="{{ route('fichastecnicas.store') }}" >
 
 
 			@include('fichastecnicas.form._fichatecnica')
 
+			<div style="text-align: center;">
+    <x-adminlte-button id="botonGuardar" class="btn-flat" type="submit" label="Guardar" theme="success" icon="fas fa-lg fa-save" style="width: 20%; border-radius: 10px;" />
+    <x-adminlte-button class="btn-flat" label="Cancelar" theme="danger" icon="fas fa-lg fa-arrow-left" onclick="window.history.back()"  style="width: 20%; border-radius: 10px;" />
+</div>
+
 		</form>
+
+		
+
+
 	</div>
 
 
@@ -53,6 +62,21 @@
 @stop
 
 @section('js')
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var formulario = document.getElementById("formularioFichaTecnica");
+        var botonGuardar = document.getElementById("botonGuardar");
+        
+        formulario.addEventListener("submit", function() {
+            // Deshabilitar el botón después de enviar el formulario
+            botonGuardar.disabled = true;
+            // Cambiar el texto del botón a "Guardando..."
+            botonGuardar.innerHTML = 'Guardando...';
+        });
+    });
+</script>
+
 
 <script>
     // Crea una instancia de InputMask y aplica la máscara al campo de valor y administración
