@@ -19,14 +19,14 @@ foreach($fichastecnicas as $index => $fichatecnica) {
         </button>
     </a>';
 
-    $btnDelete = '
-    <form action="' . route('fichastecnicas.destroy', $fichatecnica) .'" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="hidden" name="_token" value="' . csrf_token() . '">
-        <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-            <i class="fa fa-lg fa-fw fa-trash"></i>
-        </button>
-    </form>';
+    $btnDelete = '<form id="formDelete" method="POST" action="' . route('fichastecnicas.destroy', $fichatecnica) . '" style="display: inline;">
+    ' . csrf_field() . '
+    ' . method_field('DELETE') . '
+    <button type="button" onclick="eliminarFicha()" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
+        <i class="fa fa-lg fa-fw fa-trash"></i>
+    </button>
+</form>';
+
 
     $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
         <i class="fa fa-lg fa-fw fa-eye"></i>
@@ -115,6 +115,15 @@ $config = [
 
 
     @section('js')
+
+    <script>
+    function eliminarFicha() {
+        if (confirm("¿Estás seguro de que deseas eliminar esta ficha técnica?")) {
+            document.getElementById("formDelete").submit();
+        }
+    }
+</script>
+
 
     @if(session('status'))
     <script>
