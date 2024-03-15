@@ -4,6 +4,8 @@ $heads = [
 'Nro',
 'Nombre propietario',
 'Nombre Propiedad',
+'Barrio',
+'Valor',
 'Asesor',
 ['label' => 'Acciones', 'no-export' => true, 'width' => 10],
 ];
@@ -40,6 +42,8 @@ foreach($fichastecnicas as $index => $fichatecnica) {
     $index + 1,
     $fichatecnica->nom_propietario,
     $fichatecnica->nom_propiedad,
+    $fichatecnica->barrio,
+    number_format($fichatecnica->valor, 2, ',', '.'),
     $fichatecnica->user->name,
     '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>',
     ];
@@ -48,8 +52,8 @@ foreach($fichastecnicas as $index => $fichatecnica) {
 
 $config = [
 'data' => $rows,
-'order' => [[1, 'asc']],
-'columns' => [null, null, null, null, ['orderable' => false]],
+'order' => [[1, 'desc']],
+'columns' => [null, null, null, null, null, null, ['orderable' => false]],
 ];
 
 @endphp
