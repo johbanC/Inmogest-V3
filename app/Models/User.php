@@ -42,4 +42,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    // Método para obtener la URL del perfil del usuario
+    public function adminlte_profile_url()
+    {
+        return 'admin/profile';
+    }
+
+    // Método para obtener la URL de la imagen del usuario
+    public function adminlte_image()
+    {
+        // Aquí debes retornar la URL de la imagen del usuario
+        // Por ejemplo, si la imagen está almacenada en el sistema de archivos, puedes devolver la URL correspondiente
+        // Si la imagen está almacenada en la base de datos, deberás recuperarla y devolver la URL adecuada
+        return 'url_de_la_imagen_del_usuario';
+    }
+
+     // Método para obtener la descripción del usuario
+    public function adminlte_desc()
+    {
+        // Aquí debes retornar la descripción del usuario
+        // Por ejemplo, podrías devolver el rol, el cargo, o cualquier otra información descriptiva del usuario
+        return 'Descripción del usuario';
+    }
 }
