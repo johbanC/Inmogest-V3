@@ -295,7 +295,7 @@ return [
 // Navbar items:
     [
         'type'         => 'navbar-search',
-        'text'         => 'search',
+        'text'         => 'Buscar',
         'topnav_right' => true,
     ],
     [
@@ -306,7 +306,7 @@ return [
 // Sidebar items:
     [
         'type' => 'sidebar-menu-search',
-        'text' => 'search',
+        'text' => 'Buscar',
     ],
     [
         'text' => 'blog',
@@ -323,63 +323,26 @@ return [
     [
         'text'        => 'Ficha Tecnica',
         'url'         => 'fichastecnicas',
-        'icon'        => 'fas fa-house-user'
-    ],
-    ['header' => 'PROXIMAMENTE'],
-    [
-        'text' => 'profile',
-        'url'  => 'admin/settings',
-        'icon' => 'fas fa-fw fa-user',
-        'disabled' => true,
-        'hidden' => true,
+        'icon'        => 'fas fa-users'
     ],
     [
-        'text' => 'change_password',
-        'url'  => 'admin/settings',
-        'icon' => 'fas fa-fw fa-lock',
-    ],
-    [
-        'text'    => 'Configuracion ',
-        'icon'    => 'fas fa-cog',
-        'submenu' => [
-            [
-                'text' => 'Tipo de inmuebles',
-                'url'  => '#',
-            ],
-            [
-                'text' => 'Tipo de transacciones',
-                'url'  => '#',
-            ],
-            [
-                'text' => 'Tipo de calentador',
-                'url'  => '#',
-            ],
-        ],
+        'header' => 'PROXIMAMENTE',
     ],
 
-    [
-        'text'    => 'Inventarios',
-        'icon'    => 'fas fa-house',
-        'submenu' => [
-            [
-                'text' => 'Inventarios',
-                'url'  => 'inventarios',
-            ],
-        ],
-    ],
-
-
-    /* SECCION DE INVENTARIOS */
+     /* SECCION DE INVENTARIOS */
     [
         'text' => 'Inventario',
-        'icono' => 'fa-solid fa-house',
-        'submenu' => [
-            [
-                'text' => 'Inventarios',
-                'url' => '#'
-            ],
-        ],
+        'url'  => '#',
+        'icon' => 'fas fa-home',
+        'label' => 'Proximamente',
+        'label_color' => 'info', 
+    
     ],
+
+
+    
+
+
 
 
 
@@ -391,13 +354,13 @@ return [
         'text' => 'Tipo de inmuebles',
         'icon' => 'fas fa-home', // Ícono para Tipo de inmuebles
         // 'icon_color' => 'red',
-        'url' => '#',
+        'url' => 'tiposinmuebles',
     ],
     [
         'text' => 'Tipo de transacciones',
         'icon' => 'fas fa-exchange-alt', // Ícono para Tipo de transacciones
         // 'icon_color' => 'yellow',
-        'url' => '#',
+        'url' => 'tipostransaccions',
     ],
     [
         'text' => 'Tipo de calentador',
@@ -405,7 +368,21 @@ return [
         // 'icon_color' => 'cyan',
         'url' => '#',
     ],
+    [
+        'text' => 'profile',
+        'url'  => '#',
+        'icon' => 'fas fa-fw fa-user',
+    ],
+
+
+    [
+        'text' => 'change_password',
+        'url'  => 'admin/settings',
+        'icon' => 'fas fa-fw fa-lock',
+    ],
+
 ],
+
 
 /*
 |--------------------------------------------------------------------------
@@ -563,6 +540,19 @@ return [
             ],
         ],
     ],
+
+    'Sweetalert2' => [
+        'active' => true,
+        'files' => [
+            [
+                'type' => 'js',
+                'asset' => false,
+                'location' => '/js/mensaje.js', // Ruta al archivo JavaScript que has creado
+            ],
+        ],
+    ],
+
+
     'Pace' => [
         'active' => true,
         'files' => [
@@ -657,3 +647,4 @@ return [
 
 'livewire' => false,
 ];
+

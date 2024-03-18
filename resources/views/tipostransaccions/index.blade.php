@@ -2,26 +2,22 @@
 
 $heads = [
 'Nro',
-'Nombre propietario',
-'Nombre Propiedad',
-'Barrio',
-'Valor',
-'Asesor',
+'Tipo Transaccion',
 ['label' => 'Acciones', 'no-export' => true, 'width' => 10],
 ];
 
 
 $rows = [];
-$fichatecnica = null; // Inicializar la variable fuera del bucle
+$tipotransaccion = null; // Inicializar la variable fuera del bucle
 
-foreach($fichastecnicas as $index => $fichatecnica) {
-    $btnEdit = '<a href="' . route('fichastecnicas.edit', $fichatecnica) . '">
+foreach($tipostransaccions as $index => $tipotransaccion) {
+    $btnEdit = '<a href="' . route('tipostransaccions.edit', $tipotransaccion) . '">
         <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
             <i class="fa fa-lg fa-fw fa-pen"></i>
         </button>
     </a>';
 
-    $btnDelete = '<form id="formDelete" method="POST" action="' . route('fichastecnicas.destroy', $fichatecnica) . '" style="display: inline;">
+    $btnDelete = '<form id="formDelete" method="POST" action="' . route('tipostransaccions.destroy', $tipotransaccion) . '" style="display: inline;">
     ' . csrf_field() . '
     ' . method_field('DELETE') . '
     <button type="button" onclick="eliminarFicha()" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
@@ -40,11 +36,7 @@ foreach($fichastecnicas as $index => $fichatecnica) {
 
     $rowData = [
     $index + 1,
-    $fichatecnica->nom_propietario,
-    $fichatecnica->nom_propiedad,
-    $fichatecnica->barrio,
-    number_format($fichatecnica->valor, 2, ',', '.'),
-    $fichatecnica->user->name,
+    $tipotransaccion->nombre,
     '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>',
     ];
     $rows[] = $rowData;
@@ -53,7 +45,7 @@ foreach($fichastecnicas as $index => $fichatecnica) {
 $config = [
 'data' => $rows,
 'order' => [[1, 'desc']],
-'columns' => [null, null, null, null, null, null, ['orderable' => false]],
+'columns' => [null, null,  ['orderable' => false]],
 ];
 
 @endphp
@@ -71,17 +63,17 @@ $config = [
 
 @section('content')
 <div class="card">
-	<div class="card-header">
-		<h3 class="card-title">Fichas Tecnicas</h3>
-		<div class="card-tools">
-			<!-- Buttons, labels, and many other things can be placed here! -->
+    <div class="card-header">
+        <h3 class="card-title">Tipo Transacciones</h3>
+        <div class="card-tools">
+            <!-- Buttons, labels, and many other things can be placed here! -->
             <!-- Here is a label for example 
-            	<span class="badge badge-primary">Label</span>-->
+                <span class="badge badge-primary">Label</span>-->
 
 
-            	<a href="{{ route('fichastecnicas.new') }}">
-            		<x-adminlte-button label="Crear Nuevo" theme="primary" icon="fas fa-key" />
-            	</a>
+                <a href="{{ route('tipostransaccions.new') }}">
+                    <x-adminlte-button label="Crear Nuevo" theme="primary" icon="fas fa-home" />
+                </a>
 
 
 
@@ -92,8 +84,8 @@ $config = [
         <div class="card-body">
 
 
-        	{{-- With buttons --}}
-        	<x-adminlte-datatable id="table5" :heads="$heads" head-theme="light" theme="light" :config="$config" striped hoverable with-buttons/>
+            {{-- With buttons --}}
+            <x-adminlte-datatable id="table5" :heads="$heads" head-theme="light" theme="light" :config="$config" striped hoverable with-buttons/>
 
 
 
@@ -122,7 +114,7 @@ $config = [
 
     <script>
     function eliminarFicha() {
-        if (confirm("¿Estás seguro de que deseas eliminar esta ficha técnica?")) {
+        if (confirm("¿Estás seguro de que deseas eliminar este tipo de transacciones?")) {
             document.getElementById("formDelete").submit();
         }
     }

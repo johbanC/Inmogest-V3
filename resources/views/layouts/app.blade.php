@@ -15,9 +15,13 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/fontawesome.css') }}">
 
+    <script type="text/javascript">
+        //PRUEBA PARA JS
+    </script>
+
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/test.js'])
 
     
 </head>

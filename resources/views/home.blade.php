@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 
-@section('title', 'Ficha Tecnica')
+@section('title', 'Ficha TecnicaAA')
+
 
 @section('content_header')
 <h1>Inicio</h1>
@@ -11,7 +12,7 @@
 
 <div class="row">
 	<div class="col-md-3">
-		<x-adminlte-small-box title="424" text="Registros" icon="fas fa-house-user"
+		<x-adminlte-small-box title="{{ $cantidadFichasTecnicas }}" text="Registros" icon="fas fa-house-user"
 		theme="teal" url="#" url-text="View details"/>
 	</div>
 	<div class="col-md-3">
@@ -40,6 +41,9 @@
 
 
 @section('js')
+
+
+
 
 
 
