@@ -13,7 +13,7 @@
 <div class="row">
 	<div class="col-md-3">
 		<x-adminlte-small-box title="{{ $cantidadFichasTecnicas }}" text="Registros" icon="fas fa-house-user"
-		theme="teal" url="#" url-text="View details"/>
+		theme="teal" url="fichastecnicas" url-text="View details"/>
 	</div>
 	<div class="col-md-3">
 		<x-adminlte-small-box title="424" text="Views" icon="fas fa-eye text-dark"

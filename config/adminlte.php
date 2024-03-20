@@ -366,7 +366,7 @@ return [
         'text' => 'Tipo de calentador',
         'icon' => 'fas fa-thermometer-half', // Ícono para Tipo de calentador
         // 'icon_color' => 'cyan',
-        'url' => '#',
+        'url' => 'calentadors',
     ],
     [
         'text' => 'profile',

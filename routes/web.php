@@ -5,6 +5,7 @@ use App\Http\Controllers\FichaTecnica;
 use App\Http\Controllers\FichaTecnicaController;
 use App\Http\Controllers\TipoTransaccionController;
 use App\Http\Controllers\TipoInmuebleController;
+use App\Http\Controllers\CalentadorController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Reorderable;
 /*IMPORTAR EL MODELO PARA PODERLO UTILIZAR. PERO DESPUESDE AGREGAR EL 
@@ -84,6 +85,26 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/tipostransaccions/{tipotransaccion}', [TipoTransaccionController::class, 'destroy'])
     ->name('tipostransaccions.destroy');
+
+
+    // Tipo de calentador
+    Route::get('/calentadors', [CalentadorController::class, 'index'])
+    ->name('calentadors.index');
+
+    Route::get('/calentadors/new', [CalentadorController::class , 'create'])
+    ->name('calentadors.new');
+
+    Route::post('calentadors/new', [CalentadorController::class, 'store'])
+    ->name('calentadors.store');
+
+    Route::get('calentadors/{calentador}/edit', [CalentadorController::class, 'edit'])
+    ->name('calentadors.edit');
+
+    Route::put('/calentadors/{calentador}', [CalentadorController::class, 'update'])
+    ->name('calentadors.update');
+
+    Route::delete('/calentadors/{calentador}', [CalentadorController::class, 'destroy'])
+    ->name('calentadors.destroy');
 
 
 
