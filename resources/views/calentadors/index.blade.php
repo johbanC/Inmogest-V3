@@ -17,13 +17,14 @@ foreach($calentadors as $index => $calentador) {
         </button>
     </a>';
 
-    $btnDelete = '<form id="formDelete" method="POST" action="' . route('calentadors.destroy', $calentador) . '" style="display: inline;">
+    $btnDelete = '<form id="formDelete_' . $calentador->id . '" method="POST" action="' . route('calentadors.destroy', $calentador) . '" style="display: inline;">
     ' . csrf_field() . '
     ' . method_field('DELETE') . '
-    <button type="button" onclick="eliminarFicha()" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
+    <button type="button" onclick="eliminarFicha(' . $calentador->id . ')" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
         <i class="fa fa-lg fa-fw fa-trash"></i>
     </button>
 </form>';
+
 
 
 
@@ -115,11 +116,12 @@ $config = [
     @section('js')
 
     <script>
-    function eliminarFicha() {
-        if (confirm("¿Estás seguro de que deseas eliminar este tipo de inmueble?")) {
-            document.getElementById("formDelete").submit();
-        }
+    function eliminarFicha(id) {
+    if (confirm("¿Estás seguro de que deseas eliminar este tipo de calentador?")) {
+        document.getElementById("formDelete_" + id).submit();
     }
+}
+
 </script>
 
 

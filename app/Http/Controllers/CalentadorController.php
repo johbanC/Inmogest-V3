@@ -98,13 +98,21 @@ class CalentadorController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Calentador $calentador){
-        
-        $calentador->delete();
-
-        return to_route('calentadors.index')->with('status', [
-            'type' => 'success',
-            'message' => 'Eliminado con exito',
+        try {
+            $calentador->delete();
+            return redirect()->route('calentadors.index')->with('status', [
+                'type' => 'success',
+                'message' => 'Eliminado con éxito',
+                'title' => 'Registro'
+            ]);
+        } catch (\Exception $e) {
+           return redirect()->route('calentadors.index')->with('status', [
+            'type' => 'error',
+            'message' => 'No se pudo eliminar el registro. Por favor, contacte al administrador.',
             'title' => 'Registro'
         ]);
-    }
+       }
+   }
 }
+
+

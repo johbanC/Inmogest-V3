@@ -35,7 +35,7 @@ class TipoTransaccionController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request){
-        
+
         $request->validate([
             'nombre' => 'required'
         ]);
@@ -67,7 +67,7 @@ class TipoTransaccionController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(TipoTransaccion $tipotransaccion){
-        
+
         return view('tipostransaccions.edit', [
             'TipoTransaccion' => $tipotransaccion,
         ], compact('tipotransaccion'));
@@ -77,7 +77,7 @@ class TipoTransaccionController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, TipoTransaccion $tipotransaccion){
-        
+
         $request->validate([
             'nombre' => 'required'
         ]);
@@ -102,13 +102,20 @@ class TipoTransaccionController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(TipoTransaccion $tipotransaccion){
-        
-        $tipotransaccion->delete();
-
-        return to_route('tipostransaccions.index')->with('status', [
-            'type' => 'success',
-            'message' => 'Eliminado con exito',
+        try {
+            $tipotransaccion->delete();
+            return redirect()->route('tipostransaccions.index')->with('status', [
+                'type' => 'success',
+                'message' => 'Eliminado con éxito',
+                'title' => 'Registro'
+            ]);
+        } catch (\Exception $e) {
+         return redirect()->route('tipostransaccions.index')->with('status', [
+            'type' => 'error',
+            'message' => 'No se pudo eliminar el registro. Por favor, contacte al administrador.',
             'title' => 'Registro'
         ]);
-    }
+     }
+ }
+
 }

@@ -17,13 +17,13 @@ foreach($tipostransaccions as $index => $tipotransaccion) {
         </button>
     </a>';
 
-    $btnDelete = '<form id="formDelete" method="POST" action="' . route('tipostransaccions.destroy', $tipotransaccion) . '" style="display: inline;">
-    ' . csrf_field() . '
-    ' . method_field('DELETE') . '
-    <button type="button" onclick="eliminarFicha()" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
-        <i class="fa fa-lg fa-fw fa-trash"></i>
-    </button>
-</form>';
+    $btnDelete = '<form id="formDelete_' . $tipotransaccion->id . '" method="POST" action="' . route('tipostransaccions.destroy', $tipotransaccion) . '" style="display: inline;">
+        ' . csrf_field() . '
+        ' . method_field('DELETE') . '
+        <button type="button" onclick="eliminarTracsaccion(' . $tipotransaccion->id . ')" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
+            <i class="fa fa-lg fa-fw fa-trash"></i>
+        </button>
+    </form>';
 
 
     $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
@@ -58,7 +58,7 @@ $config = [
 <!-- @section('title', 'Ficha Tecnica') -->
 
 @section('content_header')
-<h1>Fichas Tecnica</h1>
+<h1>Tipo Transacciones</h1>
 @stop
 
 @section('content')
@@ -113,19 +113,20 @@ $config = [
     @section('js')
 
     <script>
-    function eliminarFicha() {
-        if (confirm("¿Estás seguro de que deseas eliminar este tipo de transacciones?")) {
-            document.getElementById("formDelete").submit();
+        function eliminarTracsaccion(id) {
+            if (confirm("¿Estás seguro de que deseas eliminar este tipo de transaccion?")) {
+                document.getElementById("formDelete_" + id).submit();
+            }
         }
-    }
-</script>
+    </script>
+
 
 
     @if(session('status'))
     <script>
-       toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
-   </script>
-   @endif
+     toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
+ </script>
+ @endif
 
 
 
@@ -134,4 +135,4 @@ $config = [
 
 
 
-   @stop
+ @stop
