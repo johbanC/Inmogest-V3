@@ -56,7 +56,8 @@ class User extends Authenticatable
         // Aquí debes retornar la URL de la imagen del usuario
         // Por ejemplo, si la imagen está almacenada en el sistema de archivos, puedes devolver la URL correspondiente
         // Si la imagen está almacenada en la base de datos, deberás recuperarla y devolver la URL adecuada
-        return 'url_de_la_imagen_del_usuario';
+        return 'https://picsum.photos/200/300';
+
     }
 
      // Método para obtener la descripción del usuario

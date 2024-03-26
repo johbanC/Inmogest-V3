@@ -46,6 +46,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/fichastecnicas/{fichatecnica}', [FichaTecnicaController::class, 'destroy'])
     ->name('fichastecnicas.destroy');
 
+    Route::get('/fichastecnicas/{fichatecnica}/pdf', [FichaTecnicaController::class, 'pdf'])
+    ->name('fichastecnicas.pdf');
+
 
     // Tipo de Inmuebles
     Route::get('/tiposinmuebles', [TipoInmuebleController::class, 'index'])

@@ -22,17 +22,19 @@ foreach($fichastecnicas as $index => $fichatecnica) {
     </a>';
 
     $btnDelete = '<form id="formDelete" method="POST" action="' . route('fichastecnicas.destroy', $fichatecnica) . '" style="display: inline;">
-    ' . csrf_field() . '
-    ' . method_field('DELETE') . '
-    <button type="button" onclick="eliminarFicha()" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
-        <i class="fa fa-lg fa-fw fa-trash"></i>
-    </button>
-</form>';
+        ' . csrf_field() . '
+        ' . method_field('DELETE') . '
+        <button type="button" onclick="eliminarFicha()" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
+            <i class="fa fa-lg fa-fw fa-trash"></i>
+        </button>
+    </form>';
 
 
-    $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-        <i class="fa fa-lg fa-fw fa-eye"></i>
-    </button>';
+    $btnDetails = '<a href="'.route('fichastecnicas.pdf', $fichatecnica).'" target="_black">
+        <button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+            <i class="fa fa-lg fa-fw fa-file-pdf"></i>
+        </button>
+    </a>';
 
 
 
@@ -54,6 +56,7 @@ $config = [
 'data' => $rows,
 'order' => [[1, 'desc']],
 'columns' => [null, null, null, null, null, null, ['orderable' => false]],
+'language' => ['url' => '//cdn.datatables.net/plug-ins/2.0.3/i18n/es-ES.json',],
 ];
 
 @endphp
@@ -121,12 +124,12 @@ $config = [
     @section('js')
 
     <script>
-    function eliminarFicha() {
-        if (confirm("¿Estás seguro de que deseas eliminar esta ficha técnica?")) {
-            document.getElementById("formDelete").submit();
+        function eliminarFicha() {
+            if (confirm("¿Estás seguro de que deseas eliminar esta ficha técnica?")) {
+                document.getElementById("formDelete").submit();
+            }
         }
-    }
-</script>
+    </script>
 
 
     @if(session('status'))

@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\TipoTransaccion;
 use App\Models\TipoInmueble;
 use App\Models\Calentador;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class FichaTecnicaController extends Controller
 {
@@ -22,6 +24,22 @@ class FichaTecnicaController extends Controller
             'fichastecnicas' => FichaTecnica::with('user')->orderBy('id', 'DESC')->get()
 
         ]);
+    }
+
+    public function pdf(FichaTecnica $fichatecnica){
+
+        $transacciones = TipoTransaccion::all()->pluck('nombre', 'id');
+        $tipoinmuebles = TipoInmueble::all()->pluck('nombre', 'id');
+        $calentador = Calentador::all()->pluck('nombre', 'id');
+
+        $pdf = Pdf::loadView('fichastecnicas.pdf', [
+            'FichaTecnica' => $fichatecnica,
+            'transacciones' => $transacciones,
+            'tipoinmuebles' => $tipoinmuebles,
+            'calentador' => $calentador,
+        ], compact('fichatecnica'));
+        return $pdf->stream();
+
     }
 
     /**
@@ -43,7 +61,7 @@ class FichaTecnicaController extends Controller
 
 
 
-     $request->validate([
+       $request->validate([
         'cedula' => ['required', 'min:6'],
         'nom_propietario' => ['required', 'min:3'],
         'telefono' => ['required', 'min:10'],
@@ -53,37 +71,37 @@ class FichaTecnicaController extends Controller
         'tipo_inmuebles_id' => 'required',
     ]);
 
-     $vestier = $request->filled('vestier');
-     $cocina = $request->filled('cocina');
-     $balcon = $request->filled('balcon');
-     $sala_comedor = $request->filled('sala_comedor');
-     $patio = $request->filled('patio');
-     $zona_ropa = $request->filled('zona_ropa');
-     $estudio_estar = $request->filled('estudio_estar');
-     $red_gas = $request->filled('red_gas');
-     $cuarto_util = $request->filled('cuarto_util');
-     $ascensor = $request->filled('ascensor');
-     $parqueadero = $request->filled('parqueadero');
-     $parqueadero_visitantes = $request->filled('parqueadero_visitantes');
-     $juegos_infantiles = $request->filled('juegos_infantiles');
-     $salon_social = $request->filled('salon_social');
-     $propiedad_horizontal = $request->filled('propiedad_horizontal');
-     $citofono = $request->filled('citofono');
-     $unidad = $request->filled('unidad');
-     $tipo_porteria = $request->filled('tipo_porteria');
-     $shut_basura = $request->filled('shut_basura');
-     $jacuzzi = $request->filled('jacuzzi');
-     $gimnasio = $request->filled('gimnasio');
-     $turco = $request->filled('turco');
-     $biblioteca = $request->filled('biblioteca');
-     $circuito_cerrado = $request->filled('circuito_cerrado');
+       $vestier = $request->filled('vestier');
+       $cocina = $request->filled('cocina');
+       $balcon = $request->filled('balcon');
+       $sala_comedor = $request->filled('sala_comedor');
+       $patio = $request->filled('patio');
+       $zona_ropa = $request->filled('zona_ropa');
+       $estudio_estar = $request->filled('estudio_estar');
+       $red_gas = $request->filled('red_gas');
+       $cuarto_util = $request->filled('cuarto_util');
+       $ascensor = $request->filled('ascensor');
+       $parqueadero = $request->filled('parqueadero');
+       $parqueadero_visitantes = $request->filled('parqueadero_visitantes');
+       $juegos_infantiles = $request->filled('juegos_infantiles');
+       $salon_social = $request->filled('salon_social');
+       $propiedad_horizontal = $request->filled('propiedad_horizontal');
+       $citofono = $request->filled('citofono');
+       $unidad = $request->filled('unidad');
+       $tipo_porteria = $request->filled('tipo_porteria');
+       $shut_basura = $request->filled('shut_basura');
+       $jacuzzi = $request->filled('jacuzzi');
+       $gimnasio = $request->filled('gimnasio');
+       $turco = $request->filled('turco');
+       $biblioteca = $request->filled('biblioteca');
+       $circuito_cerrado = $request->filled('circuito_cerrado');
 
      // Formatear el valor para la base de datos
-     $valor = str_replace(array('.', ','), array('', '.'), $request->get('valor'));
-     $administracion = str_replace(array('.', ','), array('', '.'), $request->get('administracion'));
+       $valor = str_replace(array('.', ','), array('', '.'), $request->get('valor'));
+       $administracion = str_replace(array('.', ','), array('', '.'), $request->get('administracion'));
 
 
-     FichaTecnica::create([
+       FichaTecnica::create([
         'cedula' => $request->get('cedula'),
         'nom_propietario' => $request->get('nom_propietario'),
         'telefono' => $request->get('telefono'),
@@ -132,17 +150,17 @@ class FichaTecnicaController extends Controller
         'user_id' => auth()->id(),
     ]);
 
-     
+
              //Con esta nueva opcion se va enviar el status con las diferentes opciones para poder visualizar las diferentes notificaciones.
 
-     return to_route('fichastecnicas.index')->with('status', [
+       return to_route('fichastecnicas.index')->with('status', [
         'type' => 'success',
         'message' => 'Guardado con exito',
         'title' => 'Registro'
     ]);
 
 
- }
+   }
 
     /**
      * Display the specified resource.
@@ -157,7 +175,7 @@ class FichaTecnicaController extends Controller
      */
     public function edit(FichaTecnica $fichatecnica){
 
-     
+
 
         $transacciones = TipoTransaccion::all()->pluck('nombre', 'id');
         $tipoinmuebles = TipoInmueble::all()->pluck('nombre', 'id');
