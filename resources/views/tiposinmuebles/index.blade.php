@@ -46,6 +46,7 @@ $config = [
 'data' => $rows,
 'order' => [[1, 'desc']],
 'columns' => [null, null,  ['orderable' => false]],
+'language' => ['url' => '//cdn.datatables.net/plug-ins/2.0.3/i18n/es-ES.json',],
 ];
 
 @endphp
@@ -58,13 +59,13 @@ $config = [
 <!-- @section('title', 'Ficha Tecnica') -->
 
 @section('content_header')
-<h1>Fichas Tecnica</h1>
+<h1>Tipo de inmuebles</h1>
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Fichas Tecnicas</h3>
+        <h3 class="card-title">Tipo de inmuebles</h3>
         <div class="card-tools">
             <!-- Buttons, labels, and many other things can be placed here! -->
             <!-- Here is a label for example 

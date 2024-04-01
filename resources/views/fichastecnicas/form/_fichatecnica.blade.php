@@ -26,6 +26,10 @@
 		<div class="invalid-feedback">{{ $errors->first('telefono') }}</div>
 		@endif
 
+	</div>
+
+	<div class="row">	
+
 
 
 		<x-adminlte-input name="nom_propiedad" label="Nombre Propiedad" placeholder="Ej: Remanso914" fgroup-class="col-md-4"
@@ -33,6 +37,8 @@
 		@if ($errors->has('nom_propiedad'))
 		<div class="invalid-feedback">{{ $errors->first('nom_propiedad') }}</div>
 		@endif
+
+
 
 		<x-adminlte-input name="barrio" label="Barrio" placeholder="Barrio" fgroup-class="col-md-4"
 		class="{{ $errors->has('barrio') ? 'is-invalid' : '' }}" value="{{ old('barrio') }}" />
@@ -46,27 +52,32 @@
 		<div class="invalid-feedback">{{ $errors->first('direccion') }}</div>
 		@endif
 
+	</div>
 
+	<div class="row">
 
 		<x-adminlte-input name="administracion" label="Administracion" placeholder="Administracion" fgroup-class="col-md-6"
 		class="{{ $errors->has('administracion') ? 'is-invalid' : '' }}" value="{{ old('administracion') }}" id="input-administracion" />
-
 		@if ($errors->has('administracion'))
 		<div class="invalid-feedback">{{ $errors->first('administracion') }}</div>
 		@endif
 
+
 		<x-adminlte-input name="valor" label="Valor" placeholder="Valor" fgroup-class="col-md-6"
 		class="{{ $errors->has('valor') ? 'is-invalid' : '' }}" value="{{ old('valor') }}" id="input-valor" />
-
 		@if ($errors->has('valor'))
 		<div class="invalid-feedback">{{ $errors->first('valor') }}</div>
 		@endif
 
+	</div>
 
 
+<div class="row">
 
 
-		<x-adminlte-select name="tipo_inmuebles_id" label="Tipo de Inmueble" fgroup-class="col-md-6"
+	<div class="col-md-6">
+		<label for="tipo_inmuebles_id">Tipo de Inmueble <a href="{{ route('tiposinmuebles.new') }}" target="_black"><i class="fas fa-plus-square text-success" title="Agregar nuevo"></i></a></label>
+		<x-adminlte-select name="tipo_inmuebles_id" id="tipo_inmuebles_id" 
 		class="{{ $errors->has('tipo_inmuebles_id') ? 'is-invalid' : '' }}" 
 		value="{{ old('tipo_inmuebles_id') }}">
 		<option value="">Seleccione una opción...</option>
@@ -79,14 +90,13 @@
 	@if ($errors->has('tipo_inmuebles_id'))
 	<div class="invalid-feedback">{{ $errors->first('tipo_inmuebles_id') }}</div>
 	@endif
+</div>
 
 
 
-
-
-
-
-	<x-adminlte-select name="tipo_transaccions_id" label="Tipo de Transacción" fgroup-class="col-md-6"
+<div class="col-md-6">
+	<label for="tipo_inmuebles_id">Tipo de Transaccion <a href="{{ route('tipostransaccions.new') }}" target="_black"><i class="fas fa-plus-square text-success" title="Agregar nuevo"></i></a></label>
+	<x-adminlte-select name="tipo_transaccions_id"
 	class="{{ $errors->has('tipo_transaccions_id') ? 'is-invalid' : '' }}"
 	value="{{ old('tipo_transaccions_id') }}">
 	<option value="">Seleccione una opción...</option>
@@ -96,10 +106,10 @@
 	</option>
 	@endforeach
 </x-adminlte-select>
-
 @if ($errors->has('tipo_transaccions_id'))
 <div class="invalid-feedback">{{ $errors->first('tipo_transaccions_id') }}</div>
 @endif
+</div>
 
 
 
@@ -150,7 +160,9 @@
 	<div class="invalid-feedback">{{ $errors->first('piso') }}</div>
 	@endif
 
-	<x-adminlte-select name="calentadors_id" label="Calentador" fgroup-class="col-md-6"
+	<div class="col-md-6">
+	<label for="tipo_inmuebles_id">Tipo de Calentador <a href="{{ route('calentadors.new') }}" target="_black"><i class="fas fa-plus-square text-success" title="Agregar nuevo"></i></a></label>
+	<x-adminlte-select name="calentadors_id"
 	class="{{ $errors->has('calentador') ? 'is-invalid' : '' }}" value="{{ old('calentadors_id') }}">
 	<option value="">Seleccione una opción...</option>
 	@foreach ($calentador as $id => $nombre)
@@ -158,11 +170,11 @@
 		{{ $nombre }}
 	</option>
 	@endforeach
-
 </x-adminlte-select>
 @if ($errors->has('calentador'))
 <div class="invalid-feedback">{{ $errors->first('calentador') }}</div>
 @endif
+</div>
 
 </div>
 

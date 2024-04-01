@@ -46,6 +46,7 @@ $config = [
 'data' => $rows,
 'order' => [[1, 'desc']],
 'columns' => [null, null,  ['orderable' => false]],
+'language' => ['url' => '//cdn.datatables.net/plug-ins/2.0.3/i18n/es-ES.json',],
 ];
 
 @endphp
