@@ -48,9 +48,7 @@
 
 
 @if(session('status'))
-<!-- <script>
-	toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
-</script> -->
+
 @endif
 
 @stop
