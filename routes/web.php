@@ -30,6 +30,10 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+Route::get('/home',  function () {
+    return view('auth/login');
+});
+
 
 Route::middleware(['auth'])->group(function () {
     // Rutas que requieren autenticación
