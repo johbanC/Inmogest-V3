@@ -25,6 +25,12 @@ use App\Models\Inventario;
 |
 */
 
+/*Ruta principal*/
+Route::get('/', function () {
+    return view('auth/login');
+});
+
+
 Route::middleware(['auth'])->group(function () {
     // Rutas que requieren autenticación
 
@@ -116,9 +122,11 @@ Route::middleware(['auth'])->group(function () {
 
 // Otras rutas que no requieren autenticación
 
+/*Ruta principal
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 Auth::routes();
 
