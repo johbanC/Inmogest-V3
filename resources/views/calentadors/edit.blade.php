@@ -56,6 +56,18 @@
 <br>
 @stop
 
+
+
+@section('footer')
+
+<strong>Copyright © 2024 <a href="#">InmoGest</a>.</strong>
+Todos los derechos reservados.
+<div class="float-right d-none d-sm-inline-block">
+	<b>Version</b> 1.0.0 Beta
+</div>
+
+@stop
+
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
 

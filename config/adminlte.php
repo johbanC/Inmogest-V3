@@ -152,7 +152,7 @@ return [
 'layout_boxed' => null,
 'layout_fixed_sidebar' => null,
 'layout_fixed_navbar' => null,
-'layout_fixed_footer' => null,
+'layout_fixed_footer' => false,
 'layout_dark_mode' => null,
 
 /*
@@ -368,18 +368,18 @@ return [
         // 'icon_color' => 'cyan',
         'url' => 'calentadors',
     ],
-    [
-        'text' => 'profile',
-        'url'  => '#',
-        'icon' => 'fas fa-fw fa-user',
-    ],
+    // [
+    //     'text' => 'profile',
+    //     'url'  => '#',
+    //     'icon' => 'fas fa-fw fa-user',
+    // ],
 
 
-    [
-        'text' => 'change_password',
-        'url'  => 'admin/settings',
-        'icon' => 'fas fa-fw fa-lock',
-    ],
+    // [
+    //     'text' => 'change_password',
+    //     'url'  => 'admin/settings',
+    //     'icon' => 'fas fa-fw fa-lock',
+    // ],
 
 ],
 

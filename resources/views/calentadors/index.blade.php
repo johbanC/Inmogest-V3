@@ -18,12 +18,12 @@ foreach($calentadors as $index => $calentador) {
     </a>';
 
     $btnDelete = '<form id="formDelete_' . $calentador->id . '" method="POST" action="' . route('calentadors.destroy', $calentador) . '" style="display: inline;">
-    ' . csrf_field() . '
-    ' . method_field('DELETE') . '
-    <button type="button" onclick="eliminarFicha(' . $calentador->id . ')" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
-        <i class="fa fa-lg fa-fw fa-trash"></i>
-    </button>
-</form>';
+        ' . csrf_field() . '
+        ' . method_field('DELETE') . '
+        <button type="button" onclick="eliminarFicha(' . $calentador->id . ')" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
+            <i class="fa fa-lg fa-fw fa-trash"></i>
+        </button>
+    </form>';
 
 
 
@@ -108,6 +108,19 @@ $config = [
 
 
 
+
+    @section('footer')
+
+    <strong>Copyright © 2024 <a href="#">InmoGest</a>.</strong>
+    Todos los derechos reservados.
+    <div class="float-right d-none d-sm-inline-block">
+        <b>Version</b> 1.0.0 Beta
+    </div>
+
+    @stop
+
+
+
     @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
     @stop
@@ -117,20 +130,20 @@ $config = [
     @section('js')
 
     <script>
-    function eliminarFicha(id) {
-    if (confirm("¿Estás seguro de que deseas eliminar este tipo de calentador?")) {
-        document.getElementById("formDelete_" + id).submit();
-    }
-}
+        function eliminarFicha(id) {
+            if (confirm("¿Estás seguro de que deseas eliminar este tipo de calentador?")) {
+                document.getElementById("formDelete_" + id).submit();
+            }
+        }
 
-</script>
+    </script>
 
 
     @if(session('status'))
     <script>
-       toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
-   </script>
-   @endif
+     toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
+ </script>
+ @endif
 
 
 
@@ -139,4 +152,4 @@ $config = [
 
 
 
-   @stop
+ @stop
