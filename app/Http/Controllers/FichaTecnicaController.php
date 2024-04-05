@@ -62,13 +62,13 @@ class FichaTecnicaController extends Controller
 
 
        $request->validate([
-        'cedula' => ['required', 'min:6'],
+        
         'nom_propietario' => ['required', 'min:3'],
         'telefono' => ['required', 'min:10'],
         'nom_propiedad' => ['required', 'min:5'],
         'barrio' => ['required', 'min:5'],
         'direccion' => ['required', 'min:5'],
-        'tipo_inmuebles_id' => 'required',
+        
     ]);
 
        $vestier = $request->filled('vestier');
@@ -200,7 +200,7 @@ class FichaTecnicaController extends Controller
 
 
         $request->validate([
-            'cedula' => ['required', 'min:6'],
+            
             'nom_propietario' => ['required', 'min:3'],
             'telefono' => ['required', 'min:10'],
             'nom_propiedad' => ['required', 'min:5'],
