@@ -178,6 +178,47 @@
 
 </div>
 
+<div class="row">
+	
+	<div class="col-md-6">
+	<label for="tipoporterias_id">Tipo de Porteria <a href="{{ route('tipoporterias.new') }}" target="_black"><i class="fas fa-plus-square text-success" title="Agregar nuevo"></i></a></label>
+	<x-adminlte-select name="tipo_porterias_id"
+	class="{{ $errors->has('tipoporterias') ? 'is-invalid' : '' }}" value="{{ old('tipoporterias_id') }}">
+	<option value="">Seleccione una opción...</option>
+	@foreach ($tipoporteria as $id => $nombre)
+	<option value="{{ $id }}" {{ old('tipoporterias_id') == $id ? 'selected' : '' }}>
+		{{ $nombre }}
+	</option>
+	@endforeach
+</x-adminlte-select>
+@if ($errors->has('tipoporterias'))
+<div class="invalid-feedback">{{ $errors->first('tipoporterias') }}</div>
+@endif
+</div>
+
+
+<div class="col-md-6">
+	<label for="tipococina_id">Tipo de Cocina <a href="{{ route('tipococinas.new') }}" target="_black"><i class="fas fa-plus-square text-success" title="Agregar nuevo"></i></a></label>
+	<x-adminlte-select name="tipo_cocinas_id"
+	class="{{ $errors->has('tipococina') ? 'is-invalid' : '' }}" value="{{ old('tipococinas_id') }}">
+	<option value="">Seleccione una opción...</option>
+	@foreach ($tipococina as $id => $nombre)
+	<option value="{{ $id }}" {{ old('tipococinas_id') == $id ? 'selected' : '' }}>
+		{{ $nombre }}
+	</option>
+	@endforeach
+</x-adminlte-select>
+@if ($errors->has('tipococina'))
+<div class="invalid-feedback">{{ $errors->first('tipococina') }}</div>
+@endif
+</div>
+
+
+
+
+
+</div>
+
 
 <hr style="border: 0.5px solid; opacity: 10%;">
 
@@ -197,19 +238,6 @@
 	<div class="invalid-feedback">{{ $errors->first('vestier') }}</div>
 	@endif
 
-	<x-adminlte-input-switch 
-	name="cocina" 
-	label="Cocina" 
-	data-on-text="Si" 
-	data-off-text="No" 
-	data-on-color="teal" 
-	fgroup-class="col-md-2"
-	:checked="isset($FichaTecnica) ? $FichaTecnica->cocina === 1 : false" 
-	class="{{ $errors->has('cocina') ? 'is-invalid' : '' }}"
-	/>
-	@if ($errors->has('cocina'))
-	<div class="invalid-feedback">{{ $errors->first('cocina') }}</div>
-	@endif
 
 	<x-adminlte-input-switch 
 	name="balcon" 
@@ -359,12 +387,7 @@
 	<div class="invalid-feedback">{{ $errors->first('unidad') }}</div>
 	@endif
 
-	<x-adminlte-input-switch name="tipo_porteria" label="Tipo Porteria" data-on-text="Si" data-off-text="No" data-on-color="teal" fgroup-class="col-md-2"
-	:checked="isset($FichaTecnica) ? $FichaTecnica->tipo_porteria === 1 : false" 
-	class="{{ $errors->has('tipo_porteria') ? 'is-invalid' : '' }}"/>
-	@if ($errors->has('tipo_porteria'))
-	<div class="invalid-feedback">{{ $errors->first('tipo_porteria') }}</div>
-	@endif
+	
 </div>
 
 <hr style="border: 0.5px solid; opacity: 10%;">

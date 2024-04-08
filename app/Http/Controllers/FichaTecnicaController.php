@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\TipoTransaccion;
 use App\Models\TipoInmueble;
 use App\Models\Calentador;
+use App\Models\TipoCocina;
+use App\Models\TipoPorteria;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 
@@ -31,12 +33,18 @@ class FichaTecnicaController extends Controller
         $transacciones = TipoTransaccion::all()->pluck('nombre', 'id');
         $tipoinmuebles = TipoInmueble::all()->pluck('nombre', 'id');
         $calentador = Calentador::all()->pluck('nombre', 'id');
+        $tipococina = TipoCocina::all()->pluck('nombre', 'id');
+        $tipoporteria = TipoPorteria::all()->pluck('nombre', 'id');
+
+
 
         $pdf = Pdf::loadView('fichastecnicas.pdf', [
             'FichaTecnica' => $fichatecnica,
             'transacciones' => $transacciones,
             'tipoinmuebles' => $tipoinmuebles,
             'calentador' => $calentador,
+            'tipococina' => $tipococina,
+            'tipoporteria' => $tipoporteria,
         ], compact('fichatecnica'));
         return $pdf->stream();
 
@@ -50,7 +58,9 @@ class FichaTecnicaController extends Controller
         $transacciones = TipoTransaccion::all()->pluck('nombre', 'id');
         $tipoinmuebles = TipoInmueble::all()->pluck('nombre', 'id');
         $calentador = Calentador::all()->pluck('nombre', 'id');
-        return view('fichastecnicas.new', compact('transacciones', 'tipoinmuebles', 'calentador'));
+        $tipococina = TipoCocina::all()->pluck('nombre', 'id');
+        $tipoporteria = TipoPorteria::all()->pluck('nombre', 'id');
+        return view('fichastecnicas.new', compact('transacciones', 'tipoinmuebles', 'calentador', 'tipococina', 'tipoporteria'));
 
     }
 
@@ -120,7 +130,7 @@ class FichaTecnicaController extends Controller
         'piso' => $request->get('piso'),
         'calentadors_id' => $request->get('calentadors_id'),
         'vestier' => $vestier,
-        'cocina' => $cocina,
+        'tipo_cocinas_id' => $request->get('tipo_cocinas_id'),
         'balcon' => $balcon,
         'sala_comedor' => $sala_comedor,
         'patio' => $patio,
@@ -136,7 +146,7 @@ class FichaTecnicaController extends Controller
         'propiedad_horizontal' => $propiedad_horizontal,
         'citofono' => $citofono,
         'unidad' => $unidad,
-        'tipo_porteria' => $tipo_porteria,
+        'tipo_porterias_id' => $request->get('tipo_porterias_id'),
         'shut_basura' => $shut_basura,
         'jacuzzi' => $jacuzzi,
         'gimnasio' => $gimnasio,

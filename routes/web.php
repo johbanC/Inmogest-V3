@@ -6,6 +6,8 @@ use App\Http\Controllers\FichaTecnicaController;
 use App\Http\Controllers\TipoTransaccionController;
 use App\Http\Controllers\TipoInmuebleController;
 use App\Http\Controllers\CalentadorController;
+use App\Http\Controllers\TipoPorteriaController;
+use App\Http\Controllers\TipoCocinaController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Reorderable;
 /*IMPORTAR EL MODELO PARA PODERLO UTILIZAR. PERO DESPUESDE AGREGAR EL 
@@ -118,6 +120,45 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/calentadors/{calentador}', [CalentadorController::class, 'destroy'])
     ->name('calentadors.destroy');
+
+    // Tipo de Porteria
+    Route::get('/tipoporterias', [TipoPorteriaController::class, 'index'])
+    ->name('tipoporterias.index');
+
+    Route::get('/tipoporterias/new', [TipoPorteriaController::class , 'create'])
+    ->name('tipoporterias.new');
+
+    Route::post('tipoporterias/new', [TipoPorteriaController::class, 'store'])
+    ->name('tipoporterias.store');
+
+    Route::get('tipoporterias/{tipoporteria}/edit', [TipoPorteriaController::class, 'edit'])
+    ->name('tipoporterias.edit');
+
+    Route::put('/tipoporterias/{tipoporteria}', [TipoPorteriaController::class, 'update'])
+    ->name('tipoporterias.update');
+
+    Route::delete('/tipoporterias/{tipoporteria}', [TipoPorteriaController::class, 'destroy'])
+    ->name('tipoporterias.destroy');
+
+
+    // Tipo de Cocinas
+    Route::get('/tipococinas', [TipoCocinaController::class, 'index'])
+    ->name('tipococinas.index');
+
+    Route::get('/tipococinas/new', [TipoCocinaController::class , 'create'])
+    ->name('tipococinas.new');
+
+    Route::post('tipococinas/new', [TipoCocinaController::class, 'store'])
+    ->name('tipococinas.store');
+
+    Route::get('tipococinas/{tipococina}/edit', [TipoCocinaController::class, 'edit'])
+    ->name('tipococinas.edit');
+
+    Route::put('/tipococinas/{tipococina}', [TipoCocinaController::class, 'update'])
+    ->name('tipococinas.update');
+
+    Route::delete('/tipococinas/{tipococina}', [TipoCocinaController::class, 'destroy'])
+    ->name('tipococinas.destroy');
 
 
 

@@ -30,7 +30,7 @@
 
             @include('calentadors.form._calentador')
 
-            <div style="text-align: center; padding-top: 50px;">
+            <div style="text-align: center; padding-top: 50px; padding-bottom: 50px;">
     <x-adminlte-button id="botonGuardar" class="btn-flat" type="submit" label="Guardar" theme="success" icon="fas fa-lg fa-save" style="border-radius: 10px;" />
     <x-adminlte-button class="btn-flat" label="Cancelar" theme="danger" icon="fas fa-lg fa-arrow-left" onclick="window.history.back()"  style="border-radius: 10px;" />
 </div>

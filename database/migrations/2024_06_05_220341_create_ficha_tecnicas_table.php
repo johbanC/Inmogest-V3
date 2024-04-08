@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('piso');
             $table->foreignId('calentadors_id')->constrained();
             $table->boolean('vestier')->default(false);
-            $table->boolean('cocina')->default(false);
+            $table->foreignId('tipo_cocinas_id')->constrained();
             $table->boolean('balcon')->default(false);
             $table->boolean('sala_comedor')->default(false);
             $table->boolean('patio')->default(false);
@@ -48,7 +48,7 @@ return new class extends Migration
             $table->boolean('propiedad_horizontal')->default(false);
             $table->boolean('citofono')->default(false);
             $table->boolean('unidad')->default(false);
-            $table->boolean('tipo_porteria')->nullable();
+            $table->foreignId('tipo_porterias_id')->constrained();
             $table->boolean('shut_basura')->default(false);
             $table->boolean('jacuzzi')->default(false);
             $table->boolean('gimnasio')->default(false);
