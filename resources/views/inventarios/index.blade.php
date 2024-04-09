@@ -3,7 +3,7 @@
 @section('title', 'Inventarios')
 
 @section('content_header')
-<h1>Inventarios</h1>
+<!-- <h1>Inventarios</h1> -->
 @stop
 
 @section('content')

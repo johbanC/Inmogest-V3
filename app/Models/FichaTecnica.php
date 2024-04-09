@@ -29,7 +29,7 @@ class FichaTecnica extends Model
         'piso',
         'calentadors_id',
         'vestier',
-        'cocina',
+        'tipo_cocinas_id',
         'balcon',
         'sala_comedor',
         'patio',
@@ -45,7 +45,7 @@ class FichaTecnica extends Model
         'propiedad_horizontal',
         'citofono',
         'unidad',
-        'tipo_porteria',
+        'tipo_porterias_id',
         'shut_basura',
         'jacuzzi',
         'gimnasio',
@@ -73,6 +73,14 @@ class FichaTecnica extends Model
 
     public function calentador(): BelongsTo{
         return $this->belongsTo(Calentador::class, 'calentador_id');
+    }
+
+     public function tipo_porteria(): BelongsTo{
+        return $this->belongsTo(TipoPorteria::class, 'tipo_porterias_id');
+    }
+
+    public function tipo_cocina(): BelongsTo{
+        return $this->belongsTo(TipoCocina::class, 'tipo_cocinas_id');
     }
 
     

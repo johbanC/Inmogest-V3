@@ -2,36 +2,31 @@
 
 $heads = [
 'Nro',
-'Nombre Calentador',
+'Nombre porterias',
 ['label' => 'Acciones', 'no-export' => true, 'width' => 10],
 ];
 
 
 $rows = [];
-$calentador = null; // Inicializar la variable fuera del bucle
+$tipoporteria = null; // Inicializar la variable fuera del bucle
 
-foreach($calentadors as $index => $calentador) {
-    $btnEdit = '<a href="' . route('calentadors.edit', $calentador) . '">
+foreach($tipoporterias as $index => $tipoporteria) {
+    $btnEdit = '<a href="' . route('tipoporterias.edit', $tipoporteria) . '">
         <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
             <i class="fa fa-lg fa-fw fa-pen"></i>
         </button>
     </a>';
 
-    $btnDelete = '<form id="formDelete_' . $calentador->id . '" method="POST" action="' . route('calentadors.destroy', $calentador) . '" style="display: inline;">
-        ' . csrf_field() . '
-        ' . method_field('DELETE') . '
-        <button type="button" onclick="eliminarFicha(' . $calentador->id . ')" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
-            <i class="fa fa-lg fa-fw fa-trash"></i>
-        </button>
-    </form>';
+    $btnDelete = '<form id="formDelete" method="POST" action="' . route('tipoporterias.destroy', $tipoporteria) . '" style="display: inline;">
+    ' . csrf_field() . '
+    ' . method_field('DELETE') . '
+    <button type="button" onclick="eliminar()" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
+        <i class="fa fa-lg fa-fw fa-trash"></i>
+    </button>
+</form>';
 
 
-
-
-
-    $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-        <i class="fa fa-lg fa-fw fa-eye"></i>
-    </button>';
+  
 
 
 
@@ -39,8 +34,8 @@ foreach($calentadors as $index => $calentador) {
 
     $rowData = [
     $index + 1,
-    $calentador->nombre,
-    '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>',
+    $tipoporteria->nombre,
+    '<nobr>'.$btnEdit.$btnDelete.'</nobr>',
     ];
     $rows[] = $rowData;
 }
@@ -62,20 +57,20 @@ $config = [
 <!-- @section('title', 'Ficha Tecnica') -->
 
 @section('content_header')
-<!-- <h1>Tipo de calentador</h1> -->
+<!-- <h1>Tipo de inmuebles</h1> -->
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Tipo de calentador</h3>
+        <h3 class="card-title">Tipo de porterias</h3>
         <div class="card-tools">
             <!-- Buttons, labels, and many other things can be placed here! -->
             <!-- Here is a label for example 
                 <span class="badge badge-primary">Label</span>-->
 
 
-                <a href="{{ route('calentadors.new') }}">
+                <a href="{{ route('tipoporterias.new') }}">
                     <x-adminlte-button label="Crear Nuevo" theme="primary" icon="fas fa-home" />
                 </a>
 
@@ -106,20 +101,15 @@ $config = [
 
     @stop
 
+@section('footer')
 
+<strong>Copyright © 2024 <a href="#">InmoGest</a>.</strong>
+Todos los derechos reservados.
+<div class="float-right d-none d-sm-inline-block">
+    <b>Version</b> 1.0.0 Beta
+</div>
 
-
-    @section('footer')
-
-    <strong>Copyright © 2024 <a href="#">InmoGest</a>.</strong>
-    Todos los derechos reservados.
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0 Beta
-    </div>
-
-    @stop
-
-
+@stop
 
     @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
@@ -130,20 +120,19 @@ $config = [
     @section('js')
 
     <script>
-        function eliminarFicha(id) {
-            if (confirm("¿Estás seguro de que deseas eliminar este tipo de calentador?")) {
-                document.getElementById("formDelete_" + id).submit();
-            }
+    function eliminar() {
+        if (confirm("¿Estás seguro de que deseas eliminar este tipo de porteria?")) {
+            document.getElementById("formDelete").submit();
         }
-
-    </script>
+    }
+</script>
 
 
     @if(session('status'))
     <script>
-     toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
- </script>
- @endif
+       toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
+   </script>
+   @endif
 
 
 
@@ -152,4 +141,4 @@ $config = [
 
 
 
- @stop
+   @stop

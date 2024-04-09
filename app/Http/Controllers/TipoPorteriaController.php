@@ -55,7 +55,7 @@ class TipoPorteriaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TipoPorteria $tipoPorteria)
+    public function show(TipoPorteria $tipoporteria)
     {
         //
     }
@@ -63,7 +63,7 @@ class TipoPorteriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TipoPorteria $tipoPorteria){
+    public function edit(TipoPorteria $tipoporteria){
 
         return view('tipoporterias.edit', [
             'TipoPorteria' => $tipoporteria,
@@ -74,7 +74,7 @@ class TipoPorteriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TipoPorteria $tipoPorteria){
+    public function update(Request $request, TipoPorteria $tipoporteria){
         
         $request->validate([
             'nombre' => 'required'
@@ -90,7 +90,7 @@ class TipoPorteriaController extends Controller
         return to_route('tipoporterias.index')->with('status',
             [
                 'type' => 'success',
-                'message' => 'Guardado con exito',
+                'message' => 'Actualizado con exito',
                 'title' => 'Registro'
             ]);
 
@@ -99,7 +99,7 @@ class TipoPorteriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TipoPorteria $tipoPorteria){
+    public function destroy(TipoPorteria $tipoporteria){
         
         $tipoporteria->delete();
 

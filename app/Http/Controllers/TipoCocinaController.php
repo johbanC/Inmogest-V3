@@ -59,7 +59,7 @@ class TipoCocinaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TipoCocina $tipoCocina)
+    public function show(TipoCocina $tipococina)
     {
         //
     }
@@ -67,10 +67,10 @@ class TipoCocinaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TipoCocina $tipoCocina){
+    public function edit(TipoCocina $tipococina){
 
         return view('tipococinas.edit', [
-            'TipoCocina' => $tipoinmueble,
+            'TipoCocina' => $tipococina,
         ], compact('tipococina'));
         
     }
@@ -78,13 +78,13 @@ class TipoCocinaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TipoCocina $tipoCocina){
+    public function update(Request $request, TipoCocina $tipococina){
 
         $request->validate([
             'nombre' => 'required'
         ]);
 
-        $tipococinas->update([
+        $tipococina->update([
             'nombre' => $request->get('nombre'),
             'user_id' => auth()->id(),
         ]);
@@ -105,7 +105,7 @@ class TipoCocinaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TipoCocina $tipoCocina){
+    public function destroy(TipoCocina $tipococina){
         
         $tipococina->delete();
 

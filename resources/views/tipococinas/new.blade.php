@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Nueva Ficha Tecnica')
+@section('title', 'Nuevo tipo de cocinas')
 
 @section('content_header')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.1.0/imask.min.js"></script>
@@ -9,12 +9,12 @@
 
 @section('content')
 
-{{-- @dump($errors->all()) --}} 
+{{-- @dump($errors->all()) --}}
 <br>
 
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">Ficha Tecnica</h3>
+		<h3 class="card-title">Tipo de cocinas</h3>
 		<div class="card-tools">
 			<button type="button" class="btn btn-tool" data-card-widget="collapse">
 				<i class="fas fa-minus"></i>
@@ -24,22 +24,23 @@
 	</div>
 
 	<div class="card-body" style="display: block;">
-<form id="formularioFichaTecnica" method="POST" action="{{ route('fichastecnicas.store') }}" >
+        <form id="formularioTipococina" method="POST" action="{{ route('tipococinas.store') }}" >
+            @csrf
 
 
-			@include('fichastecnicas.form._fichatecnica')
+            @include('tipococinas.form._tipococina')
 
-			<div style="text-align: center; padding-top: 50px;">
+            <div style="text-align: center; padding-top: 50px; padding-bottom: 50px;">
     <x-adminlte-button id="botonGuardar" class="btn-flat" type="submit" label="Guardar" theme="success" icon="fas fa-lg fa-save" style="border-radius: 10px;" />
     <x-adminlte-button class="btn-flat" label="Cancelar" theme="danger" icon="fas fa-lg fa-arrow-left" onclick="window.history.back()"  style="border-radius: 10px;" />
 </div>
 
-		</form>
+        </form>
 
-		
+        
 
 
-	</div>
+    </div>
 
 
 </div>
@@ -64,7 +65,6 @@
 
 
 
-
 @section('footer')
 
 <strong>Copyright © 2024 <a href="#">InmoGest</a>.</strong>
@@ -79,7 +79,7 @@ Todos los derechos reservados.
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var formulario = document.getElementById("formularioFichaTecnica");
+        var formulario = document.getElementById("formularioTipococina");
         var botonGuardar = document.getElementById("botonGuardar");
         
         formulario.addEventListener("submit", function() {
@@ -132,12 +132,12 @@ Todos los derechos reservados.
 <script>
 	// AGREGAR LOS PUNTOS EN EL NÚMERO DE DOCUMENTO Y PERMITIR SOLO NÚMEROS
 	document.getElementById('input-cedula').addEventListener('input', function(evt) {
-	    var value = evt.target.value;
+       var value = evt.target.value;
 	    // Eliminar todos los caracteres que no sean números
-	    value = value.replace(/\D/g, '');
+       value = value.replace(/\D/g, '');
 	    // Aplicar el formato con puntos
-	    evt.target.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-	});
+       evt.target.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+   });
 </script>
 
 

@@ -368,6 +368,20 @@ return [
         // 'icon_color' => 'cyan',
         'url' => 'calentadors',
     ],
+    [
+    'text' => 'Tipo de cocina',
+    'icon' => 'fas fa-utensils', // Ícono para Tipo de cocina
+    // 'icon_color' => 'cyan',
+    'url' => 'tipococinas',
+],
+[
+    'text' => 'Tipo de portería',
+    'icon' => 'fas fa-door-open', // Ícono para Tipo de portería
+    // 'icon_color' => 'cyan',
+    'url' => 'tipoporterias',
+],
+
+
     // [
     //     'text' => 'profile',
     //     'url'  => '#',

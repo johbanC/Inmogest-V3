@@ -59,7 +59,7 @@ $config = [
 <!-- @section('title', 'Ficha Tecnica') -->
 
 @section('content_header')
-<h1>Tipo Transacciones</h1>
+<!-- <h1>Tipo Transacciones</h1> -->
 @stop
 
 @section('content')

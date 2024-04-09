@@ -27,7 +27,7 @@ return new class extends Migration
             $table->integer('alcobas');
             $table->integer('closet');
             $table->integer('baño');
-            $table->integer('estrato');
+            $table->integer('estrato')->nullable();
             $table->decimal('area', 10, 2);
             $table->string('piso');
             $table->foreignId('calentadors_id')->constrained();
