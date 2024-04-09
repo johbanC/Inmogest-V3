@@ -102,6 +102,24 @@
 					@endif
 					@endforeach
 				</td>
+				<td>Tipo de Cocina: 
+					@foreach ($tipococinas as $id => $nombre)
+					@if ($FichaTecnica->tipo_cocinas_id == $id)
+					{{ $nombre }}
+					@endif
+				@endforeach</td>
+
+			</tr>
+
+			<tr>
+				<td>Tipo de Porteria: 
+					@foreach ($tipoporterias as $id => $nombre)
+					@if ($FichaTecnica->tipo_porterias_id == $id)
+					{{ $nombre }}
+					@endif
+					@endforeach
+				</td>
+				<td></td>
 				<td></td>
 
 			</tr>
@@ -120,50 +138,50 @@
 		<tbody>
 			<tr>
 				<td>Vestier: {{ $FichaTecnica->vestier ? 'Si' : 'No' }}</td>
-				<td>Cocina: {{ $FichaTecnica->cocina ? 'Si' : 'No' }}</td>
 				<td>Balcón: {{ $FichaTecnica->balcon ? 'Si' : 'No' }}</td>
+				<td>Sala Comedor: {{ $FichaTecnica->sala_comedor ? 'Si' : 'No' }}</td>
 			</tr>
 
 			<tr>
-				<td>Sala Comedor: {{ $FichaTecnica->sala_comedor ? 'Si' : 'No' }}</td>
 				<td>Patio: {{ $FichaTecnica->patio ? 'Si' : 'No' }}</td>
 				<td>Zona de ropa: {{ $FichaTecnica->zona_ropa ? 'Si' : 'No' }}</td>
+				<td>Estudio / Estar: {{ $FichaTecnica->estudio_estar ? 'Si' : 'No' }}</td>
 			</tr>
 
-			<tr>
-				<td>Estudio / Estar: {{ $FichaTecnica->estudio_estar ? 'Si' : 'No' }}</td>
+			<tr>				
 				<td>Red de gas: {{ $FichaTecnica->red_gas ? 'Si' : 'No' }}</td>
 				<td>Cuarto Util: {{ $FichaTecnica->cuarto_util ? 'Si' : 'No' }}</td>
+				<td>Ascensor: {{ $FichaTecnica->ascensor ? 'Si' : 'No' }}</td>
 			</tr>
 
 			<tr>
-				<td>Ascensor: {{ $FichaTecnica->ascensor ? 'Si' : 'No' }}</td>
 				<td>Parqueadero: {{ $FichaTecnica->parqueadero ? 'Si' : 'No' }}</td>
 				<td>Parqueadero Visitantes: {{ $FichaTecnica->parqueadero_visitantes ? 'Si' : 'No' }}</td>
+				<td>Juegos Infantiles: {{ $FichaTecnica->juegos_infantiles ? 'Si' : 'No' }}</td>
 			</tr>
 
 			<tr>
-				<td>Juegos Infantiles: {{ $FichaTecnica->juegos_infantiles ? 'Si' : 'No' }}</td>
 				<td>Salon Social: {{ $FichaTecnica->salon_social ? 'Si' : 'No' }}</td>
 				<td>Propiedad Horizontal: {{ $FichaTecnica->propiedad_horizontal ? 'Si' : 'No' }}</td>
+				<td>Citofono: {{ $FichaTecnica->citofono ? 'Si' : 'No' }}</td>
 			</tr>
 
-			<tr>
-				<td>Citofono: {{ $FichaTecnica->citofono ? 'Si' : 'No' }}</td>
+			<tr>				
 				<td>Unidad: {{ $FichaTecnica->unidad ? 'Si' : 'No' }}</td>
 				<td>Tipo Porteria: {{ $FichaTecnica->tipo_porteria ? 'Si' : 'No' }}</td>
+				<td>Shut Basura: {{ $FichaTecnica->shut_basura ? 'Si' : 'No' }}</td>
 			</tr>
 
-			<tr>
-				<td>Shut Basura: {{ $FichaTecnica->shut_basura ? 'Si' : 'No' }}</td>
+			<tr>				
 				<td>Jacuzzi: {{ $FichaTecnica->jacuzzi ? 'Si' : 'No' }}</td>
 				<td>Gimnasio: {{ $FichaTecnica->gimnasio ? 'Si' : 'No' }}</td>
+				<td>Turco: {{ $FichaTecnica->turco ? 'Si' : 'No' }}</td>
 			</tr>
 
-			<tr>
-				<td>Turco: {{ $FichaTecnica->turco ? 'Si' : 'No' }}</td>
+			<tr>				
 				<td>Biblioteca: {{ $FichaTecnica->biblioteca ? 'Si' : 'No' }}</td>
 				<td>Circuito Cerrado: {{ $FichaTecnica->circuito_cerrado ? 'Si' : 'No' }}</td>
+				<td></td>
 			</tr>
 
 

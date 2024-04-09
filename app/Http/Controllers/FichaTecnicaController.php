@@ -33,8 +33,8 @@ class FichaTecnicaController extends Controller
         $transacciones = TipoTransaccion::all()->pluck('nombre', 'id');
         $tipoinmuebles = TipoInmueble::all()->pluck('nombre', 'id');
         $calentador = Calentador::all()->pluck('nombre', 'id');
-        $tipococina = TipoCocina::all()->pluck('nombre', 'id');
-        $tipoporteria = TipoPorteria::all()->pluck('nombre', 'id');
+        $tipococinas = TipoCocina::all()->pluck('nombre', 'id');
+        $tipoporterias = TipoPorteria::all()->pluck('nombre', 'id');
 
 
 
@@ -43,8 +43,8 @@ class FichaTecnicaController extends Controller
             'transacciones' => $transacciones,
             'tipoinmuebles' => $tipoinmuebles,
             'calentador' => $calentador,
-            'tipococina' => $tipococina,
-            'tipoporteria' => $tipoporteria,
+            'tipococinas' => $tipococinas,
+            'tipoporterias' => $tipoporterias,
         ], compact('fichatecnica'));
         return $pdf->stream();
 
