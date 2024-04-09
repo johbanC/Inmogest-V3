@@ -196,12 +196,16 @@ class FichaTecnicaController extends Controller
         $transacciones = TipoTransaccion::all()->pluck('nombre', 'id');
         $tipoinmuebles = TipoInmueble::all()->pluck('nombre', 'id');
         $calentador = Calentador::all()->pluck('nombre', 'id');
+        $tipococinas = TipoCocina::all()->pluck('nombre', 'id');
+        $tipoporterias = TipoPorteria::all()->pluck('nombre', 'id');
 
         return view('fichastecnicas.edit', [
             'FichaTecnica' => $fichatecnica,
             'transacciones' => $transacciones,
             'tipoinmuebles' => $tipoinmuebles,
             'calentador' => $calentador,
+            'tipococinas' => $tipococinas,
+            'tipoporterias' => $tipoporterias
         ], compact('fichatecnica'));
     }
 
