@@ -7,7 +7,7 @@
 	<div class="row">
 
 		<x-adminlte-input name="cedula" label="Cedula" placeholder="Cedula" fgroup-class="col-md-4"
-		type="text" class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" value="{{ old('cedula', isset($FichaTecnica) ? $FichaTecnica->cedula : '') }}" id="input-cedula" />
+		type="text" class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" value="{{ old('cedula', isset($FichaTecnica) ? $FichaTecnica->cedula : '') }}" id="input-cedula" autofocus/>
 		@if ($errors->has('cedula'))
 		<div class="invalid-feedback">{{ $errors->first('cedula') }}</div>
 		@endif
