@@ -99,6 +99,13 @@ $config = [
 
 
 
+
+{{-- Example button to open modal --}}
+<x-adminlte-button label="Crear nuevo" data-toggle="modal" data-target="#modalCustom" class="bg-teal"/>
+@include('tipococinas.form.modal-nuevo')
+
+
+
     @stop
 
 @section('footer')
