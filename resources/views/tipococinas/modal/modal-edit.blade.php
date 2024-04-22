@@ -5,22 +5,15 @@
             @csrf
             @method('PUT')
 
-            <input type="text" name="" value="{{ $tipococina->id }}">
-
-
-
-
-
             <section>
                 <div class="row">
-                    <x-adminlte-input name="nombre" label="Nombre" placeholder="Nombre" fgroup-class="col-md-4"
+                    <x-adminlte-input name="nombre" label="Nombre" placeholder="Nombre" fgroup-class="col-md-12"
                     type="text" class="{{ $errors->has('nombre') ? 'is-invalid' : '' }}" value="{{ old('nombre', isset($tipococina) ? $tipococina->nombre : '') }}" id="input-nombre" autofocus/>
                     @if ($errors->has('nombre'))
                     <div class="invalid-feedback">{{ $errors->first('nombre') }}</div>
                     @endif
                 </div>
             </section>
-
 
             <div style="text-align: center;">
 
