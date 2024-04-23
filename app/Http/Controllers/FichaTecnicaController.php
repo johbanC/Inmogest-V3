@@ -114,6 +114,16 @@ class FichaTecnicaController extends Controller
      $valor = str_replace(array('.', ','), array('', '.'), $request->get('valor'));
      $administracion = str_replace(array('.', ','), array('', '.'), $request->get('administracion'));
 
+     if ($valor == null) {
+         $valor = 0.0;
+     }
+
+     if ($administracion == null) {
+         $administracion = 0.0;
+     }
+
+     
+
 
      FichaTecnica::create([
         'cedula' => $request->get('cedula'),
