@@ -128,7 +128,7 @@ class FichaTecnicaController extends Controller
      }
 
      FichaTecnica::create([
-        'cedula' => $cedula;
+        'cedula' => $cedula,
         'nom_propietario' => $request->get('nom_propietario'),
         'telefono' => $request->get('telefono'),
         'nom_propiedad' => $request->get('nom_propiedad'),
