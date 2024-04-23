@@ -113,10 +113,22 @@ class FichaTecnicaController extends Controller
      // Formatear el valor para la base de datos
      $valor = str_replace(array('.', ','), array('', '.'), $request->get('valor'));
      $administracion = str_replace(array('.', ','), array('', '.'), $request->get('administracion'));
+     $cedula = $request->get('cedula');
 
+     if ($valor == null) {
+         $valor = 0.0;
+     }
+
+     if ($administracion == null) {
+         $administracion = 0.0;
+     }
+
+     if ($cedula == null) {
+         $cedula = 0;
+     }
 
      FichaTecnica::create([
-        'cedula' => $request->get('cedula'),
+        'cedula' => $cedula;
         'nom_propietario' => $request->get('nom_propietario'),
         'telefono' => $request->get('telefono'),
         'nom_propiedad' => $request->get('nom_propiedad'),
