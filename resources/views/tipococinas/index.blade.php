@@ -1,20 +1,6 @@
 @extends('adminlte::page')
 
-<!-- CSS de DataTables -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 
-<!-- CSS de Bootstrap (si no lo has hecho ya) -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
-
-<!-- jQuery (si no lo has hecho ya) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!-- JavaScript de DataTables -->
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<script src="https://cdn.datatables.net/plug-ins/1.11.5/i18n/Spanish.json"></script>
 
 
 @section('content_header')
@@ -37,7 +23,8 @@
     <!-- /.card-header -->
     <div class="card-body">        
 
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="example1" head-theme="light" theme="light" class="table striped hoverable with-buttons">
+            <!-- <table id="example1" class="table table-bordered table-striped "> -->
             <thead>
                 <tr>
                     <th>Nro</th>
@@ -105,12 +92,11 @@ $(function () {
         "lengthChange": false,
         "autoWidth": false,
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-         "language": {
-            "url": "//cdn.datatables.net/plug-ins/2.0.3/i18n/es-ES.json"
-        },
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 });
+
 </script>
+
 
 
 
