@@ -23,7 +23,7 @@
     <!-- /.card-header -->
     <div class="card-body">        
 
-        <table id="example1" head-theme="light" theme="light" class="table striped hoverable with-buttons">
+        <table id="example1" head-theme="light" theme="light" class="table table-bordered table-striped table-hover">
             <!-- <table id="example1" class="table table-bordered table-striped "> -->
             <thead>
                 <tr>
@@ -80,23 +80,28 @@ Todos los derechos reservados.
 
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+
 @stop
 
 
 @section('js')
 
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 <script>
 $(function () {
     $("#example1").DataTable({
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+        "buttons": ["csv", "excel", "pdf", "print"],
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 });
-
 </script>
-
 
 
 
