@@ -154,7 +154,7 @@
 
 <div class="row">
 
-	<x-adminlte-input name="piso" label="Piso" placeholder="Piso" fgroup-class="col-md-6"
+	<x-adminlte-input name="piso" label="Tipo de Piso" placeholder="Piso" fgroup-class="col-md-6"
 	class="{{ $errors->has('piso') ? 'is-invalid' : '' }}" value="{{ old('piso') }}" />
 	@if ($errors->has('piso'))
 	<div class="invalid-feedback">{{ $errors->first('piso') }}</div>
