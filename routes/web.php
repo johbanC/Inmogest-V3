@@ -8,6 +8,7 @@ use App\Http\Controllers\TipoInmuebleController;
 use App\Http\Controllers\CalentadorController;
 use App\Http\Controllers\TipoPorteriaController;
 use App\Http\Controllers\TipoCocinaController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Reorderable;
 /*IMPORTAR EL MODELO PARA PODERLO UTILIZAR. PERO DESPUESDE AGREGAR EL 
@@ -161,6 +162,24 @@ Route::middleware(['auth'])->group(function () {
     ->name('tipococinas.destroy');
 
 
+    //Listado de clientes
+    Route::get('/clientes', [ClienteController::class, 'index'])
+    ->name('clientes.index');
+
+    Route::get('/clientes/new', [ClienteController::class , 'create'])
+    ->name('clientes.new');
+
+    Route::post('clientes/new', [ClienteController::class, 'store'])
+    ->name('clientes.store');
+
+    Route::get('clientes/{cliente}/edit', [ClienteController::class, 'edit'])
+    ->name('clientes.edit');
+
+    Route::put('/clientes/{cliente}', [ClienteController::class, 'update'])
+    ->name('clientes.update');
+
+    Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])
+    ->name('clientes.destroy');
 
 
 });
