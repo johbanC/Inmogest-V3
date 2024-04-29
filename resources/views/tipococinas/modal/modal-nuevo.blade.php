@@ -25,7 +25,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <x-adminlte-button class="btn-flat" type="submit" label="Crear" theme="success" icon="fas fa-lg fa-update" style="width: 20%; border-radius: 10px;" />
+                    <x-adminlte-button class="btn-flat" type="submit" label="Crear" theme="success" icon="fas fa-lg fa-update" style="border-radius: 10px;" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
