@@ -1,56 +1,4 @@
-@php
-$heads = [
-'Nro',
-'Nombre porterias',
-['label' => 'Acciones', 'no-export' => true, 'width' => 10],
-];
-
-$rows = [];
-$tipoporteria = null; // Inicializar la variable fuera del bucle
-
-foreach($tipoporterias as $index => $tipoporteria) {
-    $btnEdit = '<a href="' . route('tipoporterias.edit', $tipoporteria) . '">
-        <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-            <i class="fa fa-lg fa-fw fa-pen"></i>
-        </button>
-    </a>';
-
-    $btnDelete = '<form id="formDelete'.$tipoporteria->id.'" method="POST" action="' . route('tipoporterias.destroy', $tipoporteria) . '" style="display: inline;">
-        ' . csrf_field() . '
-        ' . method_field('DELETE') . '
-        <button type="button" onclick="eliminar('.$tipoporteria->id.')" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
-            <i class="fa fa-lg fa-fw fa-trash"></i>
-        </button>
-    </form>';
-
-    $btnModal = '<button type="button" class="btn btn-primary btn-modal" data-toggle="modal" data-target="#exampleModal'.$tipoporteria->id.'">
-        Detalle
-    </button>';
-
-    $rowData = [
-    $index + 1,
-    $tipoporteria->nombre,
-    '<nobr>'.$btnEdit.$btnDelete.$btnModal.'</nobr>',
-    ];
-    $rows[] = $rowData;
-}
-
-$config = [
-'data' => $rows,
-'order' => [[1, 'desc']],
-'columns' => [null, null, ['orderable' => false]],
-'language' => ['url' => '//cdn.datatables.net/plug-ins/2.0.3/i18n/es-ES.json'],
-];
-@endphp
-
-
-<!-- llamar a la ventama modal -->
-@include('tipoporterias.modal.modal-edit')
-
-
 @extends('adminlte::page')
-
-<!-- @section('title', 'Ficha Tecnica') -->
 
 @section('content_header')
 <!-- <h1>Tipo de inmuebles</h1> -->
@@ -60,76 +8,137 @@ $config = [
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Tipo de porterías</h3>
+        <h3 class="card-title">Tipo de Porteria</h3>
         <div class="card-tools">
-            <!-- Buttons, labels, and many other things can be placed here! -->
-            <!-- Here is a label for example 
-                <span class="badge badge-primary">Label</span>-->
 
+            <x-adminlte-button label="Crear nuevo" theme="primary" data-toggle="modal" data-target="#modalCrearNuevo" class="bg" icon="fas fa-utensils"/>
+            @include('tipoporterias.modal.modal-nuevo')
 
-                <a href="{{ route('tipoporterias.new') }}">
-                    <x-adminlte-button label="Crear Nuevo" theme="primary" icon="fas fa-home" />
-                </a>
-
-
-
-            </div>
         </div>
-        <div class="card-body">
-            {{-- Tabla con botones --}}
-            <x-adminlte-datatable id="table5" :heads="$heads" head-theme="light" theme="light" :config="$config" striped hoverable with-buttons/>
+        <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">        
 
-            <!-- Ventana modal -->
-            @foreach($tipoporterias as $tipoporteria)
-            <div class="modal fade" id="exampleModal{{$tipoporteria->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <table id="example1" head-theme="light" theme="light" class="table table-bordered table-striped table-hover">
+            <!-- <table id="example1" class="table table-bordered table-striped "> -->
+            <thead>
+                <tr>
+                    <th>Nro</th>
+                    <th>Nombre porteria</th>
+                    <th>Acciones</th> 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($tipoporterias as $index => $tipoporteria)
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $tipoporteria->nombre }}</td>
+                    <td>
+                        <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" data-toggle="modal" data-target="#modalEditar{{ $tipoporteria->id }}">
+                            <i class="fa fa-lg fa-fw fa-pen"></i>
+                        </button>
+                        <form id="formDelete{{ $tipoporteria->id }}" method="POST" action="{{ route('tipoporterias.destroy', $tipoporteria->id) }}" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" onclick="eliminar({{ $tipoporteria->id }})" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Eliminar">
+                                <i class="fa fa-lg fa-fw fa-trash"></i>
+                            </button>
+                        </form>
 
-            </div>
-            @endforeach
-        </div>
-        <div class="card-footer">
-            <!-- Pie de la tarjeta -->
-        </div>
+                    </td>
+                </tr>
+                @include('tipoporterias.modal.modal-edit')
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
-    @stop
 
+    <!-- /.card-body -->
+    <div class="card-footer">
 
-    @section('footer')
-
-    <strong>Copyright © 2024 <a href="#">InmoGest</a>.</strong>
-    Todos los derechos reservados.
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0 Beta
     </div>
+    <!-- /.card-footer -->
+</div>
+<!-- /.card -->
 
-    @stop
+@stop
 
-    @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    @stop
+@section('footer')
+
+<strong>Derechos de autor © 2024 <a href="#">InmoGest</a>.</strong>
+Todos los derechos reservados.
+<div class="float-right d-none d-sm-inline-block">
+    <b>Versión</b> 1.0.0 Beta
+</div>
+
+@stop
+
+@section('css')
+<link rel="stylesheet" href="/css/admin_custom.css">
 
 
 
-    @section('js')
-    <script>
-        function eliminar(id) {
-            if (confirm("¿Estás seguro de que deseas eliminar este tipo de porteria?")) {
+
+@stop
+
+
+@section('js')
+
+
+<script>
+$(function () {
+    $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["csv", "excel", "pdf", "print"],
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+});
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function eliminar(id) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminarlo!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
                 document.getElementById("formDelete" + id).submit();
             }
-        }
-
-        $(document).ready(function() {
-        // Mostrar modal al hacer clic en el botón de detalle
-            $('.btn-modal').click(function() {
-                var targetModal = $(this).data('target');
-                $(targetModal).modal('show');
-            });
         });
-    </script>
+    }
+</script>
 
-    @if(session('status'))
-    <script>
-        toastr.{{ session('status')['type'] }}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
-    </script>
-    @endif
-    @stop
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var formulario = document.getElementById("formulariotipoporteria");
+        var botonGuardar = document.getElementById("botonGuardar");
+
+        formulario.addEventListener("submit", function() {
+            // Deshabilitar el botón después de enviar el formulario
+            botonGuardar.disabled = true;
+            // Cambiar el texto del botón a "Guardando..."
+            botonGuardar.innerHTML = 'Guardando...';
+        });
+    });
+</script>
+
+@if(session('status'))
+<script>
+   toastr.{{session('status')['type']}}("{{ session('status')['message'] }}", "{{ session('status')['title'] }}");
+</script>
+@endif
+
+@stop

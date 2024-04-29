@@ -1,11 +1,11 @@
-<div class="modal fade" id="modalCrearNuevo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalCrearNuevoInmueble" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form  id="formularioTipococina" method="POST" action="{{ route('tipococinas.store') }}">
+        <form  id="formulariotipoinmueble" method="POST" action="{{ route('tiposinmuebles.store') }}">
             @csrf
         
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar nueva tipo de Cocina </h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar nueva tipo de inmueble </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -1,13 +1,13 @@
 
 <!-- Agrega la ventana modal aquí, fuera del bloque PHP -->
-<div class="modal fade" id="modalEditar{{$tipococina->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditar{{$calentador->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form action="{{ route('tipococinas.update', $tipococina) }}" method="POST">
+        <form action="{{ route('calentadors.update', $calentador) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detalle de la Cocina {{$tipococina->nombre}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Detalle de la Calentador {{$calentador->nombre}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -17,7 +17,7 @@
                     <section>
                         <div class="row">
                             <x-adminlte-input name="nombre" label="Nombre" placeholder="Nombre" fgroup-class="col-md-12"
-                            type="text" class="{{ $errors->has('nombre') ? 'is-invalid' : '' }}" value="{{ old('nombre', isset($tipococina) ? $tipococina->nombre : '') }}" id="input-nombre" autofocus/>
+                            type="text" class="{{ $errors->has('nombre') ? 'is-invalid' : '' }}" value="{{ old('nombre', isset($calentador) ? $calentador->nombre : '') }}" id="input-nombre" autofocus/>
                             @if ($errors->has('nombre'))
                             <div class="invalid-feedback">{{ $errors->first('nombre') }}</div>
                             @endif
