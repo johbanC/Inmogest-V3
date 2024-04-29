@@ -122,6 +122,9 @@ class FichaTecnicaController extends Controller
          $administracion = 0.0;
      }
 
+      if ($cedula == null) {
+         $cedula = 0;
+     }
      
 
 
