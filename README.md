@@ -102,4 +102,4 @@ Este proyecto está bajo la Licencia MIT. Para más información, consulta el ar
 
 ## Contacto
 
-Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue o contactar a [tu-email@example.com](mailto:tu-email@example.com).
+Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue o contactar a [jclavijo@endigitalweb.com](mailto:jclavijo@endigitalweb.com).
