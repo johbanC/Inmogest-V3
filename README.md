@@ -1,66 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://endigitalweb.com/wp-content/uploads/2022/12/EDW_Logo_Lateral.png" width="400" alt="Laravel Logo"></a></p>
+# InmoGest
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![InmoGest Logo](https://endigitalweb.com/wp-content/uploads/2022/12/EDW_Logo_Lateral.png)
 
-## About Laravel
+InmoGest es una aplicación web diseñada para la gestión de inmuebles y sus reparaciones. La aplicación permite a los usuarios registrar, editar y eliminar tipos de porterías, cocinas, y gestionar solicitudes de reparación, entre otras funcionalidades.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Características
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Gestión de inmuebles**: Añadir, editar y eliminar diferentes tipos de inmuebles.
+- **Gestión de reparaciones**: Crear y gestionar solicitudes de reparación.
+- **Listados**: Ver listados de tipos de porterías, cocinas, etc.
+- **Notificaciones**: Recibir notificaciones sobre el estado de las solicitudes.
+- **Interfaz amigable**: Interfaz de usuario intuitiva y fácil de usar.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Requisitos
 
-## Learning Laravel
+- PHP 7.4 o superior
+- Laravel 8.x o superior
+- MySQL 5.7 o superior
+- Composer
+- Node.js y npm
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalación
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Clona el repositorio:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    ```bash
+    git clone https://github.com/tu-usuario/inmogest.git
+    ```
 
-## Laravel Sponsors
+2. Navega al directorio del proyecto:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    ```bash
+    cd inmogest
+    ```
 
-### Premium Partners
+3. Instala las dependencias de Composer:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    ```bash
+    composer install
+    ```
 
-## Contributing
+4. Copia el archivo de configuración y configura tus variables de entorno:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```bash
+    cp .env.example .env
+    ```
 
-## Code of Conduct
+5. Genera la clave de la aplicación:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```bash
+    php artisan key:generate
+    ```
 
-## Security Vulnerabilities
+6. Configura tu base de datos en el archivo `.env`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+7. Ejecuta las migraciones y seeder:
 
-## License
+    ```bash
+    php artisan migrate --seed
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+8. Instala las dependencias de npm:
+
+    ```bash
+    npm install
+    ```
+
+9. Compila los assets:
+
+    ```bash
+    npm run dev
+    ```
+
+10. Inicia el servidor:
+
+    ```bash
+    php artisan serve
+    ```
+
+11. Accede a la aplicación en tu navegador en la dirección `http://localhost:8000`.
+
+## Uso
+
+- **Tipos de porterías**: Gestiona los tipos de porterías desde el menú correspondiente.
+- **Tipos de cocinas**: Gestiona los tipos de cocinas desde el menú correspondiente.
+- **Solicitudes de reparación**: Crea y gestiona solicitudes de reparación desde el menú de solicitudes.
+
+## Contribuir
+
+Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y haz commit (`git commit -am 'Añadir nueva funcionalidad'`).
+4. Empuja los cambios a tu rama (`git push origin feature/nueva-funcionalidad`).
+5. Abre un Pull Request.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Para más información, consulta el archivo `LICENSE`.
+
+## Contacto
+
+Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue o contactar a [tu-email@example.com](mailto:tu-email@example.com).
